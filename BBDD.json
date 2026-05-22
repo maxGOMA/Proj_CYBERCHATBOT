@@ -1,0 +1,55 @@
+{
+    "anuncios": { 
+        "keywords": ["anuncios", "publicidad", "ventanas", "popup", "popups", "emergentes"], 
+        "question": "¿Esos anuncios aparecen incluso cuando no estás usando ninguna app o página web?",
+        "possible_yes": "Puede que tengas adware o alguna app sospechosa instalada.",
+        "advice_yes": "Te recomiendo revisar las aplicaciones recientes, desinstalar las que no reconozcas y pasar un antivirus.",
+        "possible_no": "Podría ser una página web concreta con publicidad invasiva o notificaciones activadas.",
+        "advice_no": "Te recomiendo cerrar esa página, borrar notificaciones del navegador y no pulsar anuncios extraños."
+    },
+
+    "phishing": {
+        "keywords": ["mensaje", "correo", "email", "sms", "banco", "enlace", "link", "estafa", "phishing"],
+        "question": "¿Has pulsado el enlace o has escrito tu contraseña o datos personales?",
+        "possible_yes": "Podría tratarse de un intento de phishing con riesgo para tus cuentas.",
+        "advice_yes": "Cambia la contraseña cuanto antes, revisa tu cuenta y no vuelvas a usar ese enlace.",
+        "possible_no": "Parece un mensaje sospechoso, pero has evitado el paso más peligroso.",
+        "advice_no": "Lo mejor es borrar el mensaje y no abrir enlaces ni archivos adjuntos."
+    },
+
+    "contrasena": {
+        "keywords": ["contraseña", "contrasena", "cuenta", "hackeado", "hackearon", "robaron", "acceso"],
+        "question": "¿Has recibido avisos de inicio de sesión raro o ya no puedes entrar en tu cuenta?",
+        "possible_yes": "Es posible que tu cuenta haya sido comprometida.",
+        "advice_yes": "Cambia la contraseña, activa la verificación en dos pasos y revisa sesiones abiertas.",
+        "possible_no": "Puede que todavía no haya acceso no autorizado, pero hay que actuar con cuidado.",
+        "advice_no": "Cambia igualmente la contraseña por una fuerte y distinta a las demás."
+    },
+
+    "lentitud": {
+        "keywords": ["lento", "lenta", "lentitud", "bloquea", "bloqueado", "trabado", "raro"],
+        "question": "¿El problema empezó después de instalar una app o descargar un archivo?",
+        "possible_yes": "Puede haber una aplicación sospechosa o un archivo malicioso afectando al dispositivo.",
+        "advice_yes": "Desinstala lo último que bajaste, reinicia el dispositivo y pasa un antivirus.",
+        "possible_no": "La lentitud no siempre es un ataque; también puede ser falta de espacio o demasiadas apps abiertas.",
+        "advice_no": "Revisa el almacenamiento, actualiza el sistema y observa si aparece algún otro síntoma raro."
+    },
+
+    "apps": {
+        "keywords": ["app", "aplicacion", "aplicación", "programa", "icono", "instalado", "instalada"],
+        "question": "¿Has visto una app nueva que tú no recuerdas haber instalado?",
+        "possible_yes": "Eso puede ser una señal de instalación no deseada o de software sospechoso.",
+        "advice_yes": "No la abras, revisa sus permisos y desinstálala si no es de confianza.",
+        "possible_no": "Entonces puede que el problema venga de otra causa, pero conviene revisar igualmente lo instalado.",
+        "advice_no": "Mira la lista de apps recientes y elimina las que no uses o no reconozcas."
+    },
+
+    "wifi": {
+        "keywords": ["wifi", "wi-fi", "red", "publica", "pública", "hotel", "aeropuerto", "cafeteria", "cafetería"],
+        "question": "¿Te conectaste a una red pública e introdujiste contraseñas o datos bancarios?",
+        "possible_yes": "Eso puede aumentar el riesgo de robo de información.",
+        "advice_yes": "Cambia esas contraseñas cuanto antes y evita hacer gestiones sensibles en redes públicas.",
+        "possible_no": "El riesgo es menor, pero en redes públicas siempre conviene tener cuidado.",
+        "advice_no": "Usa solo páginas de confianza y evita compartir datos personales cuando estés en una red pública."
+    }
+}
