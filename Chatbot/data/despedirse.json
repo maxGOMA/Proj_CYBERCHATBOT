@@ -1,0 +1,13 @@
+{
+  "intent": "despedirse",
+  "examples": [
+    "adios", "hasta luego", "bye", "chao", "nos vemos", "hasta pronto",
+    "salir", "exit", "quit", "cerrar", "terminar", "me voy"
+  ],
+  "responses": [
+    "¡Hasta luego! Recuerda mantener tus sistemas actualizados.",
+    "¡Adiós! No olvides hacer copias de seguridad periódicas.",
+    "¡Cuídate! Recuerda: una contraseña segura es tu primera línea de defensa.",
+    "¡Hasta pronto! Ante cualquier incidente, no dudes en volver."
+  ]
+}

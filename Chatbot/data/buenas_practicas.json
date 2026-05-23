@@ -1,0 +1,42 @@
+{
+  "intent": "buenas_practicas",
+  "examples": [
+    "buenas practicas", "consejos generales", "como estar seguro en internet",
+    "habitos de seguridad", "que debo hacer siempre", "normas de seguridad",
+    "tips de seguridad", "como protegerme en general", "seguridad basica"
+  ],
+  "practices": [
+    {
+      "title": "Contraseñas robustas",
+      "detail": "Usa contraseñas de mínimo 12 caracteres combinando mayúsculas, minúsculas, números y símbolos. Usa una contraseña diferente para cada servicio. Usa un gestor de contraseñas (Bitwarden, KeePass) para gestionarlas."
+    },
+    {
+      "title": "Autenticación en dos factores (2FA)",
+      "detail": "Activa el 2FA en todos los servicios que lo permitan. Prioriza aplicaciones de autenticación (Google Authenticator, Authy) sobre SMS, que es menos seguro."
+    },
+    {
+      "title": "Actualizaciones",
+      "detail": "Mantén el sistema operativo, navegador y todas las aplicaciones siempre actualizados. La mayoría de ataques explotan vulnerabilidades ya conocidas y parcheadas."
+    },
+    {
+      "title": "Copias de seguridad",
+      "detail": "Aplica la regla 3-2-1: 3 copias, en 2 soportes diferentes, 1 fuera de las instalaciones (o en la nube). Verifica periódicamente que las copias se pueden restaurar."
+    },
+    {
+      "title": "Navegación segura",
+      "detail": "Verifica siempre que las webs usen HTTPS. No descargues software de fuentes no oficiales. Usa un bloqueador de anuncios para reducir el riesgo de malvertising."
+    },
+    {
+      "title": "Correo electrónico",
+      "detail": "Desconfía de correos urgentes que pidan datos o credenciales. Verifica el remitente real antes de hacer clic en enlaces. En caso de duda, contacta directamente con la entidad por otro canal."
+    },
+    {
+      "title": "Redes WiFi",
+      "detail": "Evita conectarte a redes WiFi públicas sin usar una VPN. En casa, usa cifrado WPA3 o WPA2 y una contraseña robusta para el router. Cambia las credenciales por defecto del router."
+    },
+    {
+      "title": "Dispositivos físicos",
+      "detail": "No conectes USB desconocidos. Bloquea siempre el equipo cuando te ausentes. Cifra el disco duro en equipos portátiles (BitLocker, FileVault)."
+    }
+  ]
+}

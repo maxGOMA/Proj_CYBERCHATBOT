@@ -1,0 +1,8 @@
+{
+  "intent": "solicitar_diagnostico",
+  "examples": [
+    "diagnosticame", "que tengo", "que me ha pasado", "analiza mi caso",
+    "dime que ataque es", "identifica el problema", "que tipo de ataque sufri",
+    "necesito un diagnostico", "cual es el problema"
+  ]
+}

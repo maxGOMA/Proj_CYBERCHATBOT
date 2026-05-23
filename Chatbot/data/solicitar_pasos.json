@@ -1,0 +1,84 @@
+{
+  "intent": "solicitar_pasos",
+  "examples": [
+    "que pasos sigo", "como lo resuelvo paso a paso", "guia para solucionar",
+    "que hago primero", "instrucciones para", "como actuo ante",
+    "pasos a seguir", "protocolo de actuacion", "que debo hacer primero"
+  ],
+  "steps": {
+    "phishing": [
+      "1. No hagas clic en ningún enlace del correo sospechoso.",
+      "2. No respondas ni descargues adjuntos.",
+      "3. Cambia inmediatamente la contraseña de la cuenta afectada.",
+      "4. Activa la autenticación en dos factores (2FA).",
+      "5. Reporta el correo como phishing en tu cliente de email.",
+      "6. Si has introducido datos bancarios, contacta con tu banco de inmediato.",
+      "7. Informa al equipo de IT si estás en una empresa."
+    ],
+    "ransomware": [
+      "1. Desconecta el equipo de la red inmediatamente (cable y WiFi).",
+      "2. No apagues el equipo, puede destruir evidencias.",
+      "3. No pagues el rescate.",
+      "4. Fotografía o anota el mensaje de rescate para el informe.",
+      "5. Contacta con el INCIBE (017) o un especialista en respuesta a incidentes.",
+      "6. Identifica la variante del ransomware en nomoreransom.org.",
+      "7. Restaura desde la copia de seguridad más reciente limpia.",
+      "8. Formatea el equipo antes de restaurar si no estás seguro del origen."
+    ],
+    "ddos": [
+      "1. Verifica que realmente es un DDoS y no un problema de infraestructura.",
+      "2. Activa el modo 'Under Attack' en tu CDN (Cloudflare, etc.).",
+      "3. Contacta con tu proveedor de hosting para soporte.",
+      "4. Bloquea las IPs de origen en el firewall si son identificables.",
+      "5. Activa rate limiting para limitar peticiones por IP.",
+      "6. Escala recursos temporalmente si es posible.",
+      "7. Documenta el incidente para el informe posterior."
+    ],
+    "malware": [
+      "1. Desconecta el equipo de Internet.",
+      "2. Ejecuta un análisis completo con el antivirus actualizado.",
+      "3. Si el antivirus no lo elimina, usa una herramienta de eliminación específica.",
+      "4. Revisa los programas instalados recientemente y elimina los desconocidos.",
+      "5. Revisa los procesos en ejecución en el administrador de tareas.",
+      "6. Actualiza el sistema operativo y todas las aplicaciones.",
+      "7. Cambia las contraseñas de todas tus cuentas desde otro dispositivo.",
+      "8. Si la infección persiste, considera formatear el equipo."
+    ],
+    "brute_force": [
+      "1. Bloquea temporalmente las IPs que generan los intentos fallidos.",
+      "2. Cambia inmediatamente la contraseña de la cuenta atacada.",
+      "3. Activa la autenticación en dos factores (2FA).",
+      "4. Revisa los logs para determinar si hubo acceso exitoso.",
+      "5. Configura bloqueo automático tras N intentos fallidos.",
+      "6. Implementa CAPTCHA en el formulario de login.",
+      "7. Notifica a los usuarios afectados si es un servicio multiusuario."
+    ],
+    "sql_injection": [
+      "1. Identifica y documenta el punto de inyección afectado.",
+      "2. Deshabilita temporalmente el formulario o endpoint vulnerable.",
+      "3. Revisa los logs de la base de datos para ver qué datos fueron accedidos.",
+      "4. Corrige el código usando consultas preparadas (prepared statements).",
+      "5. Sanitiza todos los inputs del usuario en el código.",
+      "6. Actualiza los permisos del usuario de base de datos al mínimo necesario.",
+      "7. Despliega un WAF para protección inmediata mientras corriges el código.",
+      "8. Notifica a los usuarios si sus datos fueron expuestos (obligatorio por RGPD)."
+    ],
+    "man_in_the_middle": [
+      "1. Desconéctate de la red WiFi pública inmediatamente.",
+      "2. Cambia las contraseñas de las cuentas a las que accediste en esa red.",
+      "3. Revisa los movimientos de tus cuentas bancarias.",
+      "4. Activa 2FA en todas las cuentas importantes.",
+      "5. En el futuro, usa siempre una VPN en redes públicas.",
+      "6. Nunca ignores alertas de certificado inválido en el navegador."
+    ],
+    "insider_threat": [
+      "1. Revoca inmediatamente los accesos del empleado sospechoso.",
+      "2. Preserva los logs de acceso como evidencia.",
+      "3. Identifica qué datos fueron accedidos o copiados.",
+      "4. Notifica al departamento legal y de RRHH.",
+      "5. Evalúa si hay obligación de notificación a la AEPD (si hay datos personales).",
+      "6. Contacta con las autoridades si hay evidencia de delito.",
+      "7. Realiza una auditoría completa de accesos del período afectado."
+    ]
+  }
+}

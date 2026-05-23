@@ -1,0 +1,76 @@
+{
+  "intent": "solicitar_recomendaciones",
+  "examples": [
+    "como me protejo", "que medidas tomo", "recomendacion", "como evito",
+    "que debo hacer para protegerme", "como puedo prevenir", "como mejorar seguridad",
+    "protegerme del phishing", "evitar ransomware", "medidas contra ddos"
+  ],
+  "by_threat": {
+    "phishing": [
+      "No hagas clic en enlaces de correos no solicitados.",
+      "Verifica siempre el remitente del correo electrónico.",
+      "Accede directamente a la web oficial en lugar de usar enlaces del correo.",
+      "Activa la autenticación en dos factores (2FA) en tus cuentas.",
+      "Usa un gestor de contraseñas para detectar sitios falsos."
+    ],
+    "ransomware": [
+      "Realiza copias de seguridad periódicas en ubicaciones desconectadas.",
+      "Mantén el sistema operativo y el software siempre actualizados.",
+      "No abras adjuntos de correos desconocidos.",
+      "Usa soluciones de seguridad con detección de comportamiento.",
+      "Aplica el principio de mínimo privilegio en los sistemas."
+    ],
+    "ddos": [
+      "Activa un servicio de mitigación DDoS como Cloudflare o Akamai.",
+      "Configura rate limiting en tu servidor web.",
+      "Implementa balanceo de carga para distribuir el tráfico.",
+      "Monitoriza el tráfico de red en tiempo real.",
+      "Ten un plan de respuesta ante incidentes preparado."
+    ],
+    "sql_injection": [
+      "Usa consultas preparadas (prepared statements) en el código.",
+      "Valida y sanitiza todos los inputs del usuario.",
+      "Aplica el principio de mínimo privilegio en la base de datos.",
+      "Usa un WAF (Web Application Firewall).",
+      "Realiza auditorías de seguridad periódicas en el código."
+    ],
+    "malware": [
+      "Instala y mantén actualizado un antivirus de confianza.",
+      "No descargues software de fuentes no oficiales.",
+      "Analiza los dispositivos USB antes de usarlos.",
+      "Mantén el sistema operativo actualizado con los últimos parches.",
+      "Usa un bloqueador de anuncios y scripts en el navegador."
+    ],
+    "man_in_the_middle": [
+      "Usa siempre VPN cuando te conectes a redes WiFi públicas.",
+      "Verifica que la conexión sea HTTPS antes de introducir datos.",
+      "No ignores alertas de certificado inválido del navegador.",
+      "Activa HSTS en tus aplicaciones web.",
+      "Evita hacer operaciones sensibles en redes públicas."
+    ],
+    "brute_force": [
+      "Usa contraseñas largas y complejas (mínimo 12 caracteres).",
+      "Activa la autenticación en dos factores (2FA).",
+      "Implementa bloqueo de cuenta tras varios intentos fallidos.",
+      "Añade CAPTCHA en los formularios de login.",
+      "Monitoriza los logs de acceso regularmente."
+    ],
+    "insider_threat": [
+      "Aplica el principio de mínimo privilegio a todos los usuarios.",
+      "Revoca accesos inmediatamente al finalizar una relación laboral.",
+      "Monitoriza el acceso a datos sensibles con sistemas UEBA.",
+      "Realiza auditorías periódicas de permisos y accesos.",
+      "Forma a los empleados en política de seguridad de la empresa."
+    ]
+  },
+  "general": [
+    "Mantén siempre el sistema operativo y software actualizados.",
+    "Usa contraseñas únicas y robustas para cada servicio.",
+    "Activa la autenticación en dos factores siempre que sea posible.",
+    "Realiza copias de seguridad periódicas de tus datos importantes.",
+    "Desconfía de correos, mensajes o llamadas no solicitadas.",
+    "Usa una VPN cuando te conectes a redes públicas.",
+    "Revisa los permisos de las aplicaciones que instalas.",
+    "Forma a los empleados en buenas prácticas de ciberseguridad."
+  ]
+}

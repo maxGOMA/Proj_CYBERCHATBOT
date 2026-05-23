@@ -1,0 +1,22 @@
+{
+  "intent": "detectar_categoria",
+  "examples": [
+    "que tipo de ataque es", "de que categoria es", "como clasificarias",
+    "es un ataque de red", "es un problema de contrasena", "a que grupo pertenece",
+    "que tipo de amenaza", "como se llama este ataque"
+  ],
+  "categories": {
+    "red": ["ddos", "man_in_the_middle"],
+    "credenciales": ["phishing", "brute_force"],
+    "malware": ["ransomware", "malware"],
+    "aplicacion_web": ["sql_injection"],
+    "interno": ["insider_threat"]
+  },
+  "category_descriptions": {
+    "red": "Ataques que afectan a la infraestructura de red o las comunicaciones.",
+    "credenciales": "Ataques orientados a robar o adivinar credenciales de acceso.",
+    "malware": "Software malicioso que infecta y daña el sistema.",
+    "aplicacion_web": "Vulnerabilidades explotadas en aplicaciones web.",
+    "interno": "Amenazas originadas desde dentro de la organización."
+  }
+}

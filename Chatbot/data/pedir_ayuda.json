@@ -1,0 +1,21 @@
+{
+  "intent": "pedir_ayuda",
+  "examples": [
+    "ayuda", "help", "no se que hacer", "que puedes hacer", "opciones",
+    "como funciona", "que haces", "para que sirves", "menu", "comandos",
+    "que puedo preguntarte", "como te uso", "instrucciones"
+  ],
+  "response": {
+    "intro": "Puedo ayudarte con lo siguiente:",
+    "options": [
+      "Describe un problema  → te diagnostico la amenaza",
+      "Escribe 'información sobre [tema]' → explicación detallada",
+      "Escribe 'cómo me protejo de [amenaza]' → recomendaciones",
+      "Escribe 'pasos para resolver [problema]' → guía paso a paso",
+      "Escribe 'qué es [término]' → definición técnica",
+      "Escribe 'buenas prácticas' → consejos generales",
+      "Escribe 'amenazas' → lista de amenazas conocidas",
+      "Escribe 'salir' → terminar"
+    ]
+  }
+}

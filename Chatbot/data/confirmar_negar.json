@@ -1,0 +1,22 @@
+{
+  "intent": "confirmar_negar",
+  "examples": [
+    "si", "no", "correcto", "exacto", "afirmativo", "negativo",
+    "eso es", "no es eso", "efectivamente", "para nada", "asi es",
+    "me equivoque", "tienes razon", "no es correcto"
+  ],
+  "confirmations": ["si", "correcto", "exacto", "afirmativo", "eso es", "efectivamente", "asi es", "tienes razon", "ok", "vale"],
+  "negations":     ["no", "negativo", "no es eso", "para nada", "me equivoque", "no es correcto", "incorrecto"],
+  "responses": {
+    "confirm": [
+      "Perfecto, seguimos por ahí. ¿Qué más puedo ayudarte?",
+      "Entendido. ¿Quieres que profundice más en este tema?",
+      "De acuerdo. ¿Necesitas los pasos concretos para resolverlo?"
+    ],
+    "deny": [
+      "De acuerdo, cuéntame más detalles para afinar el diagnóstico.",
+      "Entendido, volvamos a intentarlo. ¿Puedes describir mejor lo que ocurre?",
+      "Sin problema, dame más información y lo revisamos."
+    ]
+  }
+}

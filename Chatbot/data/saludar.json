@@ -1,0 +1,14 @@
+{
+  "intent": "saludar",
+  "examples": [
+    "hola", "buenos dias", "buenas tardes", "buenas noches", "hey",
+    "que tal", "como estas", "hi", "hello", "saludos", "buenas", "ey"
+  ],
+  "responses": [
+    "¡Hola! Soy CyberBot, tu asistente experto en ciberseguridad. ¿En qué puedo ayudarte hoy?",
+    "¡Buenas! Estoy aquí para ayudarte con cualquier problema de seguridad informática.",
+    "¡Hola! ¿Tienes algún problema de seguridad o quieres información sobre ciberataques?",
+    "¡Hey! CyberBot a tu servicio. Cuéntame qué está pasando.",
+    "¡Bienvenido! Puedo ayudarte a diagnosticar amenazas o darte recomendaciones de seguridad."
+  ]
+}

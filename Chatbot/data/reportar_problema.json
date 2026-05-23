@@ -1,0 +1,203 @@
+{
+  "intent": "reportar_problema",
+  "examples": [
+    "me han hackeado", "tengo un virus", "archivos cifrados", "me atacaron",
+    "algo raro pasa", "creo que tengo malware", "mi sistema esta comprometido",
+    "hay actividad sospechosa", "me robaron la contrasena", "pagina no carga",
+    "archivos bloqueados", "correo sospechoso", "intentos de acceso",
+    "trafico extrano", "proceso desconocido", "me pidieron rescate",
+    "me han entrado al sistema", "detecto actividad rara"
+  ],
+  "threats": {
+    "phishing": {
+      "priority": 7,
+      "description": "Ataque que suplanta la identidad de entidades legítimas para robar credenciales.",
+      "symptoms": [
+        {"term": "correo sospechoso",       "specificity": 3},
+        {"term": "email falso",             "specificity": 3},
+        {"term": "enlace extrano",          "specificity": 2},
+        {"term": "contrasena robada",       "specificity": 3},
+        {"term": "banco falso",             "specificity": 4},
+        {"term": "verificar cuenta",        "specificity": 3},
+        {"term": "suplantar identidad",     "specificity": 4},
+        {"term": "pagina falsa",            "specificity": 4},
+        {"term": "formulario sospechoso",   "specificity": 3},
+        {"term": "phishing",                "specificity": 5},
+        {"term": "credenciales robadas",    "specificity": 4},
+        {"term": "mensaje urgente banco",   "specificity": 5}
+      ],
+      "severity": "alta",
+      "recommendations": [
+        "No hagas clic en enlaces de correos no solicitados.",
+        "Verifica siempre el remitente del correo electrónico.",
+        "Accede directamente a la web oficial en lugar de usar enlaces del correo.",
+        "Activa la autenticación en dos factores (2FA).",
+        "Usa un gestor de contraseñas para detectar sitios falsos."
+      ]
+    },
+    "ransomware": {
+      "priority": 10,
+      "description": "Malware que cifra los archivos del sistema y exige un rescate económico.",
+      "symptoms": [
+        {"term": "archivos cifrados",         "specificity": 5},
+        {"term": "archivos bloqueados",       "specificity": 4},
+        {"term": "piden rescate",             "specificity": 5},
+        {"term": "bitcoin",                   "specificity": 4},
+        {"term": "no puedo abrir archivos",   "specificity": 3},
+        {"term": "extension cambiada",        "specificity": 4},
+        {"term": "archivos encriptados",      "specificity": 5},
+        {"term": "criptomoneda",              "specificity": 3},
+        {"term": "ransomware",                "specificity": 5},
+        {"term": "pago rescate",              "specificity": 5},
+        {"term": "archivos inaccesibles",     "specificity": 3}
+      ],
+      "severity": "critica",
+      "recommendations": [
+        "Desconecta el equipo de la red inmediatamente.",
+        "No pagues el rescate, no garantiza recuperar los archivos.",
+        "Restaura desde una copia de seguridad limpia.",
+        "Reporta el incidente al INCIBE (017 en España).",
+        "Realiza copias de seguridad periódicas en ubicaciones desconectadas."
+      ]
+    },
+    "ddos": {
+      "priority": 8,
+      "description": "Ataque que satura un servidor con tráfico masivo para dejarlo inaccesible.",
+      "symptoms": [
+        {"term": "servidor caido",          "specificity": 4},
+        {"term": "web no carga",            "specificity": 3},
+        {"term": "trafico masivo",          "specificity": 5},
+        {"term": "servicio lento",          "specificity": 2},
+        {"term": "denegacion servicio",     "specificity": 5},
+        {"term": "muchas peticiones",       "specificity": 4},
+        {"term": "sobrecarga servidor",     "specificity": 4},
+        {"term": "latencia alta",           "specificity": 2},
+        {"term": "ddos",                    "specificity": 5},
+        {"term": "caida servicio",          "specificity": 3}
+      ],
+      "severity": "alta",
+      "recommendations": [
+        "Activa un servicio de mitigación DDoS (Cloudflare, Akamai).",
+        "Configura rate limiting en tu servidor.",
+        "Bloquea las IPs atacantes mediante firewall.",
+        "Contacta con tu proveedor de hosting.",
+        "Implementa balanceo de carga."
+      ]
+    },
+    "sql_injection": {
+      "priority": 8,
+      "description": "Ataque que inyecta código SQL malicioso para manipular la base de datos.",
+      "symptoms": [
+        {"term": "error sql",                   "specificity": 4},
+        {"term": "base de datos expuesta",       "specificity": 5},
+        {"term": "inyeccion sql",               "specificity": 5},
+        {"term": "datos filtrados formulario",   "specificity": 5},
+        {"term": "acceso no autorizado bbdd",    "specificity": 5},
+        {"term": "query maliciosa",             "specificity": 4},
+        {"term": "sql",                         "specificity": 2},
+        {"term": "drop table",                  "specificity": 5},
+        {"term": "informacion expuesta web",    "specificity": 4}
+      ],
+      "severity": "alta",
+      "recommendations": [
+        "Usa consultas preparadas (prepared statements).",
+        "Valida y sanitiza todos los inputs del usuario.",
+        "Aplica el principio de mínimo privilegio en la base de datos.",
+        "Usa un WAF (Web Application Firewall).",
+        "Realiza auditorías de seguridad periódicas."
+      ]
+    },
+    "malware": {
+      "priority": 7,
+      "description": "Software malicioso instalado para dañar, espiar o robar información.",
+      "symptoms": [
+        {"term": "virus",                   "specificity": 3},
+        {"term": "troyano",                 "specificity": 4},
+        {"term": "software malicioso",      "specificity": 4},
+        {"term": "ordenador lento",         "specificity": 2},
+        {"term": "proceso desconocido",     "specificity": 3},
+        {"term": "antivirus alerta",        "specificity": 4},
+        {"term": "archivos borrados",       "specificity": 3},
+        {"term": "ventanas emergentes",     "specificity": 3},
+        {"term": "malware",                 "specificity": 5},
+        {"term": "keylogger",               "specificity": 5},
+        {"term": "programa extrano",        "specificity": 3}
+      ],
+      "severity": "alta",
+      "recommendations": [
+        "Ejecuta un análisis completo con tu antivirus.",
+        "Desconecta el equipo de Internet durante el análisis.",
+        "Elimina los programas desconocidos instalados recientemente.",
+        "Actualiza el sistema operativo y aplicaciones.",
+        "Considera formatear el equipo si la infección es grave."
+      ]
+    },
+    "man_in_the_middle": {
+      "priority": 7,
+      "description": "Un tercero intercepta la comunicación entre dos partes sin que lo sepan.",
+      "symptoms": [
+        {"term": "wifi publico",                "specificity": 3},
+        {"term": "certificado invalido",        "specificity": 5},
+        {"term": "https rojo",                  "specificity": 5},
+        {"term": "conexion insegura",           "specificity": 3},
+        {"term": "ssl invalido",                "specificity": 5},
+        {"term": "comunicacion interceptada",   "specificity": 5},
+        {"term": "arp spoofing",                "specificity": 5},
+        {"term": "mitm",                        "specificity": 5},
+        {"term": "red comprometida",            "specificity": 4}
+      ],
+      "severity": "alta",
+      "recommendations": [
+        "Evita WiFi públicas sin VPN.",
+        "Verifica siempre que la conexión sea HTTPS.",
+        "No ignores alertas de certificado inválido.",
+        "Usa una VPN de confianza en redes públicas.",
+        "Activa HSTS en tus aplicaciones web."
+      ]
+    },
+    "brute_force": {
+      "priority": 6,
+      "description": "Prueba sistemática de contraseñas hasta encontrar la correcta.",
+      "symptoms": [
+        {"term": "intentos fallidos login",     "specificity": 5},
+        {"term": "multiples logins",            "specificity": 4},
+        {"term": "cuenta bloqueada",            "specificity": 4},
+        {"term": "fuerza bruta",                "specificity": 5},
+        {"term": "login fallido",               "specificity": 4},
+        {"term": "password spraying",           "specificity": 5},
+        {"term": "intentos acceso",             "specificity": 3},
+        {"term": "diccionario contrasenas",     "specificity": 4}
+      ],
+      "severity": "media",
+      "recommendations": [
+        "Implementa bloqueo tras varios intentos fallidos.",
+        "Usa contraseñas largas y complejas (mínimo 12 caracteres).",
+        "Activa la autenticación en dos factores (2FA).",
+        "Implementa CAPTCHA en formularios de login.",
+        "Monitoriza los logs de acceso."
+      ]
+    },
+    "insider_threat": {
+      "priority": 8,
+      "description": "Amenaza de un empleado con acceso legítimo que actúa maliciosamente.",
+      "symptoms": [
+        {"term": "empleado sospechoso",         "specificity": 4},
+        {"term": "datos copiados usb",          "specificity": 5},
+        {"term": "acceso fuera horario",        "specificity": 4},
+        {"term": "empleado despedido datos",    "specificity": 5},
+        {"term": "datos exfiltrados",           "specificity": 5},
+        {"term": "fuga informacion interna",    "specificity": 5},
+        {"term": "privilegios abusados",        "specificity": 4},
+        {"term": "acceso interno no autorizado","specificity": 5}
+      ],
+      "severity": "alta",
+      "recommendations": [
+        "Aplica el principio de mínimo privilegio.",
+        "Monitoriza el acceso a datos sensibles.",
+        "Implementa un sistema UEBA.",
+        "Revoca accesos al finalizar una relación laboral.",
+        "Realiza auditorías periódicas de permisos."
+      ]
+    }
+  }
+}

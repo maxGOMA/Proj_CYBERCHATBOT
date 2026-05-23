@@ -1,0 +1,40 @@
+{
+  "intent": "detectar_categoria",
+  "examples": [
+    "que tipo de ataque es", "a que categoria pertenece", "como clasificarias esto",
+    "es un virus o un hackeo", "de que tipo es este problema",
+    "que clase de amenaza es", "como lo llamarias"
+  ],
+  "categories": {
+    "malware": {
+      "description": "Software malicioso que infecta el sistema.",
+      "keywords": ["virus", "troyano", "spyware", "ransomware", "adware", "keylogger", "rootkit", "gusano"],
+      "subcategories": ["ransomware", "malware", "spyware", "adware"]
+    },
+    "ingenieria_social": {
+      "description": "Ataques basados en manipulación psicológica del usuario.",
+      "keywords": ["phishing", "engano", "suplantacion", "correo falso", "llamada fraudulenta", "smishing"],
+      "subcategories": ["phishing", "vishing", "smishing"]
+    },
+    "ataque_red": {
+      "description": "Ataques dirigidos a la infraestructura de red.",
+      "keywords": ["ddos", "mitm", "arp spoofing", "trafico", "red", "servidor", "dns"],
+      "subcategories": ["ddos", "man_in_the_middle", "dns_spoofing"]
+    },
+    "ataque_aplicacion": {
+      "description": "Ataques dirigidos a aplicaciones web o software.",
+      "keywords": ["sql", "inyeccion", "xss", "formulario", "web", "base de datos", "api"],
+      "subcategories": ["sql_injection", "xss", "csrf"]
+    },
+    "acceso_no_autorizado": {
+      "description": "Intentos de acceder a sistemas sin permiso.",
+      "keywords": ["fuerza bruta", "contrasena", "login", "acceso", "cuenta", "credenciales"],
+      "subcategories": ["brute_force", "credential_stuffing"]
+    },
+    "amenaza_interna": {
+      "description": "Amenazas provenientes de personas con acceso legítimo.",
+      "keywords": ["empleado", "interno", "usb", "fuga", "privilegio", "acceso interno"],
+      "subcategories": ["insider_threat"]
+    }
+  }
+}

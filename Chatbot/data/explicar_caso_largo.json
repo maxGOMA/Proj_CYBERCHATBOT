@@ -1,0 +1,22 @@
+{
+  "intent": "explicar_caso_largo",
+  "examples": [
+    "te cuento lo que paso", "te explico con detalle", "el caso es que",
+    "hace unos dias", "lo que ocurrio fue", "quiero explicarte todo",
+    "te cuento desde el principio", "empezando por el inicio",
+    "tengo mucho que contarte", "es una situacion compleja"
+  ],
+  "responses": {
+    "ack_start": [
+      "Adelante, cuéntame todo con detalle. Mientras más información me des, mejor podré ayudarte.",
+      "Te escucho. Explícame todo desde el principio.",
+      "Perfecto, cuéntame el caso completo. Voy tomando nota de los síntomas."
+    ],
+    "ack_continue": [
+      "Entendido. ¿Hay algo más que ocurriera?",
+      "Anotado. Continúa, ¿qué más pasó?",
+      "De acuerdo. ¿Cuándo empezaste a notar esto?"
+    ],
+    "ack_finish": "Gracias por todos los detalles. Con esta información puedo hacer un diagnóstico más preciso."
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "intent": "buscar_informacion",
+  "examples": [
+    "que es el phishing", "explicame el ransomware", "que es un ddos",
+    "como funciona el malware", "informacion sobre", "explicame",
+    "que es", "como funciona", "definicion de", "que significa",
+    "cuentame sobre", "quiero saber sobre", "habla de"
+  ],
+  "threats": {
+    "phishing": {
+      "title": "Phishing",
+      "summary": "Ataque que suplanta la identidad de entidades legítimas para robar credenciales.",
+      "detail": "El phishing es una de las técnicas más utilizadas por ciberdelincuentes. Consiste en engañar al usuario haciéndole creer que interactúa con una entidad de confianza (banco, empresa, administración) cuando en realidad facilita sus datos a un atacante. Puede llegar por correo (email phishing), SMS (smishing) o llamada (vishing). Los indicadores más comunes son: remitentes con dominios similares al original pero ligeramente alterados, urgencia artificial en el mensaje, enlaces que redirigen a páginas falsas y solicitudes de datos personales o credenciales.",
+      "keywords": ["phishing", "correo falso", "email", "suplantacion", "smishing", "vishing", "credenciales"]
+    },
+    "ransomware": {
+      "title": "Ransomware",
+      "summary": "Malware que cifra los archivos del sistema y exige un rescate para recuperarlos.",
+      "detail": "El ransomware es un tipo de malware que, una vez ejecutado, cifra todos los archivos del usuario e impide el acceso al sistema. Muestra un mensaje exigiendo un pago, generalmente en criptomonedas, para proporcionar la clave de descifrado. Se distribuye principalmente mediante adjuntos maliciosos en correos, descargas de software pirata o vulnerabilidades del sistema. Organismos como el FBI y el INCIBE recomiendan no pagar el rescate ya que no garantiza la recuperación de los datos y financia a los atacantes.",
+      "keywords": ["ransomware", "cifrado", "rescate", "bitcoin", "archivos", "encriptado", "cryptolocker"]
+    },
+    "ddos": {
+      "title": "Ataque DDoS",
+      "summary": "Ataque que satura un servidor con tráfico masivo para dejarlo inaccesible.",
+      "detail": "Un ataque DDoS (Distributed Denial of Service) utiliza miles de dispositivos comprometidos, conocidos como botnet, para enviar peticiones masivas a un servidor hasta saturarlo y dejarlo inaccesible para usuarios legítimos. Es especialmente dañino para empresas con servicios online críticos. Los atacantes pueden alquilar botnets en la dark web por precios muy bajos. La defensa principal consiste en filtrar el tráfico malicioso antes de que llegue al servidor mediante servicios CDN o soluciones específicas anti-DDoS.",
+      "keywords": ["ddos", "denegacion servicio", "botnet", "trafico", "servidor", "saturacion"]
+    },
+    "sql_injection": {
+      "title": "Inyección SQL",
+      "summary": "Ataque que inyecta código SQL para manipular la base de datos de una aplicación.",
+      "detail": "La inyección SQL ocurre cuando un atacante introduce código SQL malicioso en un campo de entrada de una aplicación web que no valida correctamente los datos. Este código se ejecuta directamente en la base de datos, permitiendo al atacante leer, modificar o eliminar datos, e incluso obtener acceso total al servidor. Es una de las vulnerabilidades más antiguas y frecuentes en aplicaciones web. OWASP la incluye sistemáticamente en su top 10 de vulnerabilidades más críticas.",
+      "keywords": ["sql", "inyeccion", "base de datos", "query", "formulario", "web", "owasp"]
+    },
+    "malware": {
+      "title": "Malware",
+      "summary": "Software malicioso diseñado para dañar, espiar o robar información del sistema.",
+      "detail": "El malware es un término genérico que engloba cualquier software diseñado para causar daño: virus (se replican adjuntándose a archivos), troyanos (se disfrazan de software legítimo), spyware (espían al usuario), adware (muestran publicidad), keyloggers (registran pulsaciones del teclado) y rootkits (se ocultan en el sistema). Se distribuye mediante descargas infectadas, adjuntos de correo, páginas web maliciosas o dispositivos USB comprometidos.",
+      "keywords": ["malware", "virus", "troyano", "spyware", "keylogger", "rootkit", "adware"]
+    },
+    "man_in_the_middle": {
+      "title": "Ataque Man-in-the-Middle",
+      "summary": "Un tercero intercepta la comunicación entre dos partes sin que lo sepan.",
+      "detail": "En un ataque Man-in-the-Middle (MitM), el atacante se posiciona entre el usuario y el servidor, pudiendo leer, modificar o inyectar mensajes en la comunicación sin que ninguna de las partes lo detecte. Es especialmente peligroso en redes WiFi públicas no cifradas. Las técnicas más comunes incluyen ARP spoofing, DNS spoofing y SSL stripping. El uso de HTTPS, VPN y la verificación de certificados son las principales medidas de protección.",
+      "keywords": ["mitm", "man in the middle", "intercepcion", "wifi", "arp", "ssl", "certificado"]
+    },
+    "brute_force": {
+      "title": "Ataque de Fuerza Bruta",
+      "summary": "Prueba sistemática de combinaciones de contraseñas hasta encontrar la correcta.",
+      "detail": "Los ataques de fuerza bruta intentan adivinar contraseñas probando miles o millones de combinaciones por segundo mediante software automatizado. Los ataques de diccionario usan listas de contraseñas comunes y palabras del diccionario. El password spraying prueba pocas contraseñas comunes contra muchas cuentas para evitar bloqueos. La defensa más efectiva es combinar contraseñas robustas con autenticación en dos factores y límites de intentos.",
+      "keywords": ["fuerza bruta", "contrasena", "password", "diccionario", "intentos", "login"]
+    },
+    "insider_threat": {
+      "title": "Amenaza Interna",
+      "summary": "Amenaza de un empleado con acceso legítimo que actúa de forma maliciosa o negligente.",
+      "detail": "Las amenazas internas son especialmente peligrosas porque provienen de personas con acceso legítimo al sistema. Pueden ser empleados descontentos que roban o sabotean datos, empleados negligentes que cometen errores de seguridad, o empleados que han sido comprometidos externamente (por ejemplo, mediante extorsión). La monitorización del comportamiento (UEBA), el principio de mínimo privilegio y la revocación inmediata de accesos son las principales defensas.",
+      "keywords": ["insider", "empleado", "interno", "fuga", "sabotaje", "acceso interno", "ueba"]
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "intent": "solicitar_pasos",
+  "examples": [
+    "que hago ahora", "pasos a seguir", "como lo soluciono", "dame los pasos",
+    "procedimiento", "guia paso a paso", "que tengo que hacer",
+    "como procedo", "instrucciones", "como actuo", "que hago primero"
+  ],
+  "steps_by_threat": {
+    "ransomware": {
+      "title": "Pasos ante un ataque de Ransomware",
+      "steps": [
+        "INMEDIATO — Desconecta el equipo de la red (cable y WiFi).",
+        "INMEDIATO — No apagues el equipo, puede haber evidencias en memoria.",
+        "INMEDIATO — No pagues el rescate bajo ningún concepto.",
+        "CORTO PLAZO — Identifica qué archivos han sido cifrados.",
+        "CORTO PLAZO — Reporta el incidente a INCIBE (017) o la policía.",
+        "CORTO PLAZO — Busca el nombre del ransomware en nomoreransom.org para ver si hay solución.",
+        "MEDIO PLAZO — Restaura el sistema desde una copia de seguridad limpia.",
+        "MEDIO PLAZO — Analiza cómo entró el ransomware para cerrar la brecha.",
+        "LARGO PLAZO — Implementa copias de seguridad automáticas desconectadas."
+      ]
+    },
+    "phishing": {
+      "title": "Pasos ante un ataque de Phishing",
+      "steps": [
+        "INMEDIATO — No hagas clic en ningún enlace del correo sospechoso.",
+        "INMEDIATO — Si ya hiciste clic, desconéctate de Internet.",
+        "INMEDIATO — Cambia todas tus contraseñas desde un dispositivo seguro.",
+        "CORTO PLAZO — Activa el 2FA en todas tus cuentas importantes.",
+        "CORTO PLAZO — Reporta el correo como phishing a tu proveedor de email.",
+        "CORTO PLAZO — Si introdujiste datos bancarios, llama a tu banco ahora.",
+        "MEDIO PLAZO — Revisa los accesos recientes a tus cuentas.",
+        "LARGO PLAZO — Usa un gestor de contraseñas para evitar futuros incidentes."
+      ]
+    },
+    "malware": {
+      "title": "Pasos ante una infección de Malware",
+      "steps": [
+        "INMEDIATO — Desconecta el equipo de Internet.",
+        "INMEDIATO — Ejecuta un análisis completo con el antivirus.",
+        "CORTO PLAZO — Elimina los programas instalados recientemente.",
+        "CORTO PLAZO — Revisa los procesos activos en el administrador de tareas.",
+        "CORTO PLAZO — Cambia las contraseñas de todas tus cuentas.",
+        "MEDIO PLAZO — Actualiza el sistema operativo y todas las aplicaciones.",
+        "MEDIO PLAZO — Si persiste, considera formatear y reinstalar el sistema.",
+        "LARGO PLAZO — Instala un antivirus con protección en tiempo real."
+      ]
+    },
+    "ddos": {
+      "title": "Pasos ante un ataque DDoS",
+      "steps": [
+        "INMEDIATO — Contacta con tu proveedor de hosting para informar del ataque.",
+        "INMEDIATO — Activa un servicio de mitigación DDoS si no lo tienes.",
+        "INMEDIATO — Configura rate limiting en el servidor.",
+        "CORTO PLAZO — Bloquea las IPs atacantes en el firewall.",
+        "CORTO PLAZO — Redirige el tráfico a través de Cloudflare o similar.",
+        "MEDIO PLAZO — Implementa balanceo de carga.",
+        "LARGO PLAZO — Diseña un plan de respuesta ante incidentes DDoS."
+      ]
+    },
+    "brute_force": {
+      "title": "Pasos ante un ataque de Fuerza Bruta",
+      "steps": [
+        "INMEDIATO — Bloquea temporalmente las IPs atacantes en el firewall.",
+        "INMEDIATO — Cambia las contraseñas de las cuentas afectadas.",
+        "CORTO PLAZO — Activa el bloqueo de cuenta tras 5 intentos fallidos.",
+        "CORTO PLAZO — Implementa 2FA en todos los accesos.",
+        "CORTO PLAZO — Añade CAPTCHA al formulario de login.",
+        "MEDIO PLAZO — Revisa los logs para identificar cuentas comprometidas.",
+        "LARGO PLAZO — Establece una política de contraseñas robustas."
+      ]
+    },
+    "man_in_the_middle": {
+      "title": "Pasos ante un ataque Man-in-the-Middle",
+      "steps": [
+        "INMEDIATO — Desconéctate de la red actual.",
+        "INMEDIATO — No introduzcas ningún dato sensible hasta resolver el problema.",
+        "CORTO PLAZO — Cambia las contraseñas de las cuentas usadas en esa red.",
+        "CORTO PLAZO — Activa 2FA en todas las cuentas importantes.",
+        "MEDIO PLAZO — Instala y activa una VPN de confianza.",
+        "LARGO PLAZO — Evita operar en redes públicas sin VPN."
+      ]
+    },
+    "sql_injection": {
+      "title": "Pasos ante una Inyección SQL",
+      "steps": [
+        "INMEDIATO — Bloquea el acceso público a la aplicación afectada.",
+        "INMEDIATO — Identifica qué datos han podido ser expuestos.",
+        "CORTO PLAZO — Revisa y corrige el código vulnerable con prepared statements.",
+        "CORTO PLAZO — Activa un WAF (Web Application Firewall).",
+        "CORTO PLAZO — Notifica a los usuarios afectados si hay datos comprometidos.",
+        "MEDIO PLAZO — Realiza una auditoría completa de seguridad del código.",
+        "LARGO PLAZO — Implementa revisiones de código periódicas."
+      ]
+    },
+    "insider_threat": {
+      "title": "Pasos ante una Amenaza Interna",
+      "steps": [
+        "INMEDIATO — Revoca todos los accesos del empleado implicado.",
+        "INMEDIATO — Preserva los logs de actividad como evidencia.",
+        "CORTO PLAZO — Audita qué datos han sido accedidos o copiados.",
+        "CORTO PLAZO — Contacta con el departamento legal.",
+        "CORTO PLAZO — Notifica a los afectados si hay datos personales comprometidos (RGPD).",
+        "MEDIO PLAZO — Revisa los permisos de acceso de todos los empleados.",
+        "LARGO PLAZO — Implementa un sistema UEBA de detección de anomalías."
+      ]
+    }
+  },
+  "generic_steps": [
+    "Documenta todo lo que ha ocurrido con fechas y horas.",
+    "Preserva evidencias antes de limpiar el sistema.",
+    "Notifica el incidente a las autoridades si es necesario (INCIBE: 017).",
+    "Informa a los usuarios o clientes afectados si hay datos comprometidos.",
+    "Revisa cómo ocurrió el incidente para evitar que se repita."
+  ]
+}

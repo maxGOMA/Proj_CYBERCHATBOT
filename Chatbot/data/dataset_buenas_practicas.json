@@ -1,0 +1,66 @@
+{
+  "intent": "buenas_practicas",
+  "examples": [
+    "buenas practicas", "consejos generales", "como mejorar la seguridad",
+    "tips de seguridad", "que deberia hacer siempre", "habitos seguros",
+    "seguridad basica", "como protegerme en general", "checklist seguridad"
+  ],
+  "categories": {
+    "contrasenas": {
+      "title": "Gestión de contraseñas",
+      "tips": [
+        "Usa contraseñas de mínimo 12 caracteres con letras, números y símbolos.",
+        "Nunca uses la misma contraseña en dos servicios distintos.",
+        "Usa un gestor de contraseñas (Bitwarden, KeePass) para gestionarlas.",
+        "Cambia las contraseñas cada 6 meses en servicios críticos.",
+        "Nunca compartas contraseñas por correo o mensajería."
+      ]
+    },
+    "autenticacion": {
+      "title": "Autenticación",
+      "tips": [
+        "Activa la autenticación en dos factores (2FA) siempre que sea posible.",
+        "Usa una app de autenticación (Google Authenticator, Authy) en lugar de SMS.",
+        "Revisa los dispositivos con sesión iniciada en tus cuentas periódicamente.",
+        "Desconfía de cualquier solicitud de código 2FA no iniciada por ti."
+      ]
+    },
+    "actualizaciones": {
+      "title": "Actualizaciones y parches",
+      "tips": [
+        "Mantén el sistema operativo siempre actualizado.",
+        "Activa las actualizaciones automáticas en todos los dispositivos.",
+        "Actualiza el firmware del router periódicamente.",
+        "Elimina software que ya no uses para reducir la superficie de ataque."
+      ]
+    },
+    "copias_seguridad": {
+      "title": "Copias de seguridad",
+      "tips": [
+        "Sigue la regla 3-2-1: 3 copias, 2 soportes distintos, 1 fuera de las instalaciones.",
+        "Verifica periódicamente que las copias de seguridad funcionan correctamente.",
+        "Guarda una copia desconectada de la red para protegerte del ransomware.",
+        "Automatiza las copias de seguridad para no depender de hacerlo manualmente."
+      ]
+    },
+    "navegacion": {
+      "title": "Navegación segura",
+      "tips": [
+        "Usa siempre HTTPS y desconfía de sitios sin candado.",
+        "No descargues software de fuentes no oficiales.",
+        "Usa un bloqueador de anuncios para evitar malvertising.",
+        "Evita hacer clic en anuncios o popups inesperados.",
+        "Usa una VPN en redes públicas."
+      ]
+    },
+    "correo": {
+      "title": "Seguridad en el correo",
+      "tips": [
+        "Desconfía de correos urgentes que pidan datos o clics en enlaces.",
+        "Verifica siempre el remitente antes de abrir adjuntos.",
+        "No abras adjuntos de remitentes desconocidos.",
+        "Reporta correos sospechosos como phishing a tu proveedor."
+      ]
+    }
+  }
+}

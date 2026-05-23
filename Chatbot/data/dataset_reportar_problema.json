@@ -1,0 +1,146 @@
+{
+  "intent": "reportar_problema",
+  "examples": [
+    "me han hackeado", "tengo un virus", "archivos cifrados", "algo raro pasa",
+    "creo que tengo malware", "mi sistema esta comprometido", "hay actividad sospechosa",
+    "me robaron la contrasena", "pagina no carga", "archivos bloqueados",
+    "correo sospechoso", "intentos de acceso", "trafico extrano",
+    "proceso desconocido", "me pidieron rescate", "me atacaron"
+  ],
+  "threats": {
+    "ransomware": {
+      "priority": 10,
+      "description": "Malware que cifra los archivos del sistema y exige un rescate para recuperarlos.",
+      "symptoms": [
+        {"term": "archivos cifrados",         "specificity": 3},
+        {"term": "archivos bloqueados",        "specificity": 3},
+        {"term": "archivos encriptados",       "specificity": 3},
+        {"term": "piden rescate",              "specificity": 3},
+        {"term": "bitcoin",                    "specificity": 2},
+        {"term": "criptomoneda",               "specificity": 2},
+        {"term": "no puedo abrir archivos",    "specificity": 2},
+        {"term": "extension cambiada",         "specificity": 2},
+        {"term": "mensaje rescate",            "specificity": 3},
+        {"term": "pago desbloqueo",            "specificity": 3}
+      ],
+      "severity": "critica",
+      "response": "⚠️ CRÍTICO — Se ha detectado un posible ataque de RANSOMWARE.\n\nAcciones inmediatas:\n  1. Desconecta el equipo de la red ahora mismo.\n  2. NO pagues el rescate.\n  3. Reporta el incidente a INCIBE: 017.\n  4. Restaura desde una copia de seguridad limpia.\n  5. Contacta con un especialista en respuesta a incidentes."
+    },
+    "phishing": {
+      "priority": 7,
+      "description": "Suplantación de identidad para robar credenciales mediante correos o páginas falsas.",
+      "symptoms": [
+        {"term": "correo sospechoso",          "specificity": 3},
+        {"term": "email falso",                "specificity": 3},
+        {"term": "enlace extrano",             "specificity": 2},
+        {"term": "contrasena robada",          "specificity": 3},
+        {"term": "banco falso",                "specificity": 3},
+        {"term": "verificar cuenta",           "specificity": 2},
+        {"term": "pagina falsa",               "specificity": 3},
+        {"term": "formulario sospechoso",      "specificity": 2},
+        {"term": "mensaje urgente",            "specificity": 1},
+        {"term": "premio ganado",              "specificity": 2}
+      ],
+      "severity": "alta",
+      "response": "⚠️ ALTO — Se ha detectado un posible ataque de PHISHING.\n\nAcciones inmediatas:\n  1. No hagas clic en ningún enlace del correo.\n  2. Cambia tus contraseñas desde un dispositivo seguro.\n  3. Activa el 2FA en todas tus cuentas.\n  4. Reporta el correo como phishing a tu proveedor.\n  5. Si has introducido datos, contacta con tu banco."
+    },
+    "malware": {
+      "priority": 7,
+      "description": "Software malicioso instalado en el sistema para dañarlo o robar información.",
+      "symptoms": [
+        {"term": "virus",                      "specificity": 2},
+        {"term": "troyano",                    "specificity": 3},
+        {"term": "software malicioso",         "specificity": 3},
+        {"term": "ordenador lento",            "specificity": 1},
+        {"term": "proceso desconocido",        "specificity": 2},
+        {"term": "antivirus alerta",           "specificity": 3},
+        {"term": "archivos borrados",          "specificity": 2},
+        {"term": "popup",                      "specificity": 1},
+        {"term": "ventanas emergentes",        "specificity": 1},
+        {"term": "programa extrano",           "specificity": 2}
+      ],
+      "severity": "alta",
+      "response": "⚠️ ALTO — Se ha detectado un posible MALWARE en el sistema.\n\nAcciones inmediatas:\n  1. Ejecuta un análisis completo con el antivirus.\n  2. Desconecta el equipo de Internet.\n  3. Elimina los programas instalados recientemente.\n  4. Actualiza el sistema operativo.\n  5. Si persiste, considera formatear el equipo."
+    },
+    "ddos": {
+      "priority": 8,
+      "description": "Ataque que satura un servidor con tráfico masivo para dejarlo inaccesible.",
+      "symptoms": [
+        {"term": "servidor caido",             "specificity": 2},
+        {"term": "web no carga",               "specificity": 2},
+        {"term": "trafico masivo",             "specificity": 3},
+        {"term": "servicio lento",             "specificity": 1},
+        {"term": "muchas peticiones",          "specificity": 3},
+        {"term": "sobrecarga servidor",        "specificity": 3},
+        {"term": "latencia alta",              "specificity": 2},
+        {"term": "denegacion servicio",        "specificity": 3},
+        {"term": "caida servicio",             "specificity": 2}
+      ],
+      "severity": "alta",
+      "response": "⚠️ ALTO — Se ha detectado un posible ataque DDoS.\n\nAcciones inmediatas:\n  1. Activa un servicio de mitigación DDoS (Cloudflare).\n  2. Configura rate limiting en el servidor.\n  3. Bloquea las IPs atacantes en el firewall.\n  4. Contacta con tu proveedor de hosting.\n  5. Implementa balanceo de carga."
+    },
+    "sql_injection": {
+      "priority": 8,
+      "description": "Inyección de código SQL malicioso para manipular la base de datos.",
+      "symptoms": [
+        {"term": "error sql",                  "specificity": 3},
+        {"term": "base de datos expuesta",     "specificity": 3},
+        {"term": "datos filtrados",            "specificity": 2},
+        {"term": "inyeccion sql",              "specificity": 3},
+        {"term": "formulario vulnerable",      "specificity": 2},
+        {"term": "query maliciosa",            "specificity": 3},
+        {"term": "informacion expuesta",       "specificity": 2},
+        {"term": "acceso no autorizado bbdd",  "specificity": 3}
+      ],
+      "severity": "alta",
+      "response": "⚠️ ALTO — Se ha detectado una posible INYECCIÓN SQL.\n\nAcciones inmediatas:\n  1. Usa consultas preparadas en el código.\n  2. Valida y sanitiza todos los inputs.\n  3. Aplica mínimo privilegio en la base de datos.\n  4. Activa un WAF (Web Application Firewall).\n  5. Realiza una auditoría de seguridad del código."
+    },
+    "brute_force": {
+      "priority": 6,
+      "description": "Ataque que prueba combinaciones de contraseñas hasta encontrar la correcta.",
+      "symptoms": [
+        {"term": "intentos fallidos login",    "specificity": 3},
+        {"term": "multiples intentos acceso",  "specificity": 3},
+        {"term": "cuenta bloqueada",           "specificity": 2},
+        {"term": "password spraying",          "specificity": 3},
+        {"term": "diccionario contrasenas",    "specificity": 3},
+        {"term": "acceso no autorizado",       "specificity": 1},
+        {"term": "login fallido repetido",     "specificity": 3}
+      ],
+      "severity": "media",
+      "response": "⚠️ MEDIO — Se ha detectado un posible ataque de FUERZA BRUTA.\n\nAcciones recomendadas:\n  1. Bloquea la cuenta tras varios intentos fallidos.\n  2. Usa contraseñas largas y complejas (mínimo 12 caracteres).\n  3. Activa autenticación en dos factores (2FA).\n  4. Añade CAPTCHA al formulario de login.\n  5. Monitoriza los logs de acceso."
+    },
+    "man_in_the_middle": {
+      "priority": 7,
+      "description": "Interceptación de comunicaciones entre dos partes sin que lo sepan.",
+      "symptoms": [
+        {"term": "wifi publico inseguro",      "specificity": 3},
+        {"term": "certificado invalido",       "specificity": 3},
+        {"term": "https rojo",                 "specificity": 3},
+        {"term": "conexion insegura",          "specificity": 2},
+        {"term": "arp spoofing",               "specificity": 3},
+        {"term": "trafico interceptado",       "specificity": 3},
+        {"term": "ssl invalido",               "specificity": 3},
+        {"term": "datos interceptados",        "specificity": 3}
+      ],
+      "severity": "alta",
+      "response": "⚠️ ALTO — Se ha detectado un posible ataque MAN-IN-THE-MIDDLE.\n\nAcciones inmediatas:\n  1. Desconéctate de la red actual.\n  2. Usa siempre VPN en redes públicas.\n  3. Verifica que la conexión sea HTTPS.\n  4. No ignores alertas de certificado inválido.\n  5. Activa HSTS en tus aplicaciones web."
+    },
+    "insider_threat": {
+      "priority": 7,
+      "description": "Amenaza proveniente de alguien con acceso legítimo al sistema.",
+      "symptoms": [
+        {"term": "empleado sospechoso",        "specificity": 3},
+        {"term": "datos copiados internamente","specificity": 3},
+        {"term": "usb sospechoso",             "specificity": 2},
+        {"term": "acceso fuera de horario",    "specificity": 3},
+        {"term": "fuga informacion interna",   "specificity": 3},
+        {"term": "privilegios abusados",       "specificity": 3},
+        {"term": "empleado despedido acceso",  "specificity": 3},
+        {"term": "datos exfiltrados",          "specificity": 3}
+      ],
+      "severity": "alta",
+      "response": "⚠️ ALTO — Se ha detectado una posible AMENAZA INTERNA.\n\nAcciones recomendadas:\n  1. Revoca los accesos del empleado implicado inmediatamente.\n  2. Audita los logs de acceso recientes.\n  3. Aplica el principio de mínimo privilegio.\n  4. Implementa un sistema UEBA de detección de anomalías.\n  5. Consulta con el departamento legal si hay datos sensibles comprometidos."
+    }
+  }
+}

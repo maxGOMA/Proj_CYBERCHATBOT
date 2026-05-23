@@ -1,0 +1,22 @@
+{
+  "intent": "explicar_caso_largo",
+  "examples": [
+    "te explico lo que paso", "el caso es que", "desde hace unos dias",
+    "todo empezo cuando", "la situacion es la siguiente", "os cuento",
+    "resulta que", "lo que ocurrio fue", "quiero contarte algo",
+    "tengo una situacion complicada", "necesito explicarte algo",
+    "ha pasado algo raro", "llevo varios dias con este problema"
+  ],
+  "accumulation_responses": [
+    "Entendido, tomo nota. ¿Hay algo más que haya ocurrido?",
+    "Anotado. Sigue contándome, cuantos más detalles mejor para el diagnóstico.",
+    "De acuerdo, continúa. ¿Qué más has observado?",
+    "Bien, tengo eso en cuenta. ¿Cuándo empezó exactamente?",
+    "Interesante. ¿Afecta a otros dispositivos o solo a este?"
+  ],
+  "summary_trigger_keywords": [
+    "eso es todo", "ya esta", "es todo lo que se", "no hay mas",
+    "con eso te lo he contado todo", "que opinas", "que crees"
+  ],
+  "summary_response": "Gracias por la información detallada. Basándome en todo lo que me has contado, voy a analizarlo ahora."
+}
