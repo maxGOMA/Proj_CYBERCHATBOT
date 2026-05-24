@@ -5,16 +5,16 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import src.dataset_loader as dl
 from src.chatbot import Chatbot
-from src.inference_engine import InferenceEngine
-from src.nlp_utils import ExampleIntentDetector
+from src.inference_engine import build_intent_model
 
 
 def main():
-    print("Iniciando CyberBot, cargando datasets NLP...")
+    print("Iniciando CyberBot...")
 
-    intent_detector = ExampleIntentDetector(dl.build_examples_by_intent())
-    inference_engine = InferenceEngine()
-    bot = Chatbot(intent_detector=intent_detector, inference_engine=inference_engine)
+    examples_by_intent = dl.build_examples_by_intent()
+    intent_model = build_intent_model(examples_by_intent)
+
+    bot = Chatbot(intent_model)
     bot.run()
 
 

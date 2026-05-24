@@ -1,7 +1,8 @@
 import random
 
 import src.dataset_loader as dl
-from src.nlp_utils import normalize_text
+import src.inference_engine as ie
+from src.nlp_utils import clean_text
 from src.session import Session
 
 
@@ -16,42 +17,40 @@ THREAT_NAMES = {
     "insider_threat": "Amenaza Interna",
 }
 
-INTENT_THRESHOLD = 0.12
-
 
 class Chatbot:
-    def __init__(self, intent_detector, inference_engine):
-        self.detector = intent_detector
-        self.engine = inference_engine
+    def __init__(self, intent_model):
+        self.intent_model = intent_model
         self.session = Session()
         self.handlers = {
             "saludar": self.greet_handler,
             "despedirse": self.farewell_handler,
             "pedir_ayuda": self.help_handler,
             "reportar_problema": self.report_problem_handler,
-            "buscar_informacion": self.information_request_handler,
-            "solicitar_recomendaciones": self.recommendations_request_handler,
+            "solicitar_diagnostico": self.report_problem_handler,
+            "buscar_informacion": self.information_handler,
+            "solicitar_recomendaciones": self.recommendations_handler,
             "detectar_categoria": self.category_handler,
             "confirmar_negar": self.confirm_deny_handler,
-            "solicitar_pasos": self.steps_to_follow_handler,
-            "solicitar_diagnostico": self.report_problem_handler,
+            "solicitar_pasos": self.steps_handler,
             "explicar_caso_largo": self.long_case_handler,
             "buenas_practicas": self.good_practices_handler,
         }
 
     def process_input(self, user_text):
-        if not user_text.strip():
-            return "No he recibido ningun texto. En que puedo ayudarte?"
-
         self.session.add_message("user", user_text)
-        intent, score = self.detector(user_text)
 
-        if not intent or score < INTENT_THRESHOLD:
-            intent = self._fallback_intent(user_text)
+        intent_name, intent_score = ie.detect_intent(user_text, self.intent_model)
+        if intent_score < ie.INTENT_THRESHOLD:
+            intent_name = self.fallback_intent(user_text)
 
-        self.session.set_intent(intent)
-        handler = self.handlers.get(intent, self.report_problem_handler)
-        response = handler(user_text)
+        self.session.set_intent(intent_name)
+
+        if intent_name in self.handlers:
+            response = self.handlers[intent_name](user_text)
+        else:
+            response = self.report_problem_handler(user_text)
+
         self.session.add_message("bot", response)
         return response
 
@@ -75,71 +74,71 @@ class Chatbot:
 
     def report_problem_handler(self, text):
         dataset = dl.load("reportar_problema")
-        threat, score, all_scores = self.engine.evaluate(text, dataset)
         self.session.update_facts(text)
 
-        if threat is None and len(self.session.known_facts) > 1:
-            accumulated = self.engine.forward_chaining(self.session.known_facts, dataset)
-            if accumulated:
-                threat, score = next(iter(accumulated.items()))
-                all_scores = accumulated
+        threat_name, score, all_scores = ie.detect_threat(text, dataset)
 
-        if threat is None:
-            return self.no_diagnosis()
-
-        self.session.set_threat(threat)
-        self.session.set_long_case(False)
-        threat_data = dataset["threats"][threat]
-        return self.format_diagnosis(threat, threat_data, score, all_scores)
-
-    def information_request_handler(self, text):
-        dataset = dl.load("buscar_informacion")
-        threat = self.engine.find_in_info_dataset(text, dataset)
-
-        if not threat and self.session.last_threat:
-            threat = self.session.last_threat
-
-        if not threat:
-            return (
-                "No he encontrado informacion sobre ese tema.\n"
-                "Prueba con: 'que es el phishing', 'explicame el ransomware' o "
-                "'que es un ataque DDoS'."
+        if threat_name is None and len(self.session.known_facts) > 1:
+            threat_name, score, all_scores = ie.detect_threat_from_history(
+                self.session.known_facts,
+                dataset,
             )
 
-        threat_data = dataset["threats"][threat]
-        threat_name = THREAT_NAMES.get(threat, threat)
-        lines = [
-            threat_name,
-            "",
-            f"Resumen: {threat_data.get('summary', '')}",
-            "",
-            f"Detalle: {threat_data.get('detail', '')}",
-            "",
-            "Si quieres, tambien puedo darte recomendaciones o pasos de respuesta.",
-        ]
+        if threat_name is None:
+            return self.no_diagnosis()
+
+        self.session.set_threat(threat_name)
+        threat_data = dataset["threats"][threat_name]
+        return self.format_diagnosis(threat_name, threat_data, score, all_scores)
+
+    def information_handler(self, text):
+        dataset = dl.load("buscar_informacion")
+        threat_name = ie.detect_info_threat(text, dataset)
+
+        if threat_name is None:
+            threat_name = self.session.last_threat
+
+        if threat_name is None:
+            return (
+                "No he encontrado informacion sobre ese tema.\n"
+                "Prueba con frases como: 'que es el phishing' o "
+                "'explicame el ransomware'."
+            )
+
+        threat_data = dataset["threats"][threat_name]
+        visible_name = THREAT_NAMES.get(threat_name, threat_name)
+
+        lines = [visible_name]
+
+        if "summary" in threat_data:
+            lines.append("")
+            lines.append("Resumen: " + threat_data["summary"])
+
+        if "detail" in threat_data:
+            lines.append("")
+            lines.append("Detalle: " + threat_data["detail"])
+
         return "\n".join(lines)
 
-    def recommendations_request_handler(self, text):
+    def recommendations_handler(self, text):
         recommendations = dl.load("solicitar_recomendaciones")
         report_dataset = dl.load("reportar_problema")
-        threat, _, _ = self.engine.evaluate(text, report_dataset)
+        threat_name, _, _ = ie.detect_threat(text, report_dataset)
 
-        if not threat:
-            threat = self.session.last_threat
+        if threat_name is None:
+            threat_name = self.session.last_threat
 
-        if threat and threat in recommendations.get("by_threat", {}):
-            threat_name = THREAT_NAMES.get(threat, threat)
-            lines = [f"Recomendaciones para {threat_name}:"]
+        if threat_name and threat_name in recommendations.get("by_threat", {}):
+            lines = [f"Recomendaciones para {THREAT_NAMES.get(threat_name, threat_name)}:"]
 
-            for index, item in enumerate(recommendations["by_threat"][threat], start=1):
+            for index, item in enumerate(recommendations["by_threat"][threat_name], 1):
                 lines.append(f"  {index}. {item}")
 
             return "\n".join(lines)
 
-        general_tips = recommendations.get("general", [])
         lines = ["Buenas practicas generales:"]
 
-        for index, item in enumerate(general_tips, start=1):
+        for index, item in enumerate(recommendations.get("general", []), 1):
             lines.append(f"  {index}. {item}")
 
         return "\n".join(lines)
@@ -147,109 +146,92 @@ class Chatbot:
     def category_handler(self, text):
         category_dataset = dl.load("detectar_categoria")
         report_dataset = dl.load("reportar_problema")
-        threat, _, _ = self.engine.evaluate(text, report_dataset)
+        threat_name, _, _ = ie.detect_threat(text, report_dataset)
 
-        if not threat:
-            threat = self.session.last_threat
+        if threat_name is None:
+            threat_name = self.session.last_threat
 
-        if not threat:
-            return "No he identificado una amenaza concreta. Describe primero el problema."
+        if threat_name is None:
+            return "No he detectado una amenaza concreta todavia."
 
         categories = category_dataset.get("categories", {})
         descriptions = category_dataset.get("category_descriptions", {})
-        threat_name = THREAT_NAMES.get(threat, threat)
 
-        for category, threats in categories.items():
-            if threat in threats:
-                description = descriptions.get(category, "")
+        for category_name, threat_list in categories.items():
+            if threat_name in threat_list:
                 return (
-                    f"{threat_name} pertenece a la categoria: {category.upper()}\n"
-                    f"{description}"
+                    f"{THREAT_NAMES.get(threat_name, threat_name)} pertenece a la categoria "
+                    f"{category_name.upper()}.\n{descriptions.get(category_name, '')}"
                 )
 
-        return "No he podido clasificar la amenaza en una categoria."
+        return "No he podido clasificar la amenaza."
 
     def confirm_deny_handler(self, text):
-        data = dl.load("confirmar_negar")
-        normalized = normalize_text(text)
+        dataset = dl.load("confirmar_negar")
+        answer_type = ie.classify_yes_no(clean_text(text), dataset)
 
-        for option in data.get("confirmations", []):
-            if normalize_text(option) in normalized:
-                return random.choice(data.get("responses", {}).get("confirmed", []))
+        if answer_type == "yes":
+            return random.choice(dataset.get("responses", {}).get("confirmed", []))
 
-        for option in data.get("negations", []):
-            if normalize_text(option) in normalized:
-                return random.choice(data.get("responses", {}).get("denied", []))
+        if answer_type == "no":
+            return random.choice(dataset.get("responses", {}).get("denied", []))
 
-        return (
-            "No he entendido si confirmas o niegas el diagnostico. "
-            "Puedes responder con 'si', 'no', 'correcto' o 'no es eso'."
-        )
+        return "No he entendido si confirmas o niegas el diagnostico."
 
-    def steps_to_follow_handler(self, text):
+    def steps_handler(self, text):
         steps_dataset = dl.load("solicitar_pasos")
         report_dataset = dl.load("reportar_problema")
-        threat, _, _ = self.engine.evaluate(text, report_dataset)
+        threat_name, _, _ = ie.detect_threat(text, report_dataset)
 
-        if not threat:
-            threat = self.session.last_threat
+        if threat_name is None:
+            threat_name = self.session.last_threat
 
-        if not threat or threat not in steps_dataset.get("steps", {}):
-            return (
-                "Necesito saber que amenaza quieres resolver.\n"
-                "Describe primero el problema y luego pideme los pasos."
-            )
+        if threat_name is None or threat_name not in steps_dataset.get("steps", {}):
+            return "Primero necesito saber que amenaza quieres resolver."
 
-        threat_name = THREAT_NAMES.get(threat, threat)
-        lines = [f"Pasos para responder a {threat_name}:"]
+        lines = [f"Pasos para responder a {THREAT_NAMES.get(threat_name, threat_name)}:"]
 
-        for step in steps_dataset["steps"][threat]:
+        for step in steps_dataset["steps"][threat_name]:
             lines.append(f"  {step}")
 
         return "\n".join(lines)
 
     def long_case_handler(self, text):
         data = dl.load("explicar_caso_largo")
-        responses = data.get("responses", {})
-        already_collecting = self.session.long_case
-
         self.session.update_facts(text)
-        self.session.set_long_case(True)
 
-        dataset = dl.load("reportar_problema")
-        threat, score, all_scores = self.engine.evaluate(text, dataset)
+        threat_name, score, all_scores = ie.detect_threat_from_history(
+            self.session.known_facts,
+            dl.load("reportar_problema"),
+        )
 
-        if threat is None and len(self.session.known_facts) > 1:
-            accumulated = self.engine.forward_chaining(self.session.known_facts, dataset)
-            if accumulated:
-                threat, score = next(iter(accumulated.items()))
-                all_scores = accumulated
+        if threat_name is None:
+            if self.session.long_case:
+                return random.choice(
+                    data.get("responses", {}).get(
+                        "ack_continue",
+                        ["Continua, dame mas detalles del caso."],
+                    )
+                )
 
-        if threat:
-            self.session.set_threat(threat)
-            self.session.set_long_case(False)
-            threat_data = dataset["threats"][threat]
-            diagnosis = self.format_diagnosis(threat, threat_data, score, all_scores)
-            ack_finish = responses.get(
-                "ack_finish",
-                "Gracias por los detalles. Ya puedo darte un diagnostico.",
-            )
-            return f"{ack_finish}\n\n{diagnosis}"
-
-        if already_collecting:
+            self.session.set_long_case(True)
             return random.choice(
-                responses.get(
-                    "ack_continue",
-                    ["Entendido. Si puedes, dame un poco mas de detalle."],
+                data.get("responses", {}).get(
+                    "ack_start",
+                    ["Adelante, cuentame el caso con detalle."],
                 )
             )
 
-        return random.choice(
-            responses.get(
-                "ack_start",
-                ["Adelante, cuentame el caso con detalle."],
-            )
+        self.session.set_threat(threat_name)
+        self.session.set_long_case(False)
+
+        threat_data = dl.load("reportar_problema")["threats"][threat_name]
+        diagnosis = self.format_diagnosis(threat_name, threat_data, score, all_scores)
+        finish_text = data.get("responses", {}).get(
+            "ack_finish",
+            "Gracias por los detalles.",
         )
+        return finish_text + "\n\n" + diagnosis
 
     def good_practices_handler(self, _text):
         data = dl.load("buenas_practicas")
@@ -257,109 +239,83 @@ class Chatbot:
 
         for practice in data.get("practices", []):
             lines.append("")
-            lines.append(f"- {practice.get('title', '')}")
-            lines.append(f"  {practice.get('detail', '')}")
+            lines.append("- " + practice.get("title", ""))
+            lines.append("  " + practice.get("detail", ""))
 
         return "\n".join(lines)
 
     def no_diagnosis(self):
         if self.session.turn_count > 2:
             return (
-                "Todavia no puedo identificar la amenaza.\n"
-                "Dame mas detalles: que ha dejado de funcionar, que mensajes ves "
-                "en pantalla o cuando empezo el problema."
+                "No he podido identificar la amenaza con claridad.\n"
+                "Dame mas detalles sobre sintomas, mensajes en pantalla o cuando empezo."
             )
 
         return (
-            "No he detectado ninguna amenaza conocida.\n"
-            "Prueba con sintomas concretos, por ejemplo:\n"
-            "  - 'mis archivos tienen una extension rara y me piden bitcoin'\n"
-            "  - 'he recibido un correo sospechoso del banco'\n"
-            "  - 'veo muchos intentos fallidos de login'"
+            "No he detectado una amenaza conocida.\n"
+            "Prueba con frases como:\n"
+            "  - 'mis archivos estan cifrados'\n"
+            "  - 'he recibido un correo sospechoso'\n"
+            "  - 'hay muchos intentos fallidos de login'"
         )
 
-    def format_diagnosis(self, threat, threat_data, score, all_scores):
-        threat_name = THREAT_NAMES.get(threat, threat)
-        severity = threat_data.get("severity", "desconocida")
-        severity_labels = {
-            "critica": "CRITICA",
-            "alta": "ALTA",
-            "media": "MEDIA",
-            "baja": "BAJA",
-        }
-        severity_label = severity_labels.get(severity, severity.upper())
-
+    def format_diagnosis(self, threat_name, threat_data, score, all_scores):
+        visible_name = THREAT_NAMES.get(threat_name, threat_name)
         lines = [
-            f"Amenaza identificada: {threat_name}",
-            f"Puntuacion: {score:.2f} | Severidad: {severity_label}",
-            "",
-            f"Descripcion: {threat_data.get('description', '')}",
+            "Amenaza identificada: " + visible_name,
+            f"Puntuacion: {score}",
+            "Descripcion: " + threat_data.get("description", ""),
         ]
 
-        alternatives = []
-        for candidate, candidate_score in list(all_scores.items())[1:3]:
-            candidate_name = THREAT_NAMES.get(candidate, candidate)
-            alternatives.append(f"{candidate_name} ({candidate_score:.2f})")
+        if len(all_scores) > 1:
+            alternatives = []
 
-        if alternatives:
-            lines.append(f"Otras posibles: {', '.join(alternatives)}")
+            for other_name, other_score in list(all_scores.items())[1:3]:
+                label = THREAT_NAMES.get(other_name, other_name)
+                alternatives.append(f"{label} ({other_score})")
 
-        recommendations = threat_data.get("recommendations", [])
-        if recommendations:
+            lines.append("Otras posibles: " + ", ".join(alternatives))
+
+        if threat_data.get("recommendations"):
             lines.append("")
             lines.append("Recomendaciones:")
-            for index, item in enumerate(recommendations, start=1):
+
+            for index, item in enumerate(threat_data["recommendations"], 1):
                 lines.append(f"  {index}. {item}")
 
-        lines.append("")
-        lines.append(
-            "Si quieres, puedo darte pasos detallados, mas informacion o "
-            "recomendaciones especificas."
-        )
         return "\n".join(lines)
 
-    def _fallback_intent(self, text):
-        normalized = normalize_text(text)
-        tokens = normalized.split()
+    def fallback_intent(self, text):
+        clean = clean_text(text)
 
-        if self._is_short_confirmation_or_denial(normalized, tokens):
+        if "hola" in clean or "buenas" in clean or "saludos" in clean:
+            return "saludar"
+
+        if "adios" in clean or "hasta luego" in clean or "chao" in clean:
+            return "despedirse"
+
+        if clean in ["si", "no", "vale", "correcto", "exacto"]:
             return "confirmar_negar"
 
-        if self._contains_any(normalized, ["pasos", "paso a paso", "que hago"]):
+        if "buenas practicas" in clean or "consejos generales" in clean:
+            return "buenas_practicas"
+
+        if "paso" in clean or "pasos" in clean:
             return "solicitar_pasos"
 
-        if self._contains_any(normalized, ["recomend", "protejo", "prevenir", "evitar"]):
+        if "recomend" in clean or "proteg" in clean or "evitar" in clean:
             return "solicitar_recomendaciones"
 
-        if self._contains_any(normalized, ["que es", "explicame", "informacion", "definicion"]):
+        if "que es" in clean or "explicame" in clean or "informacion" in clean:
             return "buscar_informacion"
 
-        if self._contains_any(normalized, ["categoria", "tipo de ataque", "clasific"]):
+        if "categoria" in clean or "tipo de ataque" in clean:
             return "detectar_categoria"
 
-        if self._contains_any(normalized, ["ayuda", "menu", "opciones", "que puedes hacer"]):
+        if "ayuda" in clean or "menu" in clean or "opciones" in clean:
             return "pedir_ayuda"
 
         return "reportar_problema"
-
-    def _contains_any(self, text, fragments):
-        return any(fragment in text for fragment in fragments)
-
-    def _is_short_confirmation_or_denial(self, normalized, tokens):
-        if len(tokens) > 4:
-            return False
-
-        answers = {
-            "si",
-            "no",
-            "correcto",
-            "exacto",
-            "vale",
-            "claro",
-            "no es eso",
-            "no exactamente",
-        }
-        return normalized in answers
 
     def run(self):
         print("\n" + "=" * 55)
@@ -369,24 +325,24 @@ class Chatbot:
 
         while True:
             try:
-                user_input = input("Tu: ").strip()
+                user_text = input("Tu: ").strip()
 
-                if not user_input:
+                if not user_text:
                     continue
 
-                if user_input.lower() in ["salir", "exit", "quit"]:
-                    print(f"\nCyberBot: {self.farewell_handler(user_input)}\n")
+                if user_text.lower() in ["salir", "exit", "quit"]:
+                    print("\nCyberBot: " + self.farewell_handler(user_text) + "\n")
                     break
 
-                if user_input.lower() in ["reset", "reiniciar"]:
+                if user_text.lower() in ["reset", "reiniciar"]:
                     self.session.reset()
                     print("\nCyberBot: Sesion reiniciada.\n")
                     continue
 
-                response = self.process_input(user_input)
-                print(f"\nCyberBot: {response}\n")
+                response = self.process_input(user_text)
+                print("\nCyberBot: " + response + "\n")
             except KeyboardInterrupt:
                 print("\n\nCyberBot: Hasta luego.\n")
                 break
             except Exception as error:
-                print(f"\nCyberBot: Error inesperado: {error}\n")
+                print("\nCyberBot: Error inesperado: " + str(error) + "\n")

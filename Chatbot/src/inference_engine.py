@@ -1,155 +1,135 @@
-from sklearn.metrics.pairwise import cosine_similarity
-
-from src.nlp_utils import build_tfidf_vectorizer, contains_all_terms, preprocess_text
-
-
-MIN_DIAGNOSIS_SCORE = 0.18
-MIN_INFO_SCORE = 0.12
+from src.nlp_utils import all_terms_in_text, build_tfidf_model, compute_similarity_scores
+from src.nlp_utils import preprocess_sentence
 
 
-class InferenceEngine:
-    PRIORITY_WEIGHT = 0.03
-    SYMPTOM_WEIGHT = 0.10
+INTENT_THRESHOLD = 0.10
+INFO_THRESHOLD = 1
 
-    def __init__(self):
-        self._diagnosis_cache = {}
-        self._info_cache = {}
 
-    def evaluate(self, user_text, dataset):
-        threats = dataset.get("threats", {})
-        if not threats:
-            return None, 0.0, {}
+def build_intent_model(examples_by_intent):
+    documents = []
+    labels = []
 
-        cache = self._prepare_diagnosis_dataset(dataset)
-        user_vector = cache["vectorizer"].transform([user_text])
-        similarity_scores = cosine_similarity(user_vector, cache["matrix"])[0]
-        user_tokens = preprocess_text(user_text)
-        all_scores = {}
+    for intent_name, examples in examples_by_intent.items():
+        for example in examples:
+            processed_example = preprocess_sentence(example)
+            if processed_example:
+                documents.append(processed_example)
+                labels.append(intent_name)
 
-        for index, threat_name in enumerate(cache["labels"]):
-            threat_data = threats[threat_name]
-            similarity = float(similarity_scores[index])
-            symptom_score = self._score_symptoms(user_tokens, threat_data)
-            priority_bonus = float(threat_data.get("priority", 0)) * self.PRIORITY_WEIGHT
-            total_score = similarity + (symptom_score * self.SYMPTOM_WEIGHT)
+    if not documents:
+        return {
+            "vectorizer": None,
+            "matrix": None,
+            "labels": [],
+        }
 
-            if symptom_score > 0:
-                total_score += priority_bonus
-            elif similarity < MIN_INFO_SCORE:
-                continue
+    vectorizer, matrix = build_tfidf_model(documents)
 
-            if total_score > 0:
-                all_scores[threat_name] = round(total_score, 4)
+    return {
+        "vectorizer": vectorizer,
+        "matrix": matrix,
+        "labels": labels,
+    }
 
-        if not all_scores:
-            return None, 0.0, {}
 
-        sorted_scores = dict(
-            sorted(all_scores.items(), key=lambda item: item[1], reverse=True)
-        )
-        best_threat, best_score = next(iter(sorted_scores.items()))
+def detect_intent(user_text, model):
+    labels = model.get("labels", [])
+    if not labels:
+        return None, 0.0
 
-        if best_score < MIN_DIAGNOSIS_SCORE:
-            return None, best_score, sorted_scores
+    scores = compute_similarity_scores(
+        user_text,
+        model["vectorizer"],
+        model["matrix"],
+    )
 
-        return best_threat, best_score, sorted_scores
+    best_index = int(scores.argmax())
+    best_intent = labels[best_index]
+    best_score = float(scores[best_index])
+    return best_intent, best_score
 
-    def find_in_info_dataset(self, user_text, dataset):
-        threats = dataset.get("threats", {})
-        if not threats:
-            return None
 
-        cache = self._prepare_info_dataset(dataset)
-        user_vector = cache["vectorizer"].transform([user_text])
-        scores = cosine_similarity(user_vector, cache["matrix"])[0]
+def detect_threat(user_text, dataset):
+    threats = dataset.get("threats", {})
+    scores = {}
 
-        if scores.size == 0:
-            return None
-
-        best_index = int(scores.argmax())
-        best_score = float(scores[best_index])
-
-        if best_score < MIN_INFO_SCORE:
-            return None
-
-        return cache["labels"][best_index]
-
-    def forward_chaining(self, known_facts, dataset):
-        activated = {}
-
-        for fact in known_facts:
-            threat, score, _ = self.evaluate(fact, dataset)
-            if threat:
-                activated[threat] = round(activated.get(threat, 0.0) + score, 4)
-
-        return dict(sorted(activated.items(), key=lambda item: item[1], reverse=True))
-
-    def _prepare_diagnosis_dataset(self, dataset):
-        cache_key = dataset.get("intent", "reportar_problema")
-        if cache_key not in self._diagnosis_cache:
-            threats = dataset.get("threats", {})
-            labels = []
-            documents = []
-
-            for threat_name, threat_data in threats.items():
-                labels.append(threat_name)
-                documents.append(self._build_diagnosis_document(threat_name, threat_data))
-
-            vectorizer = build_tfidf_vectorizer()
-            matrix = vectorizer.fit_transform(documents)
-            self._diagnosis_cache[cache_key] = {
-                "labels": labels,
-                "matrix": matrix,
-                "vectorizer": vectorizer,
-            }
-
-        return self._diagnosis_cache[cache_key]
-
-    def _prepare_info_dataset(self, dataset):
-        cache_key = dataset.get("intent", "buscar_informacion")
-        if cache_key not in self._info_cache:
-            threats = dataset.get("threats", {})
-            labels = []
-            documents = []
-
-            for threat_name, threat_data in threats.items():
-                labels.append(threat_name)
-                documents.append(self._build_info_document(threat_data))
-
-            vectorizer = build_tfidf_vectorizer()
-            matrix = vectorizer.fit_transform(documents)
-            self._info_cache[cache_key] = {
-                "labels": labels,
-                "matrix": matrix,
-                "vectorizer": vectorizer,
-            }
-
-        return self._info_cache[cache_key]
-
-    def _score_symptoms(self, user_tokens, threat_data):
-        total = 0.0
+    for threat_name, threat_data in threats.items():
+        total_score = 0
 
         for symptom in threat_data.get("symptoms", []):
-            if contains_all_terms(user_tokens, symptom.get("term", "")):
-                total += float(symptom.get("specificity", 1))
+            symptom_text = symptom.get("term", "")
+            specificity = int(symptom.get("specificity", 1))
 
-        return total
+            if all_terms_in_text(user_text, symptom_text):
+                total_score += specificity
 
-    def _build_diagnosis_document(self, threat_name, threat_data):
-        parts = [threat_name.replace("_", " "), threat_data.get("description", "")]
+        if total_score > 0:
+            scores[threat_name] = total_score
 
-        for symptom in threat_data.get("symptoms", []):
-            term = symptom.get("term", "")
-            repeat_count = max(1, int(symptom.get("specificity", 1)))
-            parts.extend([term] * repeat_count)
+    if not scores:
+        return None, 0, {}
 
-        return " ".join(part for part in parts if part)
+    ordered_scores = dict(
+        sorted(scores.items(), key=lambda item: item[1], reverse=True)
+    )
+    best_threat = next(iter(ordered_scores))
+    best_score = ordered_scores[best_threat]
+    return best_threat, best_score, ordered_scores
 
-    def _build_info_document(self, threat_data):
-        parts = [
-            threat_data.get("title", ""),
-            threat_data.get("summary", ""),
-            threat_data.get("detail", ""),
-            " ".join(threat_data.get("keywords", [])),
-        ]
-        return " ".join(part for part in parts if part)
+
+def detect_threat_from_history(known_facts, dataset):
+    total_scores = {}
+
+    for fact in known_facts:
+        threat, score, _ = detect_threat(fact, dataset)
+        if threat:
+            total_scores[threat] = total_scores.get(threat, 0) + score
+
+    if not total_scores:
+        return None, 0, {}
+
+    ordered_scores = dict(
+        sorted(total_scores.items(), key=lambda item: item[1], reverse=True)
+    )
+    best_threat = next(iter(ordered_scores))
+    best_score = ordered_scores[best_threat]
+    return best_threat, best_score, ordered_scores
+
+
+def detect_info_threat(user_text, dataset):
+    threats = dataset.get("threats", {})
+    best_threat = None
+    best_score = 0
+
+    for threat_name, threat_data in threats.items():
+        current_score = 0
+
+        for keyword in threat_data.get("keywords", []):
+            if all_terms_in_text(user_text, keyword):
+                current_score += 1
+
+        if current_score > best_score:
+            best_score = current_score
+            best_threat = threat_name
+
+    if best_score < INFO_THRESHOLD:
+        return None
+
+    return best_threat
+
+
+def classify_yes_no(user_text, dataset):
+    clean_text = user_text.strip().lower()
+
+    for option in dataset.get("confirmations", []):
+        option_text = option.lower()
+        if clean_text == option_text or option_text in clean_text:
+            return "yes"
+
+    for option in dataset.get("negations", []):
+        option_text = option.lower()
+        if clean_text == option_text or option_text in clean_text:
+            return "no"
+
+    return "unknown"
