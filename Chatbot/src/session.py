@@ -5,6 +5,10 @@ class Session:
         self.last_intent = None
         self.last_threat = None
         self.turn_count  = 0
+        self.long_case   = None
+        self.external_query = None
+        self.external_results = []
+        self.awaiting_external_choice = False
 
     # añade un mensaje en el historial:
     def add_message(self, role, text):
@@ -24,6 +28,18 @@ class Session:
     # establece la amenaza encontrada:
     def set_threat(self, threat):
         self.last_threat = threat
+
+    # guarda resultados externos pendientes de seleccion del usuario:
+    def set_external_results(self, query, results):
+        self.external_query = query
+        self.external_results = results or []
+        self.awaiting_external_choice = True
+
+    # limpia el estado de seleccion externa:
+    def clear_external_results(self):
+        self.external_query = None
+        self.external_results = []
+        self.awaiting_external_choice = False
 
     # para obtener la situacion en la que esta la conversacion:
     def get_context(self):

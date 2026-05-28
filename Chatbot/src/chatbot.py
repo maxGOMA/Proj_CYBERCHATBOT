@@ -1,5 +1,7 @@
 import random
+import re
 from src.session import Session
+from src.external_qa import ApifyStackOverflowClient, format_question_details, format_question_list
 import src.dataset_loader as dl
 
 THREAT_NAMES = {
@@ -23,6 +25,7 @@ class Chatbot:
         self.engine   = inference_engine
         self.idf      = idf
         self.session  = Session()
+        self.external_client = ApifyStackOverflowClient()
 
         # mapa para guardar la intencion con la funcion que lo procesa asociada:
         self.handlers = {
@@ -47,6 +50,12 @@ class Chatbot:
 
         # registro el mensaje para guardar el registro de lo que escribe el usuario:
         self.session.add_message("user", user_text)
+
+        # si el usuario esta eligiendo una pregunta externa, no detecto intencion:
+        if self.session.awaiting_external_choice:
+            response = self.externalChoiceHandler(user_text)
+            self.session.add_message("bot", response)
+            return response
 
         intent, score = self.detector(user_text)
 
@@ -130,10 +139,7 @@ class Chatbot:
 
         # en caso de que no haya detectado una respuesta:
         if not threat:
-            return (
-                "No he encontrado información sobre ese tema.\n"
-                "Prueba con: 'qué es el phishing', 'explícame el ransomware', etc."
-            )
+            return self.externalInfoFallback(text)
 
         # obtengo la informacion relacionada a la amenaza detectada para explicarla al usuario:
         t     = dataset["threats"][threat]
@@ -145,6 +151,72 @@ class Chatbot:
             "\n¿Quieres recomendaciones, pasos de respuesta o más información?"
         ]
         return "\n".join(lines)
+
+    def externalInfoFallback(self, text):
+        if not self.external_client.is_configured():
+            return (
+                "No he encontrado informacion sobre ese tema.\n"
+                "Si quieres que consulte Stack Overflow, configura la variable APIFY_TOKEN."
+            )
+
+        try:
+            results = self.external_client.search_questions(text)
+        except Exception as exc:
+            return (
+                "No he encontrado informacion sobre ese tema.\n"
+                "Ahora mismo no puedo consultar la API externa."
+            )
+
+        if not results:
+            return (
+                "No he encontrado informacion sobre ese tema.\n"
+                "Prueba con una consulta mas concreta."
+            )
+
+        self.session.set_external_results(text, results)
+        return format_question_list(results)
+
+    def externalChoiceHandler(self, text):
+        clean = text.strip().lower()
+
+        if self._is_external_back_command(clean):
+            self.session.clear_external_results()
+            return "De acuerdo. Haz otra consulta cuando quieras."
+
+        choice = self._parse_external_choice(clean)
+        results = self.session.external_results
+
+        if choice is None:
+            return (
+                "No he entendido tu eleccion.\n"
+                "Responde con un numero o escribe 'otra consulta'."
+            )
+
+        if not results:
+            self.session.clear_external_results()
+            return "No tengo resultados almacenados. Haz otra consulta."
+
+        if choice < 1 or choice > len(results):
+            return f"Elige un numero entre 1 y {len(results)}."
+
+        item = results[choice - 1]
+        self.session.clear_external_results()
+        return format_question_details(item)
+
+    def _parse_external_choice(self, text):
+        match = re.search(r"\d+", text)
+        if not match:
+            return None
+        return int(match.group(0))
+
+    def _is_external_back_command(self, text):
+        if text in {"otra consulta", "otra", "volver", "volver atras", "atras", "cancelar"}:
+            return True
+        if text.startswith("otra consulta"):
+            return True
+        if text.startswith("volver"):
+            return True
+        return False
 
     # en caso de que el usuario quiera protegerse mas:
     def recommendationsRequestHandler(self, text):
