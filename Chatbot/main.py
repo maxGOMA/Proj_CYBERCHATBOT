@@ -3,69 +3,36 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import src.dataset_loader as dl
-from src.nlp_utils       import full_pipeline, compute_idf, detect_intent
-from src.inference_engine import InferenceEngine
-from src.chatbot          import Chatbot
+from src.chatbot import Chatbot
+from src.inference_engine import build_info_model
+from src.inference_engine import build_intent_model
+from src.inference_engine import build_threat_model
 
-# entreno al chatbot con ejemplos para que pueda detectar problemas:
-def build_corpus_and_idf():
-    corpus = []
-
-    # ejemplos de intenciones:
-    for intent in dl.all_intent_names():
-        for example in dl.get_examples(intent):
-            corpus.append(full_pipeline(example))
-
-    # sintomas de amenazas:
-    ds_rep = dl.load("reportar_problema")
-    for threat_data in ds_rep.get("threats", {}).values():
-        for s in threat_data.get("symptoms", []):
-            corpus.append(full_pipeline(s.get("term", "")))
-
-    # keywords del dataset de informacion
-    ds_info = dl.load("buscar_informacion")
-    for threat_data in ds_info.get("threats", {}).values():
-        for kw in threat_data.get("keywords", []):
-            corpus.append(full_pipeline(kw))
-
-    idf = compute_idf(corpus)
-    return idf
-
-# para comparar contra el input del usuario:
-def build_intents_corpus(idf):
-    intents_corpus = {}
-    for intent in dl.all_intent_names():
-        lemmas = []
-        for example in dl.get_examples(intent):
-            lemmas.extend(full_pipeline(example))
-        intents_corpus[intent] = lemmas
-    return intents_corpus
+def build_bot():
+    examples_by_intent = dl.build_examples_by_intent()
+    intent_model = build_intent_model(examples_by_intent)
+    threat_model = build_threat_model(dl.load("reportar_problema"))
+    info_model = build_info_model(dl.load("buscar_informacion"))
+    return Chatbot(intent_model, threat_model=threat_model, info_model=info_model)
 
 
 def main():
-    print("Iniciando CyberBot, cargando modelos NLP...")
+    bot = build_bot()
 
-    # 1. Construir IDF global
-    idf = build_corpus_and_idf()
+    if "--cli" in sys.argv:
+        bot.run()
+        return
 
-    # 2. Construir corpus de intenciones
-    intents_corpus = build_intents_corpus(idf)
+    try:
+        from src.gui import CyberBotGUI
 
-    # 3. Función detectora de intenciones
-    def intent_detector(user_text):
-        return detect_intent(user_text, intents_corpus, idf)
+        app = CyberBotGUI(bot)
+        app.run()
+    except Exception as error:
+        print("No se pudo iniciar la interfaz grafica. Cambio a modo consola.")
+        print("Motivo:", error)
+        bot.run()
 
-    # 4. Motor de inferencia
-    engine = InferenceEngine(idf=idf)
 
-    # 5. Chatbot
-    bot = Chatbot(
-        intent_detector=intent_detector,
-        inference_engine=engine,
-        idf=idf
-    )
-
-    # 6. Arrancar
-    bot.run()
-
-main()
+if __name__ == "__main__":
+    main()
