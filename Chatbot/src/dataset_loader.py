@@ -30,7 +30,11 @@ def load(intent_name):
 
 # carga todos los datasets:
 def load_all():
-    return {intent: load(intent) for intent in INTENT_FILES}
+    all_data = {}
+    for intent_name in INTENT_FILES:
+        all_data[intent_name] = load(intent_name)
+    return all_data
+
 
 # devuelve solo los ejemplos de una intencion para construir el corpus:
 def get_examples(intent_name):
@@ -40,3 +44,18 @@ def get_examples(intent_name):
 
 def all_intent_names():
     return list(INTENT_FILES.keys())
+
+
+def build_examples_by_intent():
+    examples_by_intent = {}
+
+    for intent_name in INTENT_FILES:
+        data = load(intent_name)
+        examples = data.get("examples", [])
+
+        if examples:
+            examples_by_intent[intent_name] = examples
+        else:
+            examples_by_intent[intent_name] = []
+
+    return examples_by_intent

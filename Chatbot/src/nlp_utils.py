@@ -1,133 +1,270 @@
 import re
-import math
+import unicodedata
+
 import nltk
-import spacy
+import numpy as np
 from nltk.corpus import stopwords
+from nltk.stem.snowball import SnowballStemmer
+from nltk.tokenize import word_tokenize
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
-nltk.download("stopwords", quiet=True)
 
-# cargo la libreria en su version en español:
+FALLBACK_STOPWORDS = {
+    "a",
+    "al",
+    "algo",
+    "como",
+    "con",
+    "cual",
+    "de",
+    "del",
+    "el",
+    "ella",
+    "ellos",
+    "en",
+    "es",
+    "esta",
+    "este",
+    "hay",
+    "la",
+    "las",
+    "lo",
+    "los",
+    "me",
+    "mi",
+    "mis",
+    "para",
+    "pero",
+    "por",
+    "que",
+    "se",
+    "sin",
+    "su",
+    "sus",
+    "te",
+    "tu",
+    "un",
+    "una",
+    "uno",
+    "y",
+    "ya",
+}
+
+TOKEN_EQUIVALENTS = {
+    "app": "aplicacion",
+    "apps": "aplicaciones",
+    "banca": "banco",
+    "clave": "contrasena",
+    "claves": "contrasenas",
+    "computer": "ordenador",
+    "computadora": "ordenador",
+    "correos": "correo",
+    "correo": "correo",
+    "cpu": "procesador",
+    "credencial": "credenciales",
+    "crypto": "criptomoneda",
+    "cryptomonedas": "criptomoneda",
+    "email": "correo",
+    "emails": "correo",
+    "equipo": "ordenador",
+    "fallos": "fallo",
+    "hackeado": "comprometido",
+    "hackearon": "comprometido",
+    "login": "acceso",
+    "logins": "acceso",
+    "mail": "correo",
+    "malicioso": "malware",
+    "minando": "mineria",
+    "minar": "mineria",
+    "movil": "telefono",
+    "password": "contrasena",
+    "pc": "ordenador",
+    "portatil": "ordenador",
+    "popups": "popup",
+    "ram": "memoria",
+    "sms": "mensaje",
+    "troyano": "troyano",
+    "usb": "usb",
+    "virus": "malware",
+    "wifi": "wifi",
+}
+
+
+def _prepare_nltk():
+    try:
+        nltk.data.find("tokenizers/punkt")
+    except LookupError:
+        try:
+            nltk.download("punkt", quiet=True)
+        except Exception:
+            pass
+
+    try:
+        nltk.data.find("corpora/stopwords")
+    except LookupError:
+        try:
+            nltk.download("stopwords", quiet=True)
+        except Exception:
+            pass
+
+
+_prepare_nltk()
+
 try:
-    nlp = spacy.load("es_core_news_sm")
-except OSError:
-    raise OSError("Ejecuta: python -m spacy download es_core_news_sm")
+    STOPWORDS = set(stopwords.words("spanish"))
+except LookupError:
+    STOPWORDS = FALLBACK_STOPWORDS
 
-STOPWORDS = set(stopwords.words("spanish"))
+STEMMER = SnowballStemmer("spanish")
 
 
 def clean_text(text):
-    text = text.lower()
-    for src, dst in {"á":"a","à":"a","é":"e","è":"e","í":"i","ì":"i",
-                     "ó":"o","ò":"o","ú":"u","ù":"u","ü":"u","ñ":"n"}.items():
-        text = text.replace(src, dst)
+    text = str(text or "").lower()
+    text = unicodedata.normalize("NFD", text)
+    text = "".join(char for char in text if unicodedata.category(char) != "Mn")
     text = re.sub(r"[^a-z0-9\s]", " ", text)
     return re.sub(r"\s+", " ", text).strip()
 
 
 def tokenize(text):
-    tokens = clean_text(text).split()
-    return [t for t in tokens if t not in STOPWORDS and len(t) > 2]
+    clean = clean_text(text)
+    if not clean:
+        return []
+
+    try:
+        return word_tokenize(clean, language="spanish")
+    except LookupError:
+        return clean.split()
 
 
-def lemmatize(tokens):
-    doc = nlp(" ".join(tokens))
-    return [t.lemma_ for t in doc if not t.is_stop and len(t.lemma_) > 2]
+def normalize_token(token):
+    canonical = TOKEN_EQUIVALENTS.get(token, token)
+    if len(canonical) <= 2:
+        return ""
+    return STEMMER.stem(canonical)
 
 
-def full_pipeline(text):
-    return lemmatize(tokenize(text))
+def remove_stopwords(tokens):
+    clean_tokens = []
+
+    for token in tokens:
+        if token not in STOPWORDS and len(token) > 2:
+            clean_tokens.append(token)
+
+    return clean_tokens
 
 
-def compute_tf(tokens):
-    total = len(tokens)
-    if total == 0:
-        total = 1
+def stem_tokens(tokens):
+    stems = []
 
-    tf = {}
-    for t in tokens:
-        if t in tf:
-            tf[t] = tf[t] + 1
-        else:
-            tf[t] = 1
+    for token in tokens:
+        normalized = normalize_token(token)
+        if normalized:
+            stems.append(normalized)
 
-    tf_norm = {}
-    for t in tf:
-        tf_norm[t] = tf[t] / float(total)
-
-    return tf_norm
+    return stems
 
 
-def compute_idf(corpus):
-    N = len(corpus)
-    idf = {}
-
-    for doc in corpus:
-        unique_terms = set(doc)
-        for t in unique_terms:
-            if t in idf:
-                idf[t] = idf[t] + 1
-            else:
-                idf[t] = 1
-
-    idf_result = {}
-    for t in idf:
-        df = idf[t]
-        idf_result[t] = math.log(N / float(1 + df))
-
-    return idf_result
+def preprocess_text(text):
+    tokens = tokenize(text)
+    tokens = remove_stopwords(tokens)
+    tokens = stem_tokens(tokens)
+    return tokens
 
 
-def tfidf_vector(tokens, idf):
-    tf = compute_tf(tokens)
-
-    vec = {}
-    for t in tf:
-        if t in idf:
-            vec[t] = tf[t] * idf[t]
-        else:
-            vec[t] = tf[t] * 0
-
-    return vec
+def preprocess_sentence(text):
+    return " ".join(preprocess_text(text))
 
 
-def cosine_similarity(v1, v2):
-    # dot product
-    dot = 0.0
-    for t in v1:
-        v1_val = v1[t]
-        v2_val = v2.get(t, 0)
-        dot = dot + (v1_val * v2_val)
+def _vectorizer_config():
+    return {
+        "lowercase": False,
+        "ngram_range": (1, 2),
+        "token_pattern": None,
+        "tokenizer": preprocess_text,
+    }
 
-    # norm1
-    sum_sq1 = 0.0
-    for x in v1.values():
-        sum_sq1 = sum_sq1 + (x * x)
-    norm1 = math.sqrt(sum_sq1)
 
-    # norm2
-    sum_sq2 = 0.0
-    for x in v2.values():
-        sum_sq2 = sum_sq2 + (x * x)
-    norm2 = math.sqrt(sum_sq2)
+def build_count_model(documents):
+    vectorizer = CountVectorizer(binary=True, **_vectorizer_config())
+    matrix = vectorizer.fit_transform(documents)
+    return vectorizer, matrix
 
-    if norm1 != 0 and norm2 != 0:
-        return dot / (norm1 * norm2)
-    else:
+
+def build_tfidf_model(documents):
+    vectorizer = TfidfVectorizer(sublinear_tf=True, **_vectorizer_config())
+    matrix = vectorizer.fit_transform(documents)
+    return vectorizer, matrix
+
+
+def build_hybrid_vector_model(documents):
+    if not documents:
+        return {
+            "count_vectorizer": None,
+            "count_matrix": None,
+            "tfidf_vectorizer": None,
+            "tfidf_matrix": None,
+        }
+
+    count_vectorizer, count_matrix = build_count_model(documents)
+    tfidf_vectorizer, tfidf_matrix = build_tfidf_model(documents)
+    return {
+        "count_vectorizer": count_vectorizer,
+        "count_matrix": count_matrix,
+        "tfidf_vectorizer": tfidf_vectorizer,
+        "tfidf_matrix": tfidf_matrix,
+    }
+
+
+def compute_similarity_scores(text, vectorizer, matrix):
+    if vectorizer is None or matrix is None:
+        return np.array([])
+
+    text_vector = vectorizer.transform([text])
+    return cosine_similarity(text_vector, matrix)[0]
+
+
+def compute_hybrid_similarity_scores(text, model, tfidf_weight=0.65):
+    if not model:
+        return np.array([])
+
+    count_scores = compute_similarity_scores(
+        text,
+        model.get("count_vectorizer"),
+        model.get("count_matrix"),
+    )
+    tfidf_scores = compute_similarity_scores(
+        text,
+        model.get("tfidf_vectorizer"),
+        model.get("tfidf_matrix"),
+    )
+
+    if count_scores.size == 0:
+        return tfidf_scores
+    if tfidf_scores.size == 0:
+        return count_scores
+
+    count_weight = 1.0 - tfidf_weight
+    return (count_scores * count_weight) + (tfidf_scores * tfidf_weight)
+
+
+def all_terms_in_text(text, phrase):
+    text_tokens = set(preprocess_text(text))
+    phrase_tokens = preprocess_text(phrase)
+
+    if not phrase_tokens:
+        return False
+
+    return all(token in text_tokens for token in phrase_tokens)
+
+
+def token_overlap_ratio(text, phrase):
+    text_tokens = set(preprocess_text(text))
+    phrase_tokens = preprocess_text(phrase)
+
+    if not phrase_tokens:
         return 0.0
 
-
-def detect_intent(user_text, intents_corpus, idf):
-    user_vec = tfidf_vector(full_pipeline(user_text), idf)
-
-    best = None
-    best_score = -1.0
-
-    for intent_name, lemmas in intents_corpus.items():
-        intent_vec = tfidf_vector(lemmas, idf)
-        score = cosine_similarity(user_vec, intent_vec)
-
-        if score > best_score:
-            best_score = score
-            best = intent_name
-
-    return best, best_score
+    matched = sum(1 for token in phrase_tokens if token in text_tokens)
+    return matched / len(phrase_tokens)

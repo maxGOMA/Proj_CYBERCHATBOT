@@ -7,6 +7,7 @@ from src.chatbot import Chatbot
 from src.inference_engine import build_info_model
 from src.inference_engine import build_intent_model
 from src.inference_engine import build_threat_model
+from src.gui import CyberBotGUI
 
 def build_bot():
     examples_by_intent = dl.build_examples_by_intent()
@@ -18,21 +19,9 @@ def build_bot():
 
 def main():
     bot = build_bot()
-
-    if "--cli" in sys.argv:
-        bot.run()
-        return
-
-    try:
-        from src.gui import CyberBotGUI
-
-        app = CyberBotGUI(bot)
-        app.run()
-    except Exception as error:
-        print("No se pudo iniciar la interfaz grafica. Cambio a modo consola.")
-        print("Motivo:", error)
-        bot.run()
-
+    app = CyberBotGUI(bot)
+    app.run()
+   
 
 if __name__ == "__main__":
     main()
