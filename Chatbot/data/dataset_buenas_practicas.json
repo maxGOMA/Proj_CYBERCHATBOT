@@ -3,7 +3,10 @@
   "examples": [
     "buenas practicas", "consejos generales", "como mejorar la seguridad",
     "tips de seguridad", "que deberia hacer siempre", "habitos seguros",
-    "seguridad basica", "como protegerme en general", "checklist seguridad"
+    "seguridad basica", "como protegerme en general", "checklist seguridad",
+    "buenas practicas para contrasenas", "consejos para red", "tips para backup",
+    "seguridad de movil", "como mejorar permisos", "buenas practicas de correo",
+    "consejos para la nube", "como trabajar con videollamadas seguras"
   ],
   "categories": {
     "contrasenas": {

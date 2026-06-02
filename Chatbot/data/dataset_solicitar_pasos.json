@@ -3,7 +3,11 @@
   "examples": [
     "que hago ahora", "pasos a seguir", "como lo soluciono", "dame los pasos",
     "procedimiento", "guia paso a paso", "que tengo que hacer",
-    "como procedo", "instrucciones", "como actuo", "que hago primero"
+    "como procedo", "instrucciones", "como actuo", "que hago primero",
+    "que hago si mi cuenta esta bloqueada", "pasos para wifi lento", "como arreglo pantalla negra",
+    "pasos para outlook no sincroniza", "que hago con la impresora", "como recupero archivo",
+    "pasos para onedrive no sincroniza", "que hago con certificado caducado", "que hago si teams no abre",
+    "pasos para copia de seguridad fallida", "que hago si vpn no conecta", "pasos para error 2fa"
   ],
   "steps_by_threat": {
     "ransomware": {

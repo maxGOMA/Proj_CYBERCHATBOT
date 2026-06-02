@@ -4,7 +4,14 @@
     "que es el phishing", "explicame el ransomware", "que es un ddos",
     "como funciona el malware", "informacion sobre", "explicame",
     "que es", "como funciona", "definicion de", "que significa",
-    "que es la inyeccion sql", "que es un ataque mitm", "que es fuerza bruta"
+    "que es la inyeccion sql", "que es un ataque mitm", "que es fuerza bruta",
+    "que es credenciales y acceso", "que es un bloqueo de cuenta", "que es wifi lento",
+    "que significa pantalla negra", "que es un problema de impresora", "que es un error smtp",
+    "que es outlook no sincroniza", "que es onedrive no sincroniza", "que es sharepoint falla",
+    "que es un certificado caducado", "que es un archivo bloqueado", "que es teams no abre",
+    "que es audio de teams", "que es una copia de seguridad fallida", "que es disco lleno",
+    "que es un fallo dns", "que es vpn no conecta", "que es un problema de permisos",
+    "que es recuperar archivo", "que es licencia expirada", "que es actualizacion atascada"
   ],
   "threats": {
     "phishing": {

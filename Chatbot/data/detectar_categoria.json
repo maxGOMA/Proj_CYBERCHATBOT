@@ -3,20 +3,35 @@
   "examples": [
     "que tipo de ataque es", "de que categoria es", "como clasificarias",
     "es un ataque de red", "es un problema de contrasena", "a que grupo pertenece",
-    "que tipo de amenaza", "como se llama este ataque"
+    "que tipo de amenaza", "como se llama este ataque", "es un problema de wifi",
+    "es un fallo de correo", "es un error de certificado", "es un problema de permisos"
   ],
   "categories": {
     "red": ["ddos", "man_in_the_middle"],
     "credenciales": ["phishing", "brute_force"],
     "malware": ["ransomware", "malware"],
     "aplicacion_web": ["sql_injection"],
-    "interno": ["insider_threat"]
+    "interno": ["insider_threat"],
+    "gestion_acceso": ["credenciales_acceso"],
+    "conectividad_red": ["conectividad_red"],
+    "puesto_trabajo": ["pantalla_energia", "hardware_perifericos"],
+    "productividad_correo": ["ofimatica_correo"],
+    "nube_colaboracion": ["nube_colaboracion", "colaboracion_movilidad"],
+    "navegacion_seguridad": ["navegacion_sesion", "seguridad_archivos_certificados"],
+    "almacenamiento_backup": ["almacenamiento_backup"]
   },
   "category_descriptions": {
     "red": "Ataques que afectan a la infraestructura de red o las comunicaciones.",
     "credenciales": "Ataques orientados a robar o adivinar credenciales de acceso.",
     "malware": "Software malicioso que infecta y daña el sistema.",
     "aplicacion_web": "Vulnerabilidades explotadas en aplicaciones web.",
-    "interno": "Amenazas originadas desde dentro de la organización."
+    "interno": "Amenazas originadas desde dentro de la organizacion.",
+    "gestion_acceso": "Problemas de contrasenas, cuentas bloqueadas y permisos.",
+    "conectividad_red": "Incidencias de WiFi, DNS, proxy, VPN o cableado.",
+    "puesto_trabajo": "Fallas de pantalla, energia y perifericos del equipo.",
+    "productividad_correo": "Problemas de Office, correo y sincronizacion de trabajo.",
+    "nube_colaboracion": "Servicios colaborativos, reuniones y sincronizacion en la nube.",
+    "navegacion_seguridad": "Problemas de navegador, certificados y seguridad web.",
+    "almacenamiento_backup": "Problemas de almacenamiento, backup y recuperacion de archivos."
   }
 }

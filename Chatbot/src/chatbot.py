@@ -14,6 +14,16 @@ THREAT_NAMES = {
     "man_in_the_middle": "Man-in-the-Middle",
     "brute_force": "Fuerza Bruta",
     "insider_threat": "Amenaza Interna",
+    "credenciales_acceso":"Credenciales y acceso",
+    "conectividad_red":"Conectividad de red",
+    "pantalla_energia":"Pantalla y energía",
+    "hardware_perifericos":"Periféricos y dispositivos",
+    "ofimatica_correo":"Ofimática y correo",
+    "nube_colaboracion":"Nube y colaboración",
+    "navegacion_sesion":"Navegador y sesión",
+    "seguridad_archivos_certificados":"Seguridad de archivos y certificados",
+    "colaboracion_movilidad":"Colaboración y videollamadas",
+    "almacenamiento_backup":"Almacenamiento y copias"
 }
 
 CATEGORY_NAMES = {

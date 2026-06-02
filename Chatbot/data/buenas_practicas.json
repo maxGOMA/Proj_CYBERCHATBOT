@@ -1,42 +1,50 @@
 {
   "intent": "buenas_practicas",
   "examples": [
-    "buenas practicas", "consejos generales", "como estar seguro en internet",
-    "habitos de seguridad", "que debo hacer siempre", "normas de seguridad",
-    "tips de seguridad", "como protegerme en general", "seguridad basica"
+    "buenas practicas", "consejos generales", "como mejorar la seguridad",
+    "tips de seguridad", "que deberia hacer siempre", "habitos seguros",
+    "seguridad basica", "como protegerme en general", "checklist seguridad"
   ],
   "practices": [
     {
-      "title": "Contraseñas robustas",
-      "detail": "Usa contraseñas de mínimo 12 caracteres combinando mayúsculas, minúsculas, números y símbolos. Usa una contraseña diferente para cada servicio. Usa un gestor de contraseñas (Bitwarden, KeePass) para gestionarlas."
+      "title": "Gestión de credenciales",
+      "detail": "Usa contraseñas largas y únicas para cada servicio, activa 2FA y cambia de inmediato cualquier credencial comprometida. Guarda las claves en un gestor de contraseñas confiable."
     },
     {
-      "title": "Autenticación en dos factores (2FA)",
-      "detail": "Activa el 2FA en todos los servicios que lo permitan. Prioriza aplicaciones de autenticación (Google Authenticator, Authy) sobre SMS, que es menos seguro."
+      "title": "Acceso y permisos",
+      "detail": "Aplica el principio de mínimo privilegio: cada usuario debe ver solo lo que necesita. Revisa accesos, altas y bajas con regularidad y evita permisos de administrador permanentes."
     },
     {
-      "title": "Actualizaciones",
-      "detail": "Mantén el sistema operativo, navegador y todas las aplicaciones siempre actualizados. La mayoría de ataques explotan vulnerabilidades ya conocidas y parcheadas."
+      "title": "Conectividad de red",
+      "detail": "Comprueba WiFi, cableado, DNS y VPN antes de abrir incidencias. Reinicia el router o el equipo si hay cortes repetidos y documenta la hora y el alcance del fallo."
     },
     {
-      "title": "Copias de seguridad",
-      "detail": "Aplica la regla 3-2-1: 3 copias, en 2 soportes diferentes, 1 fuera de las instalaciones (o en la nube). Verifica periódicamente que las copias se pueden restaurar."
+      "title": "Puesto de trabajo",
+      "detail": "Cuida el hardware del puesto: ventilación correcta, cargador en buen estado, periféricos revisados y pantalla protegida. Si algo falla, prueba con otro cable o puerto antes de escalar."
     },
     {
-      "title": "Navegación segura",
-      "detail": "Verifica siempre que las webs usen HTTPS. No descargues software de fuentes no oficiales. Usa un bloqueador de anuncios para reducir el riesgo de malvertising."
+      "title": "Correo y ofimática",
+      "detail": "Verifica remitente, dominio y adjuntos antes de abrir un correo. Mantén Office, Outlook y el navegador actualizados, y revisa la cuota del buzón y la sincronización de la cuenta."
     },
     {
-      "title": "Correo electrónico",
-      "detail": "Desconfía de correos urgentes que pidan datos o credenciales. Verifica el remitente real antes de hacer clic en enlaces. En caso de duda, contacta directamente con la entidad por otro canal."
+      "title": "Navegación y certificados",
+      "detail": "Mantén el navegador actualizado, borra cookies cuando haya problemas y no ignores certificados caducados o inválidos. Desconfía de pop-ups, extensiones desconocidas y enlaces recibidos por SMS."
     },
     {
-      "title": "Redes WiFi",
-      "detail": "Evita conectarte a redes WiFi públicas sin usar una VPN. En casa, usa cifrado WPA3 o WPA2 y una contraseña robusta para el router. Cambia las credenciales por defecto del router."
+      "title": "Nube y colaboración",
+      "detail": "Comprueba el estado de OneDrive, SharePoint, Teams y Zoom antes de asumir un fallo local. Sincroniza archivos críticos y valida permisos, versiones y enlaces de reunión."
     },
     {
-      "title": "Dispositivos físicos",
-      "detail": "No conectes USB desconocidos. Bloquea siempre el equipo cuando te ausentes. Cifra el disco duro en equipos portátiles (BitLocker, FileVault)."
+      "title": "Copias y recuperación",
+      "detail": "Sigue la regla 3-2-1, verifica restauraciones y conserva una copia desconectada. Si un archivo se corrompe, compara con la última versión válida antes de sobrescribir nada."
+    },
+    {
+      "title": "Dispositivos móviles",
+      "detail": "Mantén el móvil actualizado, usa bloqueo biométrico y revisa permisos de apps, VPN y perfiles MDM. Si el dispositivo se pierde o se rompe, revoca accesos y protege la cuenta cuanto antes."
+    },
+    {
+      "title": "Actualizaciones e instalación",
+      "detail": "Instala software solo desde fuentes oficiales, aplica parches cuando estén disponibles y libera espacio antes de actualizar. Si una instalación se queda atascada, documenta el error y reinicia el proceso."
     }
   ]
 }

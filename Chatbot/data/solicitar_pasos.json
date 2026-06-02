@@ -79,6 +79,85 @@
       "5. Evalúa si hay obligación de notificación a la AEPD (si hay datos personales).",
       "6. Contacta con las autoridades si hay evidencia de delito.",
       "7. Realiza una auditoría completa de accesos del período afectado."
+    ],
+    "credenciales_acceso": [
+      "1. Comprueba si la contraseña ha caducado o si la cuenta está bloqueada.",
+      "2. Usa el portal oficial de restablecimiento de contraseña.",
+      "3. Verifica el método de 2FA y vuelve a registrarlo si falla.",
+      "4. Revisa si el usuario tiene permisos suficientes para la carpeta o aplicación.",
+      "5. Solicita a IT la revisión de políticas de acceso y alta de usuarios.",
+      "6. Documenta el flujo correcto de alta, baja y cambio de credenciales."
+    ],
+    "conectividad_red": [
+      "1. Comprueba si el cable de red está bien conectado o si el WiFi sigue activo.",
+      "2. Prueba a reconectar la red o a cambiar de punto de acceso.",
+      "3. Reinicia router, switch o equipo si el fallo persiste.",
+      "4. Verifica IP, DNS y puerta de enlace.",
+      "5. Revisa si la red de invitados o la red cableada tienen restricciones.",
+      "6. Define un procedimiento de soporte para caídas recurrentes o lentitud."
+    ],
+    "pantalla_energia": [
+      "1. Comprueba el cable de alimentación, batería y cargador.",
+      "2. Conecta el equipo a un monitor externo si la pantalla no responde.",
+      "3. Reinicia el equipo y escucha si los ventiladores arrancan con normalidad.",
+      "4. Anota si aparece pantallazo azul, parpadeo o apagado inesperado.",
+      "5. Actualiza drivers de vídeo y revisa temperatura y ventilación.",
+      "6. Escala a soporte si hay fallo físico de placa, batería o panel."
+    ],
+    "hardware_perifericos": [
+      "1. Desconecta y vuelve a conectar el periférico afectado.",
+      "2. Revisa baterías, puertos USB y drivers.",
+      "3. Comprueba colas de impresión, atascos o niveles de tinta.",
+      "4. Prueba el periférico en otro equipo para aislar el fallo.",
+      "5. Si no responde, sustituye el cable o el dispositivo afectado.",
+      "6. Documenta el modelo exacto antes de escalar a soporte."
+    ],
+    "ofimatica_correo": [
+      "1. Cierra y abre la aplicación afectada.",
+      "2. Comprueba si el problema es de cuenta, licencia o sincronización.",
+      "3. Limpia caché o datos temporales del cliente de correo o navegador.",
+      "4. Revisa el estado del buzón, SMTP y reglas de correo.",
+      "5. Repara o reinstala la aplicación si sigue congelada o no abre.",
+      "6. Documenta versiones, licencias y dependencias para evitar repetición."
+    ],
+    "nube_colaboracion": [
+      "1. Comprueba el estado de OneDrive, SharePoint o del servicio afectado.",
+      "2. Verifica que la sesión esté iniciada con la cuenta correcta.",
+      "3. Pausa y reanuda la sincronización o vuelve a cargar el archivo.",
+      "4. Revisa permisos, versiones y enlaces compartidos.",
+      "5. Prueba desde otro dispositivo para aislar el fallo.",
+      "6. Escala si hay corrupción de archivos o caída del servicio."
+    ],
+    "navegacion_sesion": [
+      "1. Comprueba la fecha, hora y zona horaria del equipo.",
+      "2. Reinicia o actualiza el navegador afectado.",
+      "3. Borra caché o cookies solo si es necesario para esa sesión.",
+      "4. Revisa el certificado si la web muestra advertencias SSL.",
+      "5. Desactiva extensiones si la página sigue bloqueada o lenta."
+    ],
+    "seguridad_archivos_certificados": [
+      "1. No abras archivos ni enlaces sospechosos.",
+      "2. Comprueba si el antivirus o el sistema ha bloqueado el archivo por seguridad.",
+      "3. Verifica el certificado del sitio o del documento afectado.",
+      "4. Si perdiste un USB o un portátil, reporta el incidente inmediatamente.",
+      "5. Revisa cifrado, BitLocker y políticas de protección de datos.",
+      "6. Refuerza la formación y el control de dispositivos extraíbles."
+    ],
+    "colaboracion_movilidad": [
+      "1. Comprueba permisos de micrófono, cámara y red.",
+      "2. Reinicia la app de reunión o videollamada.",
+      "3. Verifica el enlace de la reunión y la cuenta usada.",
+      "4. Si es en móvil, revisa versión de app, batería y conectividad.",
+      "5. Prueba otro dispositivo para aislar el fallo de audio o vídeo.",
+      "6. Escala a soporte de la plataforma si falla la grabación o el enlace."
+    ],
+    "almacenamiento_backup": [
+      "1. Verifica si el disco está lleno o si el dispositivo externo responde.",
+      "2. No sobrescribas archivos que quieras recuperar.",
+      "3. Prueba restauración desde copia de seguridad o historial de versiones.",
+      "4. Revisa salud del disco y errores de cifrado o bloqueo.",
+      "5. Si hay pérdida física del soporte, reporta el incidente de inmediato.",
+      "6. Comprueba que la copia de seguridad se puede restaurar correctamente."
     ]
   }
 }

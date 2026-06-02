@@ -5,7 +5,14 @@
     "creo que tengo malware", "mi sistema esta comprometido", "hay actividad sospechosa",
     "me robaron la contrasena", "pagina no carga", "archivos bloqueados",
     "correo sospechoso", "intentos de acceso", "trafico extrano",
-    "proceso desconocido", "me pidieron rescate", "me atacaron"
+    "proceso desconocido", "me pidieron rescate", "me atacaron",
+    "olvido contrasena", "cuenta bloqueada", "codigo 2fa no llega", "wifi lento",
+    "sin internet", "fallo dns", "pantalla negra", "monitor no enciende",
+    "teclado bloqueado", "raton no responde", "impresora sin tinta", "atasco de papel",
+    "correo con spam", "outlook no sincroniza", "onedrive no sincroniza", "sharepoint falla",
+    "certificado caducado", "error de certificado", "teams no abre", "audio de teams",
+    "copia de seguridad fallida", "disco lleno", "vpn no conecta", "reinicios inesperados",
+    "licencia expirada", "actualizacion atascada", "archivo corrupto", "buzon lleno"
   ],
   "threats": {
     "ransomware": {

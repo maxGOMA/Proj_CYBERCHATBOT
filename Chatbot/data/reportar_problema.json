@@ -198,6 +198,252 @@
         "Revoca accesos al finalizar una relación laboral.",
         "Realiza auditorías periódicas de permisos."
       ]
+    },
+    "credenciales_acceso": {
+      "priority": 6,
+      "description": "Problema de acceso porque el usuario no recuerda la contraseña, la cuenta está bloqueada o necesita revisar permisos.",
+      "symptoms": [
+        {"term": "olvido contrasena", "specificity": 3},
+        {"term": "no recuerdo contrasena", "specificity": 3},
+        {"term": "cuenta bloqueada", "specificity": 3},
+        {"term": "codigo 2fa", "specificity": 2},
+        {"term": "error login", "specificity": 2},
+        {"term": "caducidad contrasena", "specificity": 3},
+        {"term": "crear usuario", "specificity": 2},
+        {"term": "permisos administrador", "specificity": 3},
+        {"term": "acceso denegado", "specificity": 2}
+      ],
+      "severity": "media",
+      "response": "ℹ️ Se ha detectado un problema de credenciales o acceso.\n\nAcciones inmediatas:\n  1. Comprueba si la contraseña ha caducado o si la cuenta está bloqueada.\n  2. Usa el portal oficial de restablecimiento de contraseña.\n  3. Verifica el método de 2FA y vuelve a registrarlo si falla.\n  4. Revisa si el usuario tiene permisos suficientes para la carpeta o aplicación.\n  5. Si persiste, solicita revisión al equipo de soporte o IT.",
+      "recommendations": [
+        "Activa 2FA para proteger la cuenta.",
+        "Usa un gestor de contraseñas y claves únicas.",
+        "Revisa y documenta el proceso de alta y baja de usuarios.",
+        "No compartas cuentas ni credenciales entre personas.",
+        "Audita permisos de carpetas y aplicaciones de forma periódica."
+      ]
+    },
+    "conectividad_red": {
+      "priority": 5,
+      "description": "Problemas de WiFi, cableado, DNS, proxy, VPN o conectividad general a Internet.",
+      "symptoms": [
+        {"term": "wifi lento", "specificity": 3},
+        {"term": "desconexion wifi", "specificity": 3},
+        {"term": "cable red suelto", "specificity": 3},
+        {"term": "sin internet", "specificity": 3},
+        {"term": "fallo dns", "specificity": 3},
+        {"term": "error proxy", "specificity": 3},
+        {"term": "vpn no conecta", "specificity": 3},
+        {"term": "lentitud red", "specificity": 2},
+        {"term": "wifi invitados", "specificity": 2},
+        {"term": "red cableada", "specificity": 2}
+      ],
+      "severity": "media",
+      "response": "⚠️ Se ha detectado un problema de conectividad de red.\n\nAcciones inmediatas:\n  1. Verifica si el fallo afecta solo a un equipo o a toda la red.\n  2. Comprueba cable, WiFi, VPN y configuración de proxy.\n  3. Reinicia el router o el punto de acceso si es posible.\n  4. Prueba con otra red o con cable para aislar el fallo.\n  5. Si sigue igual, escala el incidente a redes o al proveedor.",
+      "recommendations": [
+        "Mantén actualizados drivers de red y firmware del router.",
+        "Usa una VPN fiable en redes públicas.",
+        "Configura DNS y proxy de forma centralizada.",
+        "Documenta cortes e incidencias para soporte.",
+        "Ten un plan de contingencia para acceso remoto y web."
+      ]
+    },
+    "pantalla_energia": {
+      "priority": 4,
+      "description": "Problemas de pantalla, monitor, resolución, batería, arranque o reinicios inesperados.",
+      "symptoms": [
+        {"term": "pantalla negra", "specificity": 3},
+        {"term": "monitor no enciende", "specificity": 3},
+        {"term": "pc no enciende", "specificity": 3},
+        {"term": "pantalla parpadea", "specificity": 3},
+        {"term": "brillo pantalla bajo", "specificity": 2},
+        {"term": "bateria no carga", "specificity": 3},
+        {"term": "sobrecalentamiento", "specificity": 3},
+        {"term": "ruido pc", "specificity": 2},
+        {"term": "reinicios inesperados", "specificity": 3},
+        {"term": "pantallazo azul", "specificity": 3}
+      ],
+      "severity": "media",
+      "response": "ℹ️ Se ha detectado un problema de pantalla, energía o arranque.\n\nAcciones inmediatas:\n  1. Comprueba el cable de alimentación, batería y cargador.\n  2. Conecta el equipo a un monitor externo si la pantalla no responde.\n  3. Reinicia el equipo y observa si los ventiladores arrancan con normalidad.\n  4. Anota si aparece pantallazo azul, parpadeo o apagado inesperado.\n  5. Si el fallo persiste, revisa ventilación, drivers y posible daño físico.",
+      "recommendations": [
+        "Mantén actualizados drivers de vídeo y BIOS.",
+        "Evita bloquear la ventilación del equipo.",
+        "Usa cargadores y cables certificados.",
+        "Registra códigos de error y pantallazos azules.",
+        "Escala a soporte si hay fallo físico de hardware."
+      ]
+    },
+    "hardware_perifericos": {
+      "priority": 4,
+      "description": "Problemas con teclado, ratón, impresora, escáner, audio, cámara o puertos USB.",
+      "symptoms": [
+        {"term": "teclado bloqueado", "specificity": 3},
+        {"term": "raton no responde", "specificity": 3},
+        {"term": "teclas erroneas", "specificity": 2},
+        {"term": "teclado numerico desactivado", "specificity": 3},
+        {"term": "impresora sin tinta", "specificity": 3},
+        {"term": "atasco papel", "specificity": 3},
+        {"term": "escaner no funciona", "specificity": 3},
+        {"term": "auriculares mudos", "specificity": 3},
+        {"term": "webcam desactivada", "specificity": 3},
+        {"term": "puerto usb roto", "specificity": 3},
+        {"term": "click derecho falla", "specificity": 2}
+      ],
+      "severity": "media",
+      "response": "ℹ️ Se ha detectado un problema con periféricos o dispositivos externos.\n\nAcciones inmediatas:\n  1. Desconecta y vuelve a conectar el periférico afectado.\n  2. Revisa baterías, puertos USB y drivers.\n  3. Comprueba colas de impresión, atascos o niveles de tinta.\n  4. Prueba el periférico en otro equipo para aislar el fallo.\n  5. Si no responde, sustituye el cable o el dispositivo afectado.",
+      "recommendations": [
+        "Mantén drivers y firmware actualizados.",
+        "Usa periféricos certificados y revisa compatibilidad.",
+        "Limpia y revisa cables, conectores y puertos.",
+        "Ten repuestos básicos para impresoras y estaciones de trabajo.",
+        "Registra el modelo y el síntoma exacto antes de escalar."
+      ]
+    },
+    "ofimatica_correo": {
+      "priority": 5,
+      "description": "Problemas con Office, Outlook, navegador, correo, OneDrive o SharePoint en escritorio.",
+      "symptoms": [
+        {"term": "bloqueo office", "specificity": 3},
+        {"term": "excel congelado", "specificity": 3},
+        {"term": "outlook no sincroniza", "specificity": 3},
+        {"term": "actualizacion atascada", "specificity": 2},
+        {"term": "instalacion de software", "specificity": 2},
+        {"term": "licencia expirada", "specificity": 3},
+        {"term": "correo con spam", "specificity": 3},
+        {"term": "correo sospechoso", "specificity": 3},
+        {"term": "buzon lleno", "specificity": 3},
+        {"term": "error smtp", "specificity": 3},
+        {"term": "sharepoint falla", "specificity": 3},
+        {"term": "onedrive no sincroniza", "specificity": 3}
+      ],
+      "severity": "media",
+      "response": "ℹ️ Se ha detectado un problema de ofimática, correo o nube de trabajo.\n\nAcciones inmediatas:\n  1. Guarda el trabajo abierto antes de reiniciar o reparar.\n  2. Cierra la aplicación y vuelve a abrirla tras comprobar actualizaciones.\n  3. Revisa credenciales, licencia, buzón y sincronización.\n  4. Comprueba si el fallo es local, de usuario o del servicio.\n  5. Si hay error de correo o nube, escala a soporte de plataforma.",
+      "recommendations": [
+        "Mantén Office, navegador y cliente de correo actualizados.",
+        "Limpia caché y cookies solo cuando sea necesario y de forma controlada.",
+        "Revisa cuotas de buzón y almacenamiento compartido.",
+        "Usa autosave y versiones para reducir pérdidas de trabajo.",
+        "Documenta errores exactos y capturas para soporte."
+      ]
+    }
+    ,"nube_colaboracion": {
+      "priority": 5,
+      "description": "Problemas de sincronización, permisos o disponibilidad en OneDrive, SharePoint y servicios colaborativos.",
+      "symptoms": [
+        {"term": "onedrive no sincroniza", "specificity": 3},
+        {"term": "sharepoint falla", "specificity": 3},
+        {"term": "archivo corrupto", "specificity": 2},
+        {"term": "recuperar archivo", "specificity": 2},
+        {"term": "archivo zip danado", "specificity": 3},
+        {"term": "extension archivo erronea", "specificity": 2},
+        {"term": "copia seguridad fallida", "specificity": 3},
+        {"term": "version anterior", "specificity": 2}
+      ],
+      "severity": "media",
+      "response": "ℹ️ Se ha detectado un problema de nube o colaboración.\n\nAcciones inmediatas:\n  1. Comprueba si el servicio tiene incidencias generales.\n  2. Verifica la sesión, los permisos y el espacio disponible.\n  3. Pausa y reanuda la sincronización o vuelve a cargar el archivo.\n  4. Prueba desde otro dispositivo para aislar el fallo.\n  5. Si el archivo está corrupto, restaura la última versión válida.",
+      "recommendations": [
+        "Controla permisos y versiones de archivos compartidos.",
+        "Mantén sincronización y cliente actualizados.",
+        "Usa historial de versiones y backups automáticos.",
+        "Comprueba el estado del servicio antes de escalar.",
+        "Documenta enlaces, rutas y errores exactos."
+      ]
+    },
+    "navegacion_sesion": {
+      "priority": 4,
+      "description": "Problemas del navegador, cookies, sesión web, certificados o páginas bloqueadas.",
+      "symptoms": [
+        {"term": "error de navegador", "specificity": 3},
+        {"term": "limpieza de cookies", "specificity": 2},
+        {"term": "actualizacion de navegador", "specificity": 2},
+        {"term": "certificado caducado", "specificity": 3},
+        {"term": "error de certificado", "specificity": 3},
+        {"term": "certificado ssl web", "specificity": 3},
+        {"term": "web bloqueada", "specificity": 3},
+        {"term": "pop ups extraños", "specificity": 2},
+        {"term": "pestanas lentas", "specificity": 2}
+      ],
+      "severity": "media",
+      "response": "ℹ️ Se ha detectado un problema de navegador, sesión o certificados web.\n\nAcciones inmediatas:\n  1. Comprueba la fecha, hora y zona horaria del equipo.\n  2. Reinicia o actualiza el navegador afectado.\n  3. Borra caché o cookies solo si es necesario para esa sesión.\n  4. Revisa el certificado si la web muestra advertencias SSL.\n  5. Si la web está bloqueada, comprueba políticas y listas permitidas.",
+      "recommendations": [
+        "Usa navegadores actualizados y soportados.",
+        "No ignores alertas de certificado inválido.",
+        "Revisa la hora del sistema antes de escalar.",
+        "Deshabilita extensiones si causan bloqueos o lentitud.",
+        "Mantén una guía clara de sitios y accesos autorizados."
+      ]
+    },
+    "seguridad_archivos_certificados": {
+      "priority": 7,
+      "description": "Alertas de virus, phishing, archivos bloqueados, certificados problemáticos o pérdida de dispositivos físicos.",
+      "symptoms": [
+        {"term": "alerta de virus", "specificity": 3},
+        {"term": "alerta de phishing", "specificity": 3},
+        {"term": "archivo bloqueado", "specificity": 3},
+        {"term": "extension desconocida", "specificity": 3},
+        {"term": "suplantacion identidad", "specificity": 3},
+        {"term": "perdida usb", "specificity": 2},
+        {"term": "robo portatil", "specificity": 2},
+        {"term": "certificado caducado", "specificity": 3},
+        {"term": "error de certificado", "specificity": 3},
+        {"term": "bitlocker error", "specificity": 3}
+      ],
+      "severity": "alta",
+      "response": "⚠️ Se ha detectado un posible incidente de seguridad en archivos o certificados.\n\nAcciones inmediatas:\n  1. No abras archivos, enlaces o adjuntos sospechosos.\n  2. Desconecta el dispositivo si sospechas compromiso.\n  3. Cambia contraseñas desde un equipo confiable si has introducido datos.\n  4. Reporta el mensaje, llamada o archivo al equipo de seguridad.\n  5. Si se perdió un dispositivo, bloquea cuentas y limpia accesos.",
+      "recommendations": [
+        "Activa 2FA y revisa dispositivos conectados.",
+        "Mantén móvil, navegador y antivirus con parches al día.",
+        "Desconfía de urgencias, premios y solicitudes de verificación.",
+        "Usa cifrado en dispositivos portátiles y controla USB/SD.",
+        "Ten un proceso claro de pérdida o robo de dispositivos."
+      ]
+    },
+    "colaboracion_movilidad": {
+      "priority": 4,
+      "description": "Problemas con Teams, Zoom, audio, cámara, reuniones y llamadas en escritorio o móvil.",
+      "symptoms": [
+        {"term": "teams no abre", "specificity": 3},
+        {"term": "audio de teams", "specificity": 3},
+        {"term": "micro no funciona", "specificity": 3},
+        {"term": "camara en zoom", "specificity": 3},
+        {"term": "enlace roto de reunion", "specificity": 3},
+        {"term": "grabacion perdida", "specificity": 3},
+        {"term": "teams en movil", "specificity": 2},
+        {"term": "sin llamadas en movil", "specificity": 2},
+        {"term": "vpn en movil", "specificity": 2}
+      ],
+      "severity": "media",
+      "response": "ℹ️ Se ha detectado un problema de colaboración o videollamadas.\n\nAcciones inmediatas:\n  1. Comprueba permisos de micrófono, cámara y red.\n  2. Reinicia la app de reunión o videollamada.\n  3. Verifica el enlace de la reunión y la cuenta usada.\n  4. Si es en móvil, revisa versión de app, batería y conectividad.\n  5. Prueba otro dispositivo para aislar el fallo de audio o vídeo.",
+      "recommendations": [
+        "Mantén actualizadas las apps de reunión y el sistema.",
+        "Prueba audio y vídeo antes de reuniones críticas.",
+        "Usa auriculares y cámaras validadas por la empresa.",
+        "Revisa permisos de micrófono y cámara en móvil y escritorio.",
+        "Documenta incidencias de reuniones con hora y enlace."
+      ]
+    },
+    "almacenamiento_backup": {
+      "priority": 5,
+      "description": "Problemas de disco lleno, archivos corruptos, copias de seguridad o dispositivos de almacenamiento externos.",
+      "symptoms": [
+        {"term": "disco lleno", "specificity": 3},
+        {"term": "archivo corrupto", "specificity": 3},
+        {"term": "recuperar archivo", "specificity": 3},
+        {"term": "archivo zip danado", "specificity": 3},
+        {"term": "extensión de archivo errónea", "specificity": 2},
+        {"term": "disco externo no reconoce", "specificity": 3},
+        {"term": "copia de seguridad fallida", "specificity": 3},
+        {"term": "no reconoce tarjeta sd", "specificity": 3}
+      ],
+      "severity": "media",
+      "response": "ℹ️ Se ha detectado un problema de archivos, copias de seguridad o almacenamiento.\n\nAcciones inmediatas:\n  1. Verifica si el disco está lleno o si el dispositivo externo responde.\n  2. No sobrescribas archivos que quieras recuperar.\n  3. Prueba restauración desde copia de seguridad o historial de versiones.\n  4. Revisa salud del disco y errores de cifrado o bloqueo.\n  5. Si hay pérdida física del soporte, reporta el incidente de inmediato.",
+      "recommendations": [
+        "Aplica la regla 3-2-1 para copias de seguridad.",
+        "Monitorea espacio libre y salud de discos con regularidad.",
+        "Verifica que las copias se restauran correctamente.",
+        "Controla USB, SD y discos externos con inventario.",
+        "Usa historial de versiones antes de sobrescribir datos."
+      ]
     }
   }
 }

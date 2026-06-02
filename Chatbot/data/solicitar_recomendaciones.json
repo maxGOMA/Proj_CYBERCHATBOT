@@ -10,29 +10,29 @@
       "No hagas clic en enlaces de correos no solicitados.",
       "Verifica siempre el remitente antes de responder o hacer clic.",
       "Accede directamente a webs oficiales en lugar de usar enlaces recibidos.",
-      "Activa la autenticación en dos factores (2FA) en todas tus cuentas.",
-      "Usa un gestor de contraseñas: detectan automáticamente sitios falsos."
+      "Activa la autenticacion en dos factores (2FA) en todas tus cuentas.",
+      "Usa un gestor de contrasenas: detectan automaticamente sitios falsos."
     ],
     "ransomware": [
-      "Realiza copias de seguridad periódicas en ubicaciones desconectadas (regla 3-2-1).",
+      "Realiza copias de seguridad periodicas en ubicaciones desconectadas (regla 3-2-1).",
       "No abras adjuntos de correos desconocidos ni descargues software de fuentes no oficiales.",
       "Mantén el sistema operativo y antivirus siempre actualizados.",
-      "Segmenta tu red para limitar la propagación en caso de infección.",
+      "Segmenta tu red para limitar la propagacion en caso de infeccion.",
       "Ante un ataque activo, desconecta el equipo de la red inmediatamente."
     ],
     "ddos": [
-      "Usa un servicio CDN con protección DDoS integrada (Cloudflare, Akamai).",
-      "Configura rate limiting y filtros de tráfico en tu servidor.",
-      "Implementa balanceo de carga para distribuir el tráfico.",
+      "Usa un servicio CDN con proteccion DDoS integrada (Cloudflare, Akamai).",
+      "Configura rate limiting y filtros de trafico en tu servidor.",
+      "Implementa balanceo de carga para distribuir el trafico.",
       "Ten un plan de respuesta a incidentes preparado antes de sufrir un ataque.",
       "Contacta con tu proveedor de hosting para activar protecciones adicionales."
     ],
     "sql_injection": [
-      "Usa siempre consultas preparadas (prepared statements) en el código.",
-      "Valida y sanitiza todos los inputs del usuario sin excepción.",
-      "Aplica el principio de mínimo privilegio en el usuario de base de datos.",
-      "Despliega un WAF (Web Application Firewall) delante de tu aplicación.",
-      "Realiza revisiones de código y pentesting periódicos."
+      "Usa siempre consultas preparadas (prepared statements) en el codigo.",
+      "Valida y sanitiza todos los inputs del usuario sin excepcion.",
+      "Aplica el principio de minimo privilegio en el usuario de base de datos.",
+      "Despliega un WAF (Web Application Firewall) delante de tu aplicacion.",
+      "Realiza revisiones de codigo y pentesting periodicos."
     ],
     "malware": [
       "Instala y mantén actualizado un antivirus de confianza.",
@@ -42,35 +42,105 @@
       "Activa el firewall del sistema operativo."
     ],
     "man_in_the_middle": [
-      "Usa siempre una VPN de confianza en redes WiFi públicas.",
+      "Usa siempre una VPN de confianza en redes WiFi publicas.",
       "Verifica que las conexiones sean HTTPS antes de introducir datos.",
-      "No ignores nunca las alertas de certificado inválido del navegador.",
+      "No ignores nunca las alertas de certificado invalido del navegador.",
       "Activa HSTS en tus aplicaciones web.",
-      "Evita realizar operaciones sensibles (banca, trabajo) en redes públicas."
+      "Evita realizar operaciones sensibles (banca, trabajo) en redes publicas."
     ],
     "brute_force": [
-      "Usa contraseñas largas y complejas con mínimo 12 caracteres.",
-      "Activa la autenticación en dos factores (2FA) en todos los servicios.",
+      "Usa contrasenas largas y complejas con minimo 12 caracteres.",
+      "Activa la autenticacion en dos factores (2FA) en todos los servicios.",
       "Configura bloqueo de cuenta tras varios intentos fallidos.",
       "Implementa CAPTCHA en los formularios de login.",
-      "Usa un gestor de contraseñas para generar y almacenar contraseñas únicas."
+      "Usa un gestor de contrasenas para generar y almacenar contrasenas unicas."
     ],
     "insider_threat": [
-      "Aplica el principio de mínimo privilegio: cada usuario solo accede a lo necesario.",
+      "Aplica el principio de minimo privilegio: cada usuario solo accede a lo necesario.",
       "Monitoriza el acceso a datos sensibles con herramientas UEBA.",
       "Revoca accesos inmediatamente cuando un empleado abandona la empresa.",
-      "Realiza auditorías periódicas de permisos y accesos.",
-      "Forma a los empleados en políticas de seguridad de la información."
+      "Realiza auditorias periodicas de permisos y accesos.",
+      "Forma a los empleados en politicas de seguridad de la informacion."
+    ],
+    "credenciales_acceso": [
+      "Activa 2FA para proteger la cuenta.",
+      "Usa un gestor de contrasenas y claves unicas.",
+      "Revisa y documenta el proceso de alta y baja de usuarios.",
+      "No compartas cuentas ni credenciales entre personas.",
+      "Audita permisos de carpetas y aplicaciones de forma periodica."
+    ],
+    "conectividad_red": [
+      "Mantén actualizados drivers de red y firmware del router.",
+      "Usa una VPN fiable en redes publicas.",
+      "Configura DNS y proxy de forma centralizada.",
+      "Documenta cortes e incidencias para soporte.",
+      "Ten un plan de contingencia para acceso remoto y web."
+    ],
+    "pantalla_energia": [
+      "Mantén actualizados drivers de video y BIOS.",
+      "Evita bloquear la ventilacion del equipo.",
+      "Usa cargadores y cables certificados.",
+      "Registra codigos de error y pantallazos azules.",
+      "Escala a soporte si hay fallo fisico de hardware."
+    ],
+    "hardware_perifericos": [
+      "Mantén drivers y firmware actualizados.",
+      "Usa perifericos certificados y revisa compatibilidad.",
+      "Limpia y revisa cables, conectores y puertos.",
+      "Ten repuestos basicos para impresoras y estaciones de trabajo.",
+      "Registra el modelo y el sintoma exacto antes de escalar."
+    ],
+    "ofimatica_correo": [
+      "Mantén Office, navegador y cliente de correo actualizados.",
+      "Limpia cache y cookies solo cuando sea necesario y de forma controlada.",
+      "Revisa cuotas de buzon y almacenamiento compartido.",
+      "Usa autosave y versiones para reducir perdidas de trabajo.",
+      "Documenta errores exactos y capturas para soporte."
+    ],
+    "nube_colaboracion": [
+      "Controla permisos y versiones de archivos compartidos.",
+      "Mantén sincronizacion y cliente actualizados.",
+      "Usa historial de versiones y backups automaticos.",
+      "Comprueba el estado del servicio antes de escalar.",
+      "Documenta enlaces, rutas y errores exactos."
+    ],
+    "navegacion_sesion": [
+      "Usa navegadores actualizados y soportados.",
+      "No ignores alertas de certificado invalido.",
+      "Revisa la hora del sistema antes de escalar.",
+      "Deshabilita extensiones si causan bloqueos o lentitud.",
+      "Mantén una guia clara de sitios y accesos autorizados."
+    ],
+    "seguridad_archivos_certificados": [
+      "Activa 2FA y revisa dispositivos conectados.",
+      "Mantén movil, navegador y antivirus con parches al dia.",
+      "Desconfia de urgencias, premios y solicitudes de verificacion.",
+      "Usa cifrado en dispositivos portatiles y controla USB o SD.",
+      "Ten un proceso claro de perdida o robo de dispositivos."
+    ],
+    "colaboracion_movilidad": [
+      "Mantén actualizadas las apps de reunion y el sistema.",
+      "Prueba audio y video antes de reuniones criticas.",
+      "Usa auriculares y camaras validadas por la empresa.",
+      "Revisa permisos de microfono y camara en movil y escritorio.",
+      "Documenta incidencias de reuniones con hora y enlace."
+    ],
+    "almacenamiento_backup": [
+      "Aplica la regla 3-2-1 para copias de seguridad.",
+      "Monitorea espacio libre y salud de discos con regularidad.",
+      "Verifica que las copias se restauran correctamente.",
+      "Controla USB, SD y discos externos con inventario.",
+      "Usa historial de versiones antes de sobrescribir datos."
     ]
   },
   "general": [
     "Mantén siempre el sistema operativo y software actualizados.",
-    "Usa contraseñas únicas y robustas para cada servicio.",
-    "Activa la autenticación en dos factores siempre que sea posible.",
-    "Realiza copias de seguridad periódicas de tus datos importantes.",
-    "Desconfía de correos, mensajes o llamadas no solicitadas.",
-    "Usa una VPN cuando te conectes a redes públicas.",
+    "Usa contrasenas unicas y robustas para cada servicio.",
+    "Activa la autenticacion en dos factores siempre que sea posible.",
+    "Realiza copias de seguridad periodicas de tus datos importantes.",
+    "Desconfia de correos, mensajes o llamadas no solicitadas.",
+    "Usa una VPN cuando te conectes a redes publicas.",
     "Revisa los permisos de las aplicaciones que instalas.",
-    "Forma a los empleados en buenas prácticas de ciberseguridad."
+    "Forma a los empleados en buenas practicas de ciberseguridad."
   ]
 }

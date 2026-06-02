@@ -3,7 +3,11 @@
   "examples": [
     "como me protejo", "que medidas tomo", "recomendacion", "como evito",
     "que debo hacer para protegerme", "como puedo prevenir", "como mejorar seguridad",
-    "protegerme del phishing", "evitar ransomware", "medidas contra ddos"
+    "protegerme del phishing", "evitar ransomware", "medidas contra ddos",
+    "como proteger credenciales", "recomendaciones para wifi lento", "como evitar pantalla negra",
+    "como cuidar perifericos", "como mejorar correo", "como usar la nube",
+    "como navegar seguro", "como proteger archivos", "como trabajar en videollamadas",
+    "como hacer backup", "como evitar bloqueo de cuenta", "como prevenir error de certificado"
   ],
   "by_threat": {
     "phishing": [

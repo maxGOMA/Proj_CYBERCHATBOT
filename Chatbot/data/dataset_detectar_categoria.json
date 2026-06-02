@@ -3,7 +3,10 @@
   "examples": [
     "que tipo de ataque es", "a que categoria pertenece", "como clasificarias esto",
     "es un virus o un hackeo", "de que tipo es este problema",
-    "que clase de amenaza es", "como lo llamarias"
+    "que clase de amenaza es", "como lo llamarias", "es un problema de wifi",
+    "es un fallo de correo", "es un problema de permisos", "es un problema de pantalla",
+    "es una incidencia de nube", "es un fallo de backup", "como clasificar un problema de 2fa",
+    "como lo llamarias si la vpn no conecta", "es un problema de navegacion", "es un fallo de videollamada"
   ],
   "categories": {
     "malware": {

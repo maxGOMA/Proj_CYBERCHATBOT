@@ -54,6 +54,76 @@
       "summary": "Amenaza de un empleado con acceso legítimo que actúa de forma maliciosa o negligente.",
       "detail": "Las amenazas internas son especialmente peligrosas porque provienen de personas con acceso legítimo al sistema. Pueden ser empleados descontentos que roban o sabotean datos, empleados negligentes que cometen errores de seguridad, o empleados que han sido comprometidos externamente (por ejemplo, mediante extorsión). La monitorización del comportamiento (UEBA), el principio de mínimo privilegio y la revocación inmediata de accesos son las principales defensas.",
       "keywords": ["insider", "empleado", "interno", "fuga", "sabotaje", "acceso interno", "ueba"]
+    },
+    "credenciales_acceso": {
+      "title": "Credenciales y acceso",
+      "definition": "Conjunto de problemas relacionados con contraseñas, bloqueos de cuenta, 2FA y permisos de usuario.",
+      "detail": "Este tipo de incidencias aparece cuando el usuario no recuerda la contraseña, la cuenta se bloquea por intentos fallidos, el segundo factor no llega o los permisos no están correctamente asignados. Es uno de los problemas más frecuentes en soporte porque mezcla seguridad con operación diaria.",
+      "example": "El usuario no puede entrar porque la contraseña ha caducado y además el código de 2FA no le llega al móvil.",
+      "keywords": ["contraseña", "cuenta bloqueada", "2fa", "permisos", "acceso", "login", "caducidad contraseña"]
+    },
+    "conectividad_red": {
+      "title": "Conectividad de red",
+      "definition": "Problemas de conexión a Internet, WiFi, cable, DNS, proxy o acceso remoto.",
+      "detail": "Incluye cortes de Internet, WiFi lento, fallos de DNS, errores de proxy, VPN que no conecta o una intranet que queda inaccesible. Para resolverlo conviene aislar si el fallo es del equipo, del router, del proveedor o del servicio interno.",
+      "example": "La oficina entera se queda sin internet y varios equipos muestran fallos de DNS.",
+      "keywords": ["wifi", "dns", "proxy", "vpn", "internet", "red", "conectividad"]
+    },
+    "pantalla_energia": {
+      "title": "Pantalla y energía",
+      "definition": "Problemas de monitor, encendido, batería, ventilación o reinicios inesperados.",
+      "detail": "Abarca desde una pantalla negra o parpadeante hasta un portátil que no carga, se sobrecalienta o se reinicia sin aviso. También cubre errores visuales como pantallazo azul, resolución incorrecta o un monitor que no enciende.",
+      "example": "El portátil arranca, pero la pantalla se queda negra y el monitor externo tampoco da imagen.",
+      "keywords": ["pantalla", "monitor", "batería", "encendido", "reinicios", "sobrecalentamiento", "pantallazo azul"]
+    },
+    "hardware_perifericos": {
+      "title": "Periféricos y dispositivos",
+      "definition": "Incidencias con teclado, ratón, impresora, escáner, audio, cámara o puertos USB.",
+      "detail": "Este grupo engloba teclados que se bloquean, ratones que no responden, impresoras sin tinta o con atasco, escáneres que fallan y dispositivos de audio o vídeo que dejan de funcionar por drivers, cables o permisos.",
+      "example": "La webcam no aparece en Teams y el ratón no responde después de conectarlo a otro puerto USB.",
+      "keywords": ["teclado", "ratón", "impresora", "escáner", "usb", "webcam", "audio"]
+    },
+    "ofimatica_correo": {
+      "title": "Ofimática y correo",
+      "definition": "Problemas con Office, Outlook, navegador, correo, OneDrive o SharePoint.",
+      "detail": "Incluye aplicaciones congeladas, buzones llenos, error SMTP, sincronización rota, licencias expiradas y documentos que no abren. También abarca errores en clientes de correo y plataformas de trabajo colaborativo que dependen de sesión y licencia.",
+      "example": "Outlook no sincroniza, Excel se queda congelado y el buzón está al límite de capacidad.",
+      "keywords": ["outlook", "excel", "office", "correo", "smtp", "onedrive", "sharepoint"]
+    }
+    ,"nube_colaboracion": {
+      "title": "Nube y colaboración",
+      "definition": "Incidencias de sincronización, permisos o disponibilidad en servicios como OneDrive, SharePoint y trabajo compartido.",
+      "detail": "Cuando un archivo no sincroniza, SharePoint falla o la colaboración deja de funcionar, el origen puede estar en la sesión, en permisos, en el cliente de sincronización o en una caída del servicio. Este tema también cubre versiones, restauración de archivos y estados de compartición.",
+      "example": "OneDrive deja de sincronizar y SharePoint muestra errores al abrir un documento compartido.",
+      "keywords": ["onedrive", "sharepoint", "sincroniza", "colaboración", "versiones", "documento compartido", "nube"]
+    },
+    "navegacion_sesion": {
+      "title": "Navegador y sesión web",
+      "definition": "Problemas de navegador, cookies, sesión, certificados o páginas bloqueadas.",
+      "detail": "Este tema engloba errores del navegador, pestañas lentas, problemas de cookies, certificados caducados o inválidos, páginas bloqueadas por políticas y pop-ups sospechosos. Suele resolverse revisando la sesión, la fecha del sistema y las extensiones activas.",
+      "example": "El navegador muestra un certificado inválido y la intranet se queda bloqueada con pestañas muy lentas.",
+      "keywords": ["navegador", "cookies", "certificado", "web bloqueada", "pestañas", "sesión", "pop up"]
+    },
+    "seguridad_archivos_certificados": {
+      "title": "Seguridad de archivos y certificados",
+      "definition": "Alertas de virus, phishing, archivos bloqueados, certificados problemáticos o pérdida de dispositivos físicos.",
+      "detail": "Agrupa incidentes en los que el usuario recibe una alerta de virus, un archivo queda bloqueado, aparece una extensión desconocida o se detecta una suplantación. También se usa cuando hay pérdida de USB o portátil, o cuando el sistema avisa de certificados caducados o BitLocker.",
+      "example": "Un archivo adjunto queda bloqueado por el antivirus y el navegador avisa de un certificado caducado.",
+      "keywords": ["virus", "phishing", "archivo bloqueado", "certificado", "usb", "portátil", "bitlocker"]
+    },
+    "colaboracion_movilidad": {
+      "title": "Colaboración y videollamadas",
+      "definition": "Problemas con Teams, Zoom, audio, cámara, reuniones y llamadas en escritorio o móvil.",
+      "detail": "Incluye que Teams no abra, que el audio falle, que la cámara no se detecte, que un enlace de reunión esté roto o que una grabación desaparezca. También cubre móviles con problemas de llamadas, VPN o acceso a apps corporativas.",
+      "example": "Teams no abre, el micrófono no funciona y el enlace de la reunión lleva a una sala vacía.",
+      "keywords": ["teams", "zoom", "audio", "cámara", "reunión", "móvil", "grabación"]
+    },
+    "almacenamiento_backup": {
+      "title": "Almacenamiento y copias de seguridad",
+      "definition": "Problemas de disco lleno, archivos corruptos, backup o dispositivos de almacenamiento externos.",
+      "detail": "Se usa cuando no hay espacio, el archivo se corrompe, el disco externo no responde o una copia de seguridad falla. También cubre restauración de versiones, tarjetas SD y recuperación de información después de un fallo o pérdida física.",
+      "example": "El disco está lleno, la copia de seguridad falló y un archivo ZIP llegó dañado desde un USB externo.",
+      "keywords": ["disco lleno", "backup", "archivo corrupto", "usb", "sd", "recuperar archivo", "copia de seguridad"]
     }
   }
 }
