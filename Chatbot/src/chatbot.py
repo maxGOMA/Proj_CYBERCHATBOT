@@ -23,7 +23,10 @@ THREAT_NAMES = {
     "navegacion_sesion":"Navegador y sesión",
     "seguridad_archivos_certificados":"Seguridad de archivos y certificados",
     "colaboracion_movilidad":"Colaboración y videollamadas",
-    "almacenamiento_backup":"Almacenamiento y copias"
+    "almacenamiento_backup":"Almacenamiento y copias",
+    "problemas_audio_video": "Problemas de Audio, Micrófono o Cámara",
+    "navegacion_web_cache": "Navegación Web, Caché y Cookies",
+    "monitores_pantallas": "Configuración de Monitores y Pantallas"
 }
 
 CATEGORY_NAMES = {
@@ -59,6 +62,14 @@ CLARIFYING_QUESTIONS = {
     ),
     "insider_threat": (
         "Necesito saber si hubo acceso interno indebido, copia de datos o actividad fuera de horario."
+    ), "problemas_audio_video": (
+        "Dime si el fallo es con tus auriculares, si no te escuchan el micrófono o si la cámara se ve en negro."
+    ),
+    "navegacion_web_cache": (
+        "Indica si una página web corporativa no carga, se queda en blanco o si necesitas limpiar las cookies."
+    ),
+    "monitores_pantallas": (
+        "Confirma si tu segunda pantalla no enciende, si el proyector no da señal o si la imagen se ve girada."
     ),
 }
 
@@ -96,21 +107,21 @@ class Chatbot:
     def get_welcome_message(self):
         return (
             "Soy CyberBot. Describe lo que te esta pasando y te ayudare a "
-            "estimar la amenaza, entenderla y decidir los siguientes pasos.\n\n"
+            "estimar el problema, entenderlo y decidir los siguientes pasos.\n\n"
             "Prueba con mensajes como:\n"
             "- 'mi PC va muy lento y la CPU esta al 100%'\n"
-            "- 'he recibido un correo del banco pidiendome la contrasena'\n"
-            "- 'mis archivos no abren y me piden un rescate'\n"
-            "- 'buenas practicas'\n"
-            "- 'amenazas'"
+            "- 'no me funciona el microfono en Teams y la camara se ve negra'\n"
+            "- 'como limpio las cookies y la cache del navegador'\n"
+            "- 'la segunda pantalla se ve negra o el proyector no da senal'\n"
+            "- 'buenas practicas'"
         )
 
     def get_quick_prompts(self):
         return [
-            "Mi PC va lento y hay un proceso raro",
+            "No me escuchan en la reunion de Teams",
+            "Como se borra la cache del navegador",
+            "Mi segundo monitor se queda en negro",
             "He recibido un correo sospechoso del banco",
-            "Mis archivos se han cifrado",
-            "Como me protejo del phishing",
             "Pasos para resolver malware",
         ]
 
