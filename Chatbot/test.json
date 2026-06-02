@@ -1,0 +1,61 @@
+[
+  { "text": "he recibido un correo de mi banco pero la dirección me parece rara", "intent": "phishing" },
+  { "text": "me ha llegado un email diciendo que debo pagar 100 euros", "intent": "phishing" },
+  { "text": "un mensaje me pide mis datos de tarjeta para evitar un bloqueo", "intent": "phishing" },
+  { "text": "correo sospechoso con un enlace para cambiar la contraseña del banco", "intent": "phishing" },
+  { "text": "me escriben de correos pidiendo pagar tasas para entregar un paquete", "intent": "phishing" },
+
+  { "text": "mi ordenador muestra un mensaje diciendo que mis archivos están cifrados", "intent": "ransomware" },
+  { "text": "me piden dinero en bitcoins para recuperar mis documentos", "intent": "ransomware" },
+  { "text": "ha aparecido una ventana a pantalla completa con un temporizador y amenaza", "intent": "ransomware" },
+  { "text": "no puedo abrir ningún archivo, todos tienen una extensión rara", "intent": "ransomware" },
+  { "text": "me dicen que si apago el ordenador perderé todos los datos", "intent": "ransomware" },
+
+  { "text": "necesito ayuda, no sé qué está pasando con mi ordenador", "intent": "pedir_ayuda" },
+  { "text": "ayuda por favor, estoy muy perdido", "intent": "pedir_ayuda" },
+  { "text": "no sé qué hacer, me puedes orientar", "intent": "pedir_ayuda" },
+  { "text": "qué puedes hacer por mí exactamente", "intent": "pedir_ayuda" },
+  { "text": "me explicas cómo funcionas", "intent": "pedir_ayuda" },
+
+  { "text": "qué es exactamente el phishing", "intent": "informacion_amenaza" },
+  { "text": "me puedes explicar qué es un ransomware", "intent": "informacion_amenaza" },
+  { "text": "qué significa ingeniería social", "intent": "informacion_amenaza" },
+  { "text": "qué tipos de malware existen", "intent": "informacion_amenaza" },
+  { "text": "qué es un ataque de fuerza bruta", "intent": "informacion_amenaza" },
+
+  { "text": "cómo me protejo del phishing", "intent": "recomendaciones_seguridad" },
+  { "text": "dame buenas prácticas para no caer en estafas online", "intent": "recomendaciones_seguridad" },
+  { "text": "qué puedo hacer para mejorar la seguridad de mis contraseñas", "intent": "recomendaciones_seguridad" },
+  { "text": "cómo evitar que me instalen malware", "intent": "recomendaciones_seguridad" },
+  { "text": "recomendaciones básicas de ciberseguridad para mi ordenador", "intent": "recomendaciones_seguridad" },
+
+  { "text": "tengo miedo de haber hecho clic en un enlace peligroso", "intent": "posible_incidente" },
+  { "text": "he descargado un archivo adjunto y ahora el pc va raro", "intent": "posible_incidente" },
+  { "text": "creo que alguien ha entrado en mi cuenta sin permiso", "intent": "posible_incidente" },
+  { "text": "me han cobrado algo raro en la tarjeta", "intent": "posible_incidente" },
+  { "text": "he introducido mis datos en una web que ahora creo que era falsa", "intent": "posible_incidente" },
+
+  { "text": "qué amenazas conoces", "intent": "listar_amenazas" },
+  { "text": "muéstrame una lista de tipos de ataques", "intent": "listar_amenazas" },
+  { "text": "qué tipos de ciberataques hay", "intent": "listar_amenazas" },
+  { "text": "lista de amenazas más comunes", "intent": "listar_amenazas" },
+  { "text": "qué riesgos principales existen en internet", "intent": "listar_amenazas" },
+
+  { "text": "hola", "intent": "saludo" },
+  { "text": "buenas, qué tal", "intent": "saludo" },
+  { "text": "hey, quién eres", "intent": "saludo" },
+  { "text": "buenos días", "intent": "saludo" },
+  { "text": "qué puedes hacer", "intent": "pedir_ayuda" },
+
+  { "text": "no entiendo nada de lo que está pasando", "intent": "pedir_ayuda" },
+  { "text": "esto es peligroso para mis datos", "intent": "posible_incidente" },
+  { "text": "me siento inseguro con mi ordenador", "intent": "recomendaciones_seguridad" },
+  { "text": "explícame los pasos para actuar si me han hackeado", "intent": "recomendaciones_seguridad" },
+  { "text": "cómo sé si un correo es falso", "intent": "informacion_amenaza" },
+
+  { "text": "quiero salir del chat", "intent": "salir" },
+  { "text": "terminar conversación", "intent": "salir" },
+  { "text": "gracias, ya no necesito más ayuda", "intent": "salir" },
+  { "text": "adiós", "intent": "salir" },
+  { "text": "cerrar chat", "intent": "salir" }
+]
