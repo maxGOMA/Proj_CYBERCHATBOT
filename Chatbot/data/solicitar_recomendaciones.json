@@ -3,7 +3,10 @@
   "examples": [
     "como me protejo", "que medidas tomo", "recomendacion", "como evito",
     "que debo hacer para protegerme", "como puedo prevenir", "como mejorar seguridad",
-    "como proteger mi empresa", "medidas de seguridad", "como estar seguro"
+    "como proteger mi empresa", "medidas de seguridad", "como estar seguro",
+    "como evitar pc lenta", "recomendaciones para no atascar la impresora",
+    "consejos sobre firmas de correo", "como mantener conectado el bluetooth",
+    "prevenir errores de licencia de software", "evitar perder archivos locales"
   ],
   "by_threat": {
     "phishing": [
@@ -131,6 +134,42 @@
       "Verifica que las copias se restauran correctamente.",
       "Controla USB, SD y discos externos con inventario.",
       "Usa historial de versiones antes de sobrescribir datos."
+    ],
+    "rendimiento_sistema": [
+      "Reinicia tu ordenador al menos una vez por semana para depurar de memoria los subprocesos basura remanentes.",
+      "Mantén libre de datos al menos el 15% del disco duro principal para que el sistema operativo trabaje de forma fluida.",
+      "Evita añadir barras de herramientas o complementos pesados no homologados a tus navegadores web.",
+      "Configura las actualizaciones masivas del sistema operativo en horas muertas fuera de tu jornada productiva."
+    ],
+    "configuracion_impresora": [
+      "No envíes el mismo documento de forma repetida si notas que el dispositivo de impresión tarda unos segundos en procesarlo.",
+      "Verifica la compatibilidad física del grosor y formato del papel antes de introducirlo en los rieles de la bandeja.",
+      "Si trabajas bajo la modalidad de teletrabajo, asegúrate de estar firmemente conectado a la VPN de la empresa antes de lanzar impresiones.",
+      "Informa de forma preventiva a soporte si observas líneas difusas en el papel impreso para calendarizar cambio de tóner."
+    ],
+    "correo_fuera_oficina": [
+      "Deja programado tu mensaje automático de ausencia vacacional la tarde anterior a comenzar tu periodo de descanso.",
+      "Redacta plantillas de aviso corporativas discretas que omitan detalles logísticos personales excesivos hacia el exterior.",
+      "Estandariza los bloques de firmas de correo utilizando la fuente tipográfica corporativa indicada por la organización.",
+      "Comprueba que la autorrespuesta funciona enviándote un correo de prueba desde un perfil secundario."
+    ],
+    "dispositivos_bluetooth": [
+      "Desactiva momentáneamente el Bluetooth de tus dispositivos móviles personales cuando configures los cascos en tu ordenador de trabajo.",
+      "Devuelve los auriculares inalámbricos a su estación de carga al finalizar tus llamadas para asegurar niveles óptimos de energía.",
+      "Evita colocar enrutadores WiFi domésticos pegados a tu estación de trabajo para eludir interferencias en canales de 2.4 GHz.",
+      "Depura el listado de dispositivos inalámbricos del sistema eliminando aquellos registros que pertenezcan a periféricos en desuso."
+    ],
+    "instalacion_programas": [
+      "Utiliza de forma exclusiva los catálogos de aplicaciones validadas por los administradores de sistemas.",
+      "Renueva o valida tu contraseña corporativa de forma oportuna para evitar suspensiones automáticas de licencias SaaS.",
+      "No ejecutes bajo ninguna circunstancia activadores ilegales o cracks de software en máquinas de la empresa.",
+      "Sincroniza tus suites de productividad iniciando sesión únicamente con tu perfil institucional único."
+    ],
+    "gestion_archivos_locales": [
+      "Activa el guardado automático (Autosave) en todas tus herramientas integradas con servicios de nube.",
+      "Organiza tus carpetas con nombres cortos y estructuras claras para no superar el límite de caracteres de ruta de Windows.",
+      "Revisa concienzudamente el contenido de la papelera antes de proceder con su vaciado permanente.",
+      "Cierra los archivos compartidos al terminar tu edición para que no queden bloqueados en lectura para tus compañeros."
     ]
   },
   "general": [

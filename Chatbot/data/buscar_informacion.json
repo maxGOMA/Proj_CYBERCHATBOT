@@ -4,7 +4,15 @@
     "que es el phishing", "explicame el ransomware", "que es un ddos",
     "como funciona el malware", "informacion sobre", "explicame",
     "que es", "como funciona", "definicion de", "que significa",
-    "cuentame sobre", "quiero saber sobre", "habla de"
+    "cuentame sobre", "quiero saber sobre", "habla de", "que significa pc lenta",
+    "explicame por que no imprime", "que es una respuesta automatica",
+    "como funciona el bluetooth", "informacion sobre error de licencia",
+    "como recuperar un archivo borrado", "que pasa si no me funciona el microfono",
+    "por que no escucho en las reuniones", "borrar el historial de internet",
+    "como limpio las cookies del navegador", "la segunda pantalla se ve negra",
+    "no me detecta el proyector", "como cambio de pantalla duplicada a extendida",
+    "que significa borrar cache", "no me va la camara en teams", "mi pagina web favorita no carga",
+    "configurar el audio de la videollamada", "el monitor externo no da senyal"
   ],
   "threats": {
     "phishing": {
@@ -124,6 +132,60 @@
       "detail": "Se usa cuando no hay espacio, el archivo se corrompe, el disco externo no responde o una copia de seguridad falla. También cubre restauración de versiones, tarjetas SD y recuperación de información después de un fallo o pérdida física.",
       "example": "El disco está lleno, la copia de seguridad falló y un archivo ZIP llegó dañado desde un USB externo.",
       "keywords": ["disco lleno", "backup", "archivo corrupto", "usb", "sd", "recuperar archivo", "copia de seguridad"]
+    },
+    "rendimiento_sistema": {
+      "title": "Rendimiento del sistema",
+      "summary": "Estado en el que el ordenador responde con lentitud debido a la saturación de sus recursos físicos o lógicos.",
+      "detail": "El rendimiento degradado se manifiesta cuando el procesador, la memoria RAM o el disco duro están al 100% de uso de forma continua. Puede deberse a actualizaciones en segundo plano, acumulación de archivos temporales, falta de espacio o procesos congelados en memoria. Raramente requiere sustitución de hardware inmediato y suele corregirse con tareas de mantenimiento básico.",
+      "keywords": ["ordenador lento", "pc lento", "procesos congelados", "ram saturada", "lentitud general", "no responde"]
+    },
+    "configuracion_impresora": {
+      "title": "Configuración de impresoras",
+      "summary": "Proceso de vinculación y resolución de errores lógicos de dispositivos de impresión locales o de red.",
+      "detail": "Las incidencias de impresión abarcan desde documentos bloqueados en la cola de impresión del sistema local (Spooler), desconfiguración de puertos IP en impresoras compartidas, hasta problemas físicos menores como atascos de papel detectados incorrectamente por el controlador o falta de consumibles básicos.",
+      "keywords": ["impresora fuera de linea", "cola atascada", "no imprime", "impresora red", "driver impresion", "spooler"]
+    },
+    "correo_fuera_oficina": {
+      "title": "Respuestas automáticas y firmas",
+      "summary": "Configuración de notificaciones de ausencia temporal y personalización estética de los correos salientes.",
+      "detail": "Las tareas de soporte de ofimática más comunes implican guiar al usuario en el establecimiento de reglas de fuera de oficina para periodos vacacionales o bajas. Esto se realiza desde las opciones de cuenta en Outlook o entornos webmail, sincronizándose directamente con el servidor de correo para automatizar los retornos de mensajes.",
+      "keywords": ["fuera de oficina", "firma de correo", "respuesta automatica", "mensaje vacaciones", "ausencia", "outlook firma"]
+    },
+    "dispositivos_bluetooth": {
+      "title": "Conectividad Bluetooth",
+      "summary": "Protocolo inalámbrico de corto alcance utilizado para conectar periféricos de audio y control en el puesto de trabajo.",
+      "detail": "Los problemas de Bluetooth suelen derivar de perfiles desincronizados tras actualizaciones, interferencias electromagnéticas o que el dispositivo accesorio sigue emparejado de forma invisible a otro emisor cercano. Se soluciona forzando el modo de emparejamiento manual.",
+      "keywords": ["bluetooth", "auriculares inalambricos", "raton bluetooth", "no vincula", "desconexion bluetooth", "audio inalambrico"]
+    },
+    "instalacion_programas": {
+      "title": "Instalación y Licencias de Software",
+      "summary": "Gestión del ciclo de vida de aplicaciones locales, validación de sus activaciones y control de permisos.",
+      "detail": "Aparece cuando aplicaciones ofimáticas muestran avisos de 'Licencia no válida' o 'Copia de evaluación expirada'. También cubre los bloqueos del sistema de protección del sistema operativo que impiden a un usuario sin permisos de administrador ejecutar instaladores no homologados.",
+      "keywords": ["licencia expirada", "activar office", "permisos de administrador", "error instalador", "ejecutar como administrador", "software bloqueado"]
+    },
+    "gestion_archivos_locales": {
+      "title": "Gestión de archivos locales",
+      "summary": "Recuperación, organización y errores de acceso a documentos almacenados directamente en el disco duro local.",
+      "detail": "Errores típicos de soporte técnico básico como la eliminación accidental de un archivo importante, vaciado imprevisto de la papelera de reciclaje, carpetas invisibles por cambio de vistas o bloqueos de lectura/escritura debido a que el archivo está abierto en segundo plano.",
+      "keywords": ["recuperar archivo", "papelera de reciclaje", "archivo eliminado", "ruta demasiado larga", "archivo bloqueado lectura", "no puedo guardar"]
+    },
+    "problemas_audio_video": {
+      "title": "Problemas de Audio, Micrófono y Cámara en Videollamadas",
+      "summary": "Fallos lógicos de configuración que impiden hablar, escuchar o ser visto correctamente durante reuniones virtuales en plataformas corporativas.",
+      "detail": "Este tipo de incidencia ocurre de forma recurrente cuando el sistema operativo cambia el dispositivo predeterminado al conectar o desconectar auriculares. También engloba los bloqueos de privacidad donde el navegador web o la aplicación nativa (como Teams, Zoom o Webex) no disponen de los permisos explícitos otorgados por el usuario para utilizar el hardware de la cámara o el micrófono local. Los usuarios sin experiencia suelen pensar que el dispositivo está roto, cuando en realidad suele ser una simple desconfiguración del silenciado o del canal de entrada y salida lógico.",
+      "keywords": ["no me escuchan", "no oigo nada", "pantalla negra camara", "microfono no funciona", "activar camara teams", "audio videollamada", "auriculares no suenan", "reunion sin audio", "conmutar altavoz", "permiso de microfono", "zoom no detecta audio", "se ve borrosa la camara"]
+    },
+    "navegacion_web_cache": {
+      "title": "Navegación Web, Limpieza de Caché y Cookies",
+      "summary": "Dificultades para acceder a portales de internet o aplicaciones internas debido a la acumulación de datos temporales corruptos en el navegador.",
+      "detail": "Los navegadores de internet (como Google Chrome, Microsoft Edge o Mozilla Firefox) guardan copias de las páginas web para que carguen más rápido en el futuro. Con el tiempo, o tras una actualización del sistema interno de la empresa, estos archivos guardados (caché) y las credenciales antiguas (cookies) entran en conflicto, provocando pantallas en blanco, botones que no reaccionan, bucles de inicio de sesión infinitos o errores de acceso denegado. La solución universal en la mesa de soporte básico consiste en purgar de forma guiada estos registros temporales sin afectar a los marcadores personales del usuario.",
+      "keywords": ["borrar cookies", "limpiar cache", "pantalla en blanco web", "no carga pagina", "error de certificado", "bucle inicio sesion", "chrome no abre", "edge lento", "error 404", "ventanas emergentes", "bloqueador de anuncios", "historial de navegacion"]
+    },
+    "monitores_pantallas": {
+      "title": "Configuración de Monitores Externos y Proyectores",
+      "summary": "Errores de visualización, pantallas secundarias inactivas o mala resolución al conectar el equipo a un monitor o proyector físico.",
+      "detail": "Ocurre cuando el ordenador portátil no reconoce un monitor externo o un proyector de sala de reuniones tras conectar el cable de vídeo (HDMI, DisplayPort o USB-C). El problema suele radicar en que el sistema operativo está configurado en un modo de proyección incorrecto (por ejemplo, 'Solo pantalla de equipo' en lugar de 'Extender' o 'Duplicar'), o en que la resolución de pantalla asignada automáticamente sobrepasa las capacidades físicas del monitor receptor, dejándolo en negro con un mensaje de 'Sin Señal'. No requiere sustitución de hardware, sino un reajuste de comandos rápidos del teclado.",
+      "keywords": ["pantalla externa negra", "duplicar pantalla", "extender escritorio", "proyector sin se単al", "resolucion borrosa", "no detecta segundo monitor", "cable hdmi", "windows p", "cambiar resolucion", "monitor secundario", "letras muy pequeñas", "girar pantalla"]
     }
   }
 }

@@ -38,6 +38,11 @@
       "description": "Amenazas provenientes de personas con acceso legítimo.",
       "keywords": ["empleado", "interno", "usb", "fuga", "privilegio", "acceso interno"],
       "subcategories": ["insider_threat"]
+    },
+    "soporte_tecnico_basico": {
+      "description": "Incidencias comunes de la estación de trabajo y configuración básica de aplicaciones de oficina.",
+      "keywords": ["lento", "impresora", "hoja", "firma", "vacaciones", "cascos", "auriculares", "licencia", "borrado", "papelera"],
+      "subcategories": ["rendimiento_sistema", "configuracion_impresora", "correo_fuera_oficina", "dispositivos_bluetooth", "instalacion_programas", "gestion_archivos_locales"]
     }
   }
 }

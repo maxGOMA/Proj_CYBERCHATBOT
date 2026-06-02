@@ -45,6 +45,18 @@
     {
       "title": "Actualizaciones e instalación",
       "detail": "Instala software solo desde fuentes oficiales, aplica parches cuando estén disponibles y libera espacio antes de actualizar. Si una instalación se queda atascada, documenta el error y reinicia el proceso."
+    },
+    {
+      "title": "Optimización de rendimiento",
+      "detail": "Mantén tu almacenamiento con al menos un 15% de espacio libre. Cierra las pestañas del navegador que no utilices y evita que aplicaciones innecesarias se inicien automáticamente al encender el ordenador."
+    },
+    {
+      "title": "Uso de periféricos inalámbricos",
+      "detail": "Cuando un dispositivo Bluetooth falle, apágalo y enciéndelo, verifica el nivel de batería y asegúrate de que no esté emparejado por error con otro teléfono móvil o equipo cercano."
+    },
+    {
+      "title": "Gestión de colas de impresión",
+      "detail": "Si la impresora no responde, no envíes el mismo documento múltiples veces. Revisa la cola de impresión del sistema, elimina los trabajos atascados y comprueba que no esté marcada la opción de 'Trabajar sin conexión'."
     }
   ]
 }

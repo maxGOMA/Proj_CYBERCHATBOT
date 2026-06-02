@@ -11,7 +11,9 @@
     "que es un certificado caducado", "que es un archivo bloqueado", "que es teams no abre",
     "que es audio de teams", "que es una copia de seguridad fallida", "que es disco lleno",
     "que es un fallo dns", "que es vpn no conecta", "que es un problema de permisos",
-    "que es recuperar archivo", "que es licencia expirada", "que es actualizacion atascada"
+    "que es recuperar archivo", "que es licencia expirada", "que es actualizacion atascada",
+    "que es la optimizacion de pc", "que es una cola de impresion", "que es el fuera de oficina",
+    "como se configura el bluetooth", "que es un error de licencia de software", "como recuperar un archivo borrado"
   ],
   "threats": {
     "phishing": {
@@ -69,6 +71,48 @@
       "detail": "Las amenazas internas son especialmente peligrosas porque provienen de personas con acceso legítimo. Pueden ser empleados descontentos, negligentes o que han sido comprometidos externamente. El daño puede incluir robo de datos, sabotaje o espionaje industrial. La monitorización del comportamiento (UEBA) y el mínimo privilegio son las principales defensas.",
       "example": "Un empleado que va a ser despedido copia toda la base de datos de clientes en un USB antes de marcharse.",
       "keywords": ["insider threat", "amenaza interna", "empleado malicioso", "fuga datos interna", "ueba"]
+    },
+    "rendimiento_sistema": {
+      "title": "Rendimiento del sistema",
+      "definition": "Degradación de la velocidad operativa de un equipo informático provocada por la sobrecarga de sus componentes de hardware o software.",
+      "detail": "Cuando los recursos del sistema (CPU, memoria o disco) están ocupados de forma persistente por tareas en segundo plano o servicios corruptos, el usuario experimenta retrasos. La intervención típica consiste en identificar procesos anómalos y realizar limpieza preventiva.",
+      "example": "El ordenador tarda más de 10 minutos en arrancar y, al abrir cualquier aplicación de Office, el cursor se transforma en un círculo de carga permanente.",
+      "keywords": ["ordenador lento", "lentitud pc", "optimizar recursos", "alto consumo cpu", "limpieza archivos temporales"]
+    },
+    "configuracion_impresora": {
+      "title": "Configuración de impresoras",
+      "definition": "Gestión y diagnóstico de la comunicación lógica entre el sistema operativo y el dispositivo físico de impresión.",
+      "detail": "Los fallos de impresión detienen flujos administrativos diarios. Suelen solucionarse purgando carpetas de cola del sistema de forma local, reiniciando servicios internos o restableciendo las credenciales de la impresora mapeada en red.",
+      "example": "Mandas a imprimir un documento urgente, la impresora se queda colgada mostrando el estado 'Imprimiendo...' y bloquea el resto de documentos de la cola.",
+      "keywords": ["impresora atascada", "cola spooler", "impresora fuera de linea", "añadir impresora por ip", "error driver impresora"]
+    },
+    "correo_fuera_oficina": {
+      "title": "Respuestas automáticas y firmas",
+      "definition": "Configuraciones funcionales del cliente de correo para automatizar comunicaciones de ausencia y estandarizar la identidad visual.",
+      "detail": "Estas solicitudes son recurrentes en temporadas vacacionales. El servicio técnico asiste a los usuarios menos experimentados a aplicar reglas en los servidores para evitar que dejen de responder correos entrantes críticos.",
+      "example": "Un usuario se va de vacaciones y necesita activar un correo automático que avise a los clientes externos con quién deben contactar de forma alternativa.",
+      "keywords": ["configurar fuera de oficina", "poner firma outlook", "mensaje automatico vacaciones", "regla de ausencia", "firma corporativa"]
+    },
+    "dispositivos_bluetooth": {
+      "title": "Conectividad Bluetooth",
+      "definition": "Enlace por radiofrecuencia de onda corta para conectar de forma inalámbrica periféricos de entrada/salida de datos.",
+      "detail": "La falta de cables introduce variabilidad debido a la gestión de energía del dispositivo, desincronización de llaves de seguridad o saturación de canales de radio, obligando a reiniciar los adaptadores de hardware del equipo.",
+      "example": "Los auriculares inalámbricos de la estación de trabajo se escuchan entrecortados o no se enlazan automáticamente al encenderlos.",
+      "keywords": ["emparejar cascos", "raton bluetooth no se mueve", "vincular teclado inalambrico", "activar bluetooth pc", "driver bluetooth"]
+    },
+    "instalacion_programas": {
+      "title": "Instalación y Licencias de Software",
+      "definition": "Validación de privilegios de seguridad locales e introducción de claves para habilitar el software comercial.",
+      "detail": "Los entornos corporativos limitan la instalación libre de herramientas para prevenir incidentes de seguridad. El soporte debe validar si el software está aprobado y solucionar bloqueos de políticas locales (UAC) o alertas de licencias caducadas.",
+      "example": "Aparece un aviso permanente en la barra superior de Excel indicando: 'Su licencia ha expirado. La mayoría de las funciones se han deshabilitado'.",
+      "keywords": ["activar licencia", "error de activacion office", "pedir permisos administrador", "instalar programa corporativo", "uac bloqueo"]
+    },
+    "gestion_archivos_locales": {
+      "title": "Gestión de archivos locales",
+      "definition": "Operaciones básicas del explorador de archivos relacionadas con el almacenamiento físico, recuperación de datos e integridad de rutas.",
+      "detail": "Los usuarios sin experiencia suelen perder la ubicación de documentos descargados o eliminar elementos críticos por error. El soporte asiste usando funciones de búsqueda avanzada o restaurando elementos desde el contenedor temporal del OS.",
+      "example": "El usuario borró accidentalmente una carpeta de presupuestos de su escritorio local y no sabe cómo revertir la acción.",
+      "keywords": ["recuperar documento borrado", "buscar archivo perdido", "papelera de reciclaje restaurar", "no guarda archivo local", "error ruta larga"]
     }
   }
 }

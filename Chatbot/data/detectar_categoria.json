@@ -12,10 +12,10 @@
     "malware": ["ransomware", "malware"],
     "aplicacion_web": ["sql_injection"],
     "interno": ["insider_threat"],
-    "gestion_acceso": ["credenciales_acceso"],
+    "puesto_trabajo": ["pantalla_energia", "hardware_perifericos", "rendimiento_sistema", "configuracion_impresora", "dispositivos_bluetooth", "gestion_archivos_locales"],
+    "productividad_correo": ["ofimatica_correo", "correo_fuera_oficina"],
+    "gestion_acceso": ["credenciales_acceso", "instalacion_programas"],
     "conectividad_red": ["conectividad_red"],
-    "puesto_trabajo": ["pantalla_energia", "hardware_perifericos"],
-    "productividad_correo": ["ofimatica_correo"],
     "nube_colaboracion": ["nube_colaboracion", "colaboracion_movilidad"],
     "navegacion_seguridad": ["navegacion_sesion", "seguridad_archivos_certificados"],
     "almacenamiento_backup": ["almacenamiento_backup"]

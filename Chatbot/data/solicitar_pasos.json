@@ -3,7 +3,15 @@
   "examples": [
     "que pasos sigo", "como lo resuelvo paso a paso", "guia para solucionar",
     "que hago primero", "instrucciones para", "como actuo ante",
-    "pasos a seguir", "protocolo de actuacion", "que debo hacer primero"
+    "pasos a seguir", "protocolo de actuacion", "que debo hacer primero",
+    "pasos para pc lenta", "como arreglo la cola de impresion",
+    "instrucciones para mensaje de vacaciones", "como vinculo auriculares bluetooth",
+    "pasos para error de licencia office", "como restauro un archivo borrado",
+    "pasos para arreglar el microfono", "como se borra la cache del navegador",
+    "instrucciones para conectar el proyector de la sala", "tutorial basico para ver la segunda pantalla",
+    "no se como limpiar las cookies en edge", "guia para cuando no escucho el audio de la llamada",
+    "que hacer si la pantalla se ve girada", "como habilitar la camara que se ve negra",
+    "pasos para borrar el historial de internet de hoy"
   ],
   "steps": {
     "phishing": [
@@ -158,6 +166,76 @@
       "4. Revisa salud del disco y errores de cifrado o bloqueo.",
       "5. Si hay pérdida física del soporte, reporta el incidente de inmediato.",
       "6. Comprueba que la copia de seguridad se puede restaurar correctamente."
+    ],
+    "rendimiento_sistema": [
+      "1. Cierra los programas abiertos pesados que no utilices utilizando la barra de tareas de tu sistema operativo.",
+      "2. Reinicia por completo el ordenador si compruebas que lleva varios días encendido de forma continua.",
+      "3. Abre el menú de búsqueda de Windows, escribe 'Liberador de espacio en disco' y ejecútalo para eliminar los archivos temporales de internet.",
+      "4. Presiona la combinación Ctrl + Shift + Esc para abrir el Administrador de Tareas y revisa si algún proceso desconocido consume un porcentaje anómalo de CPU.",
+      "5. Desactiva los efectos visuales avanzados de las ventanas si tu hardware es antiguo para mitigar la carga de vídeo."
+    ],
+    "configuracion_impresora": [
+      "1. Comprueba físicamente que el dispositivo de impresión disponga de papel en la bandeja, tóner cargado y no muestre luces rojas de error.",
+      "2. Abre la ventana de Configuración de Windows -> Dispositivos -> Impresoras y escáneres.",
+      "3. Haz doble clic sobre el icono de tu impresora asignada de forma predeterminada para abrir la Cola de Impresión lógica.",
+      "4. Selecciona el menú superior con el nombre de 'Impresora' y pulsa sobre 'Cancelar todos los documentos' para desbloquear el spooler.",
+      "5. Verifica concienzudamente que no se encuentre marcada la casilla con el texto 'Trabajar sin conexión'."
+    ],
+    "correo_fuera_oficina": [
+      "1. Abre la aplicación Microsoft Outlook instalada o accede a la versión web mediante tu navegador.",
+      "2. Haz clic en la pestaña de la esquina superior izquierda llamada 'Archivo' (en la aplicación) o en el engranaje de configuración (en la web).",
+      "3. Localiza y pulsa sobre la opción 'Respuestas automáticas (Fuera de oficina)'.",
+      "4. Activa de forma explícita la casilla 'Enviar respuestas automáticas' y define los rangos de fechas y horas exactas de tu periodo de ausencia.",
+      "5. Escribe el mensaje informativo en los cuadros de texto provistos y haz clic en 'Aceptar' para guardar el estado en el servidor de correo."
+    ],
+    "dispositivos_bluetooth": [
+      "1. Activa el modo de emparejamiento manual (pairing mode) en tus auriculares o ratón manteniendo pulsado el botón de encendido hasta que la luz comience a parpadear rápidamente.",
+      "2. En tu ordenador de trabajo, dirígete a Configuración -> Dispositivos -> Bluetooth y otros dispositivos.",
+      "3. Apaga el interruptor general lógico de Bluetooth del sistema operativo, espera 5 segundos de cortesía y vuélvelo a encender.",
+      "4. Si el periférico en cuestión ya aparecía listado previamente pero no emite sonido, pulsa sobre su nombre y selecciona 'Quitar dispositivo'.",
+      "5. Haz clic en el botón superior 'Agregar Bluetooth u otro dispositivo' e inicia una nueva búsqueda física para enlazarlo de manera limpia."
+    ],
+    "instalacion_programas": [
+      "1. Si el aviso indica licencia expirada en tu suite de Office, haz clic sobre el nombre de tu perfil de usuario en la esquina superior de la aplicación.",
+      "2. Selecciona la opción de 'Cerrar sesión' por completo, finaliza la ejecución del programa y vuelve a abrirlo iniciando sesión de nuevo con tu correo de empresa.",
+      "3. Si un ejecutable externo descargado de internet te pide credenciales de cuenta administrativa, pulsa cancelar inmediatamente.",
+      "4. Abre el catálogo corporativo automático instalado en tu PC (conocido como Software Center o Portal de Empresa) para buscar la herramienta homologada.",
+      "5. Haz clic en 'Instalar' desde dicho portal seguro para realizar el despliegu automático sin requerir permisos de soporte."
+    ],
+    "gestion_archivos_locales": [
+      "1. Minimiza todas las aplicaciones en uso y haz doble clic sobre el icono de la Papelera de Reciclaje situado en tu escritorio.",
+      "2. Utiliza el cuadro de búsqueda interna de la papelera para filtrar y localizar el documento por su nombre original de archivo.",
+      "3. Haz clic derecho sobre el registro del documento recuperado y pulsa sobre la opción del menú llamada 'Restaurar'.",
+      "4. Si el archivo de Office se cerró sin guardar debido a un cuelgue eléctrico, inicia de nuevo la aplicación y busca en el panel inferior izquierdo la opción 'Recuperar documentos no guardados'.",
+      "5. Tras recuperarlo, mueve de inmediato el archivo a una carpeta en la nube de OneDrive sincronizada para garantizar copias de seguridad estables."
+    ],
+    "problemas_audio_video": [
+      "1. Localiza los iconos de control en la barra inferior de tu aplicación de videollamada activa (Teams/Zoom/Meet).",
+      "2. Comprueba que el icono del micrófono no tenga una barra diagonal encima. Si la tiene, haz un clic sobre él para desactivar el silenciado de voz.",
+      "3. Si siguen sin escucharte, busca el menú de configuración multimedia (representado normalmente por una rueda dentada o tres puntitos horizontales) y pulsa en 'Configuración del dispositivo'.",
+      "4. En la sección desplegable rotulada como 'Micrófono de entrada', cambia la opción seleccionada actual por el nombre específico de tus auriculares integrados (evita dejarlo en 'Predeterminado del sistema').",
+      "5. Haz exactamente el mismo cambio en la pestaña superior llamada 'Altavoz de salida' para direccionar el sonido hacia tus orejas.",
+      "6. Si la cámara web da imagen en negro, comprueba visualmente el marco superior de tu ordenador portátil; muchos modelos modernos incorporan una pestañita física deslizante de plástico (obturador de privacidad) que tapa el lente de forma física. Deslízala hacia un lado.",
+      "7. Si el problema persiste de manera general, cierra la sesión de la videollamada, desenchufa el conector de tus auriculares del puerto del PC, vuelve a introducirlo firmemente en otra ranura libre y accede de nuevo a la reunión."
+    ],
+    "navegacion_web_cache": [
+      "1. Abre tu navegador de internet habitual en el que esté fallando la aplicación web de la empresa (Google Chrome o Microsoft Edge).",
+      "2. Dirígete a la esquina superior derecha de la ventana del navegador y haz clic con el ratón sobre el icono que muestra tres puntos verticales o tres líneas horizontales consecutivas.",
+      "3. Despliega el menú flotante y busca la opción que dice 'Historial', colócate encima de ella y pulsa nuevamente en el submenú llamado también 'Historial' (o presiona la combinación rápida Ctrl + H).",
+      "4. En la columna que aparece en el lateral izquierdo de tu pantalla, localiza y haz clic sobre el botón azul o enlace que pone 'Borrar datos de navegación'.",
+      "5. Emergerá un cuadro de diálogo central en la pantalla. Lo primero que debes hacer es ir a la pestaña superior de tiempo y seleccionar en el menú desplegable la opción 'Desde siempre' (o 'Todo el tiempo').",
+      "6. Asegúrate de marcar con un tick o marca de verificación las casillas tituladas 'Cookies y otros datos de sitios' y la casilla 'Archivos e imágenes almacenados en caché'. Desmarca la casilla de contraseñas para no perderlas.",
+      "7. Haz clic sobre el botón inferior que indica 'Borrar datos' o 'Borrar ahora'. Espera unos segundos a que la rueda de carga finalice por completo.",
+      "8. Cierra absolutamente todas las pestañas y ventanas del navegador que tengas abiertas en tu barra de tareas inferior, vuelve a abrir el navegador desde cero y escribe de nuevo la dirección web para comprobar el acceso limpio."
+    ],
+    "monitores_pantallas": [
+      "1. Siéntate frente a tu puesto de trabajo y localiza la tecla física con el dibujo de cuatro cuadrados (el logotipo de Windows) en la esquina inferior izquierda de tu teclado.",
+      "2. Mantén presionada de forma continua esa tecla de Windows y, al mismo tiempo, efectúa una pulsación rápida sobre la letra P de tu teclado (Windows + P). Suelta ambas teclas.",
+      "3. Observa el menú gris vertical que acaba de desplegarse de manera automática en el borde derecho de tu monitor principal.",
+      "4. Si estás trabajando de forma rutinaria en tu mesa con dos monitores y quieres mover el ratón de un lado a otro libremente, haz un clic sobre la tercera opción de la lista denominada 'Extender'.",
+      "5. Si estás conectado a un proyector de techo o un televisor en una sala de juntas y quieres que el público vea exactamente lo mismo que tú estás viendo en tu portátil, haz clic en la segunda opción llamada 'Duplicar'.",
+      "6. Si el segundo monitor permanece con la pantalla en negro, acércate a él y presiona el botón físico de encendido que suele estar ubicado en la esquina inferior derecha o en la parte posterior del marco metálico de la pantalla.",
+      "7. En caso de que aparezca el mensaje de error de texto 'Sin señal' o 'Cable desconectado', localiza el cable que conecta la pantalla grande con tu ordenador, retíralo completamente con la mano, sopla suavemente los conectores para retirar posibles restos de polvo e insértalo aplicando una presión firme hasta el fondo."
     ]
   }
 }

@@ -6,7 +6,9 @@
     "seguridad basica", "como protegerme en general", "checklist seguridad",
     "buenas practicas para contrasenas", "consejos para red", "tips para backup",
     "seguridad de movil", "como mejorar permisos", "buenas practicas de correo",
-    "consejos para la nube", "como trabajar con videollamadas seguras"
+    "consejos para la nube", "como trabajar con videollamadas seguras",
+    "como optimizar la pc lenta", "buenas practicas de impresion",
+    "consejos para perifericos bluetooth", "como organizar archivos locales"
   ],
   "categories": {
     "contrasenas": {
@@ -63,6 +65,24 @@
         "Verifica siempre el remitente antes de abrir adjuntos.",
         "No abras adjuntos de remitentes desconocidos.",
         "Reporta correos sospechosos como phishing a tu proveedor."
+      ]
+    },
+    "rendimiento": {
+      "title": "Rendimiento y Optimización",
+      "tips": [
+        "Reinicia el ordenador al menos una vez por semana para vaciar la memoria RAM por completo de procesos colgados.",
+        "Elimina de forma regular los archivos pesados de la carpeta de descargas y vacía la papelera de reciclaje.",
+        "Desactiva programas de inicio automático que consuman muchos recursos a través del Administrador de Tareas.",
+        "Evita abrir múltiples aplicaciones de diseño o bases de datos de forma simultánea si no las estás utilizando."
+      ]
+    },
+    "perifericos_inalambricos": {
+      "title": "Periféricos e Impresoras inalámbricas",
+      "tips": [
+        "Comprueba que los cables de datos de las impresoras locales estén firmemente conectados a puertos directos del PC.",
+        "Carga tus dispositivos inalámbricos antes de que la batería baje del 10% para prevenir desconexiones intermitentes.",
+        "Al configurar una impresora de red corporativa, asegúrate de estar conectado a la VPN si trabajas desde tu hogar.",
+        "Limpia los sensores ópticos de ratones y teclados mecánicos para evitar saltos del cursor o teclas encalladas."
       ]
     }
   }
