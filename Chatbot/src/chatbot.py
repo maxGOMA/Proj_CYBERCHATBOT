@@ -427,9 +427,6 @@ class Chatbot:
             else:
                 response = self.process_input(user_text)
                 print("CyberBot:", response)
-
-
-# Parte de la GUI
 import tkinter as tk
 from tkinter import messagebox
 

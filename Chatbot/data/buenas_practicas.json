@@ -3,60 +3,87 @@
   "examples": [
     "buenas practicas", "consejos generales", "como mejorar la seguridad",
     "tips de seguridad", "que deberia hacer siempre", "habitos seguros",
-    "seguridad basica", "como protegerme en general", "checklist seguridad"
+    "seguridad basica", "como protegerme en general", "checklist seguridad",
+    "buenas practicas para contrasenas", "consejos para red", "tips para backup",
+    "seguridad de movil", "como mejorar permisos", "buenas practicas de correo",
+    "consejos para la nube", "como trabajar con videollamadas seguras",
+    "como optimizar la pc lenta", "buenas practicas de impresion",
+    "consejos para perifericos bluetooth", "como organizar archivos locales"
   ],
-  "practices": [
-    {
-      "title": "Gestión de credenciales",
-      "detail": "Usa contraseñas largas y únicas para cada servicio, activa 2FA y cambia de inmediato cualquier credencial comprometida. Guarda las claves en un gestor de contraseñas confiable."
+  "categories": {
+    "contrasenas": {
+      "title": "Gestión de contraseñas",
+      "tips": [
+        "Usa contraseñas de mínimo 12 caracteres con letras, números y símbolos.",
+        "Nunca uses la misma contraseña en dos servicios distintos.",
+        "Usa un gestor de contraseñas (Bitwarden, KeePass) para gestionarlas.",
+        "Cambia las contraseñas cada 6 meses en servicios críticos.",
+        "Nunca compartas contraseñas por correo o mensajería."
+      ]
     },
-    {
-      "title": "Acceso y permisos",
-      "detail": "Aplica el principio de mínimo privilegio: cada usuario debe ver solo lo que necesita. Revisa accesos, altas y bajas con regularidad y evita permisos de administrador permanentes."
+    "autenticacion": {
+      "title": "Autenticación",
+      "tips": [
+        "Activa la autenticación en dos factores (2FA) siempre que sea posible.",
+        "Usa una app de autenticación (Google Authenticator, Authy) en lugar de SMS.",
+        "Revisa los dispositivos con sesión iniciada en tus cuentas periódicamente.",
+        "Desconfía de cualquier solicitud de código 2FA no iniciada por ti."
+      ]
     },
-    {
-      "title": "Conectividad de red",
-      "detail": "Comprueba WiFi, cableado, DNS y VPN antes de abrir incidencias. Reinicia el router o el equipo si hay cortes repetidos y documenta la hora y el alcance del fallo."
+    "actualizaciones": {
+      "title": "Actualizaciones y parches",
+      "tips": [
+        "Mantén el sistema operativo siempre actualizado.",
+        "Activa las actualizaciones automáticas en todos los dispositivos.",
+        "Actualiza el firmware del router periódicamente.",
+        "Elimina software que ya no uses para reducir la superficie de ataque."
+      ]
     },
-    {
-      "title": "Puesto de trabajo",
-      "detail": "Cuida el hardware del puesto: ventilación correcta, cargador en buen estado, periféricos revisados y pantalla protegida. Si algo falla, prueba con otro cable o puerto antes de escalar."
+    "copias_seguridad": {
+      "title": "Copias de seguridad",
+      "tips": [
+        "Sigue la regla 3-2-1: 3 copias, 2 soportes distintos, 1 fuera de las instalaciones.",
+        "Verifica periódicamente que las copias de seguridad funcionan correctamente.",
+        "Guarda una copia desconectada de la red para protegerte del ransomware.",
+        "Automatiza las copias de seguridad para no depender de hacerlo manualmente."
+      ]
     },
-    {
-      "title": "Correo y ofimática",
-      "detail": "Verifica remitente, dominio y adjuntos antes de abrir un correo. Mantén Office, Outlook y el navegador actualizados, y revisa la cuota del buzón y la sincronización de la cuenta."
+    "navegacion": {
+      "title": "Navegación segura",
+      "tips": [
+        "Usa siempre HTTPS y desconfía de sitios sin candado.",
+        "No descargues software de fuentes no oficiales.",
+        "Usa un bloqueador de anuncios para evitar malvertising.",
+        "Evita hacer clic en anuncios o popups inesperados.",
+        "Usa una VPN en redes públicas."
+      ]
     },
-    {
-      "title": "Navegación y certificados",
-      "detail": "Mantén el navegador actualizado, borra cookies cuando haya problemas y no ignores certificados caducados o inválidos. Desconfía de pop-ups, extensiones desconocidas y enlaces recibidos por SMS."
+    "correo": {
+      "title": "Seguridad en el correo",
+      "tips": [
+        "Desconfía de correos urgentes que pidan datos o clics en enlaces.",
+        "Verifica siempre el remitente antes de abrir adjuntos.",
+        "No abras adjuntos de remitentes desconocidos.",
+        "Reporta correos sospechosos como phishing a tu proveedor."
+      ]
     },
-    {
-      "title": "Nube y colaboración",
-      "detail": "Comprueba el estado de OneDrive, SharePoint, Teams y Zoom antes de asumir un fallo local. Sincroniza archivos críticos y valida permisos, versiones y enlaces de reunión."
+    "rendimiento": {
+      "title": "Rendimiento y Optimización",
+      "tips": [
+        "Reinicia el ordenador al menos una vez por semana para vaciar la memoria RAM por completo de procesos colgados.",
+        "Elimina de forma regular los archivos pesados de la carpeta de descargas y vacía la papelera de reciclaje.",
+        "Desactiva programas de inicio automático que consuman muchos recursos a través del Administrador de Tareas.",
+        "Evita abrir múltiples aplicaciones de diseño o bases de datos de forma simultánea si no las estás utilizando."
+      ]
     },
-    {
-      "title": "Copias y recuperación",
-      "detail": "Sigue la regla 3-2-1, verifica restauraciones y conserva una copia desconectada. Si un archivo se corrompe, compara con la última versión válida antes de sobrescribir nada."
-    },
-    {
-      "title": "Dispositivos móviles",
-      "detail": "Mantén el móvil actualizado, usa bloqueo biométrico y revisa permisos de apps, VPN y perfiles MDM. Si el dispositivo se pierde o se rompe, revoca accesos y protege la cuenta cuanto antes."
-    },
-    {
-      "title": "Actualizaciones e instalación",
-      "detail": "Instala software solo desde fuentes oficiales, aplica parches cuando estén disponibles y libera espacio antes de actualizar. Si una instalación se queda atascada, documenta el error y reinicia el proceso."
-    },
-    {
-      "title": "Optimización de rendimiento",
-      "detail": "Mantén tu almacenamiento con al menos un 15% de espacio libre. Cierra las pestañas del navegador que no utilices y evita que aplicaciones innecesarias se inicien automáticamente al encender el ordenador."
-    },
-    {
-      "title": "Uso de periféricos inalámbricos",
-      "detail": "Cuando un dispositivo Bluetooth falle, apágalo y enciéndelo, verifica el nivel de batería y asegúrate de que no esté emparejado por error con otro teléfono móvil o equipo cercano."
-    },
-    {
-      "title": "Gestión de colas de impresión",
-      "detail": "Si la impresora no responde, no envíes el mismo documento múltiples veces. Revisa la cola de impresión del sistema, elimina los trabajos atascados y comprueba que no esté marcada la opción de 'Trabajar sin conexión'."
+    "perifericos_inalambricos": {
+      "title": "Periféricos e Impresoras inalámbricas",
+      "tips": [
+        "Comprueba que los cables de datos de las impresoras locales estén firmemente conectados a puertos directos del PC.",
+        "Carga tus dispositivos inalámbricos antes de que la batería baje del 10% para prevenir desconexiones intermitentes.",
+        "Al configurar una impresora de red corporativa, asegúrate de estar conectado a la VPN si trabajas desde tu hogar.",
+        "Limpia los sensores ópticos de ratones y teclados mecánicos para evitar saltos del cursor o teclas encalladas."
+      ]
     }
-  ]
+  }
 }

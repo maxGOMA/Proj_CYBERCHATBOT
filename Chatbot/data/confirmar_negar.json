@@ -1,9 +1,10 @@
 {
   "intent": "confirmar_negar",
   "examples": [
-    "si", "no", "correcto", "exacto", "afirmativo", "negativo",
+    "si", "no", "correcto", "exacto", "afirmativo", "negativo", "afirmo",
     "eso es", "no es eso", "efectivamente", "para nada", "asi es",
-    "me equivoque", "tienes razon", "no es correcto"
+    "me equivoque", "tienes razon", "es correcto", "no es correcto", "en efecto",
+    "tiene razon", "no tiene razon", "estoy de acuerdo", "no estoy de acuerdo"
   ],
   "confirmations": ["si", "correcto", "exacto", "afirmativo", "eso es", "efectivamente", "asi es", "tienes razon", "ok", "vale"],
   "negations":     ["no", "negativo", "no es eso", "para nada", "me equivoque", "no es correcto", "incorrecto"],

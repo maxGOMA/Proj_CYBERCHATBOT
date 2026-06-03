@@ -1,8 +1,14 @@
 {
   "intent": "solicitar_diagnostico",
   "examples": [
-    "diagnosticame", "que tengo", "que me ha pasado", "analiza mi caso",
-    "dime que ataque es", "identifica el problema", "que tipo de ataque sufri",
-    "necesito un diagnostico", "cual es el problema"
-  ]
+    "diagnosticame", "que me pasa", "analiza mi problema", "que tengo",
+    "dime que es", "cual es el problema", "que tipo de ataque sufro",
+    "puedes diagnosticar esto", "que esta pasando en mi sistema",
+    "necesito un diagnostico", "analiza esto"
+  ],
+  "response_template": {
+    "threat_found": "🔍 DIAGNÓSTICO COMPLETADO\n\nAmenaza detectada: {threat_name}\nSeveridad: {severity}\nConfianza: {confidence}%\n\n{description}\n\nPróximo paso: escribe 'pasos' para ver el procedimiento de actuación o 'recomendaciones' para medidas preventivas.",
+    "threat_not_found": "🔍 No he podido determinar la amenaza con la información proporcionada.\n\nPara un diagnóstico más preciso necesito que me indiques:\n  • ¿Qué síntomas concretos observas?\n  • ¿Cuándo empezó el problema?\n  • ¿Qué sistemas o archivos están afectados?\n  • ¿Ha habido algún cambio reciente en el sistema?",
+    "multiple_threats": "🔍 He detectado varias amenazas posibles:\n\n{threats_list}\n\nTe muestro la más probable. Descríbeme más síntomas para afinar el diagnóstico."
+  }
 }
