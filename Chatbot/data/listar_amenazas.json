@@ -1,0 +1,25 @@
+{
+  "intent": "listar_amenazas",
+  "examples": [
+    "que amenazas conoces",
+    "lista de amenazas",
+    "lista amenazas",
+    "que tipos de amenazas conoces",
+    "que amenazas detectas",
+    "dime las amenazas",
+    "que amenazas puedes detectar",
+    "que amenazas puedes analizar",
+    "que tipos de ataques conoces",
+    "que tipos de amenazas hay",
+    "que amenazas ciberneticas conoces",
+    "dime que amenazas hay",
+    "ensename las amenazas",
+    "quiero ver las amenazas",
+    "cuales son las amenazas",
+    "que amenazas maneja el chatbot",
+    "que amenazas sabes detectar",
+    "que amenazas puedes diagnosticar",
+    "que amenazas puedes reconocer",
+    "cuales amenazas conoces"
+  ]
+}

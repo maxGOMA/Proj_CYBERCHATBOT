@@ -71,7 +71,7 @@ class Chatbot:
 
         if text == "":
             return "Escribe algun mensaje."
-
+        has_thanks = self.message_has_thanks(text)
         self.session.add_message("user", text)
 
         command_response = self.handle_command(text)
@@ -99,6 +99,8 @@ class Chatbot:
             response = self.help_handler()
         elif intent_name == "buscar_informacion":
             response = self.information_handler(text)
+        elif intent_name == "listar_amenazas":
+            response = self.list_threats_handler()
         elif intent_name == "solicitar_recomendaciones":
             response = self.recommendations_handler(text)
         elif intent_name == "detectar_categoria":
@@ -111,10 +113,16 @@ class Chatbot:
             response = self.good_practices_handler()
         elif intent_name == "explicar_caso_largo":
             response = self.long_case_handler(text)
+        elif intent_name == "solicitar_respuesta_definitiva":
+            response = self.final_answer_handler(text)
         elif intent_name == "solicitar_diagnostico":
             response = self.diagnosis_handler(text)
         else:
             response = self.report_problem_handler(text)
+
+        if has_thanks:
+            thanks_text = self.get_thanks_response()
+            response = response + "\n\n" + thanks_text
 
         self.session.add_message("bot", response)
         return response
@@ -422,6 +430,64 @@ class Chatbot:
             "La marca o el modelo del móvil no es información suficiente para resolver el problema.\n"
             "Indica claramente qué problema tiene en específico."
         )
+    
+    def final_answer_handler(self, text):
+        self.session.update_facts(text)
+
+        threat_name, score, all_scores, evidence = ie.detect_threat(
+            text,
+            self.datasets["reportar_problema"],
+            self.threat_model
+        )
+
+        if threat_name is None:
+            if len(self.session.known_facts) > 1:
+                threat_name, score, all_scores, evidence = ie.detect_threat_from_history(
+                    self.session.known_facts,
+                    self.datasets["reportar_problema"],
+                    self.threat_model
+                )
+
+        if threat_name is None:
+            threat_name = self.session.last_threat
+            score = self.session.last_confidence
+
+        data = self.datasets["solicitar_respuesta_definitiva"]
+        responses = data.get("responses", {})
+
+        if threat_name is None:
+            return responses.get(
+                "threat_not_found",
+                "Todavía no puedo darte una respuesta definitiva porque falta información."
+            )
+
+        threat_data = self.datasets["reportar_problema"]["threats"][threat_name]
+        visible_name = THREAT_NAMES.get(threat_name, threat_name)
+        severity = str(threat_data.get("severity", "media")).upper()
+        confidence = int(score * 100)
+        description = threat_data.get("description", "")
+
+        template = responses.get(
+            "threat_found",
+            "Con lo que has descrito, lo más probable es que sea {threat_name}."
+        )
+
+        template = template.replace("{threat_name}", visible_name)
+        template = template.replace("{severity}", severity)
+        template = template.replace("{confidence}", str(confidence))
+        template = template.replace("{description}", description)
+
+        return template
+
+    def list_threats_handler(self):
+        threats = self.datasets["reportar_problema"].get("threats", {})
+        text = "Amenazas conocidas:"
+
+        for threat_name in threats:
+            visible_name = THREAT_NAMES.get(threat_name, threat_name)
+            text = text + "\n- " + visible_name
+
+        return text
 
     def no_diagnosis(self):
         return (
@@ -479,9 +545,36 @@ class Chatbot:
 
         if "buenas practicas" in normalized:
             return "buenas_practicas"
+        
+        if "respuesta definitiva" in normalized:
+            return "solicitar_respuesta_definitiva"
+
+        if "respuesta ya" in normalized:
+            return "solicitar_respuesta_definitiva"
+
+        if "dime ya" in normalized:
+            return "solicitar_respuesta_definitiva"
+
+        if "lo mas probable" in normalized:
+            return "solicitar_respuesta_definitiva"
+
+        if "veredicto" in normalized:
+            return "solicitar_respuesta_definitiva"
+
+        if "respuesta final" in normalized:
+            return "solicitar_respuesta_definitiva"
 
         if len(normalized.split(" ")) > 10:
             return "explicar_caso_largo"
+
+        if "amenazas" in normalized or "lista de amenazas" in normalized:
+            return "listar_amenazas"
+
+        if "que amenazas" in normalized:
+            return "listar_amenazas"
+
+        if "tipos de amenazas" in normalized:
+            return "listar_amenazas"
 
         return "reportar_problema"
 
@@ -540,7 +633,32 @@ class Chatbot:
                 response = self.process_input(user_text)
                 print("CyberBot:", response)
 
+    def message_has_thanks(self, text):
+        normalized = clean_text(text)
 
+        thanks_words = [
+            "gracias",
+            "muchas gracias",
+            "mil gracias",
+            "te lo agradezco",
+            "agradezco",
+            "muy amable"
+        ]
+
+        for word in thanks_words:
+            if word in normalized:
+                return True
+
+        return False
+
+    def get_thanks_response(self):
+        data = self.datasets["agradecer"]
+        responses = data.get("responses", [])
+
+        if len(responses) > 0:
+            return random.choice(responses)
+        else:
+            return "De nada."
 
 import tkinter as tk
 from tkinter import messagebox

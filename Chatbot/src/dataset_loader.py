@@ -18,9 +18,13 @@ INTENT_FILES = {
     "solicitar_pasos": "solicitar_pasos.json",
     "solicitar_diagnostico": "solicitar_diagnostico.json",
     "explicar_caso_largo": "explicar_caso_largo.json",
-    "buenas_practicas": "buenas_practicas.json"
-
+    "solicitar_respuesta_definitiva": "solicitar_respuesta_definitiva.json",
+    "buenas_practicas": "buenas_practicas.json",
+    "agradecer" : "agradecer.json",
+    "listar_amenazas": "listar_amenazas.json"
 }
+
+
 
 
 def load(intent_name):
