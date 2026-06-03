@@ -42,7 +42,9 @@
       "Descarga software solo desde fuentes oficiales.",
       "No conectes dispositivos USB desconocidos a tu equipo.",
       "Mantén el sistema operativo y todas las aplicaciones actualizadas.",
-      "Activa el firewall del sistema operativo."
+      "Activa el firewall del sistema operativo.",
+      "Intenta desinstalar programas con nombres raros.",
+      "Pasa un antivirus y escanea el sistema completo."
     ],
     "man_in_the_middle": [
       "Usa siempre una VPN de confianza en redes WiFi publicas.",

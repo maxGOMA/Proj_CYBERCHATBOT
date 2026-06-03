@@ -130,7 +130,19 @@
         {"term": "ventanas emergentes",     "specificity": 3},
         {"term": "malware",                 "specificity": 5},
         {"term": "keylogger",               "specificity": 5},
-        {"term": "programa extrano",        "specificity": 3}
+        {"term": "programa extrano",        "specificity": 3},
+        { "term": "pantalla azul", "specificity": 3 },
+        { "term": "pantallazo azul", "specificity": 3 },
+        { "term": "pantalla negra", "specificity": 2 },
+        { "term": "pantallazo negro", "specificity": 2 },
+        { "term": "anuncios por todas partes", "specificity": 4 },
+        { "term": "publicidad por todas partes", "specificity": 4 },
+        { "term": "muchos anuncios", "specificity": 3 },
+        { "term": "anuncios raros", "specificity": 3 },
+        { "term": "popups", "specificity": 3 },
+        { "term": "ventanas emergentes", "specificity": 3 },
+        { "term": "adware", "specificity": 4 }
+        
       ],
       "severity": "alta",
       "recommendations": [

@@ -3,6 +3,7 @@ import random
 import src.dataset_loader as dl
 import src.inference_engine as ie
 from src.nlp_utils import clean_text
+from src.nlp_utils import text_contains_term
 from src.session import Session
 
 THREAT_NAMES = {
@@ -29,6 +30,7 @@ class Chatbot:
     def __init__(self):
         self.session = Session()
         self.datasets = dl.load_all()
+        self.mobile_models_data = dl.load_mobile_models()
         self.intent_model = ie.build_intent_model(dl.build_examples_by_intent())
         self.threat_model = ie.build_threat_model(self.datasets["reportar_problema"])
         self.info_model = ie.build_info_model(self.datasets["buscar_informacion"])
@@ -77,6 +79,11 @@ class Chatbot:
             self.session.add_message("bot", command_response)
             return command_response
 
+        if self.should_use_mobile_brand_response(text):
+            response = self.mobile_brand_handler(text)
+            self.session.add_message("bot", response)
+            return response
+
         intent_name, intent_score = ie.detect_intent(text, self.intent_model)
 
         if intent_name is None:
@@ -104,6 +111,8 @@ class Chatbot:
             response = self.good_practices_handler()
         elif intent_name == "explicar_caso_largo":
             response = self.long_case_handler(text)
+        elif intent_name == "solicitar_diagnostico":
+            response = self.diagnosis_handler(text)
         else:
             response = self.report_problem_handler(text)
 
@@ -352,6 +361,68 @@ class Chatbot:
 
         return text
 
+    def diagnosis_handler(self, text):
+        self.session.update_facts(text)
+
+        threat_name, score, all_scores, evidence = ie.detect_threat(
+            text,
+            self.datasets["reportar_problema"],
+            self.threat_model
+        )
+
+        if threat_name is None:
+            if len(self.session.known_facts) > 1:
+                threat_name, score, all_scores, evidence = ie.detect_threat_from_history(
+                    self.session.known_facts,
+                    self.datasets["reportar_problema"],
+                    self.threat_model
+                )
+
+        data = self.datasets["solicitar_diagnostico"]
+        templates = data.get("response_template", {})
+
+        if threat_name is None:
+            return templates.get(
+                "threat_not_found",
+                "No he podido determinar la amenaza con la información proporcionada."
+            )
+
+        threat_data = self.datasets["reportar_problema"]["threats"][threat_name]
+        matched_terms = evidence.get(threat_name, {}).get("matched_terms", [])
+        self.session.set_threat(threat_name, score, matched_terms)
+
+        visible_name = THREAT_NAMES.get(threat_name, threat_name)
+        severity = str(threat_data.get("severity", "media")).upper()
+        confidence = int(score * 100)
+        description = threat_data.get("description", "")
+
+        threats_list = self.build_threats_list(all_scores)
+
+        if len(all_scores) > 1:
+            template = templates.get("multiple_threats", "")
+            if template != "":
+                intro = template.replace("{threats_list}", threats_list)
+                final_part = templates.get("threat_found", "")
+                final_part = final_part.replace("{threat_name}", visible_name)
+                final_part = final_part.replace("{severity}", severity)
+                final_part = final_part.replace("{confidence}", str(confidence))
+                final_part = final_part.replace("{description}", description)
+                return intro + "\n\n" + final_part
+
+        template = templates.get("threat_found", "")
+        template = template.replace("{threat_name}", visible_name)
+        template = template.replace("{severity}", severity)
+        template = template.replace("{confidence}", str(confidence))
+        template = template.replace("{description}", description)
+
+        return template
+
+    def mobile_brand_handler(self, _text):
+        return (
+            "La marca o el modelo del móvil no es información suficiente para resolver el problema.\n"
+            "Indica claramente qué problema tiene en específico."
+        )
+
     def no_diagnosis(self):
         return (
             "No tengo un diagnostico claro todavia.\n"
@@ -414,6 +485,47 @@ class Chatbot:
 
         return "reportar_problema"
 
+    def contains_mobile_brand_or_model(self, text):
+        normalized = clean_text(text)
+
+        brands = self.mobile_models_data.get("brands", [])
+        models = self.mobile_models_data.get("models", [])
+
+        for brand in brands:
+            if brand in normalized:
+                return True
+
+        for model in models:
+            if model in normalized:
+                return True
+
+        return False
+
+    def has_useful_problem_info(self, text):
+        report_data = self.datasets["reportar_problema"]
+        threats = report_data.get("threats", {})
+
+        for threat_name in threats:
+            threat_data = threats[threat_name]
+            symptoms = threat_data.get("symptoms", [])
+
+            for symptom in symptoms:
+                term = symptom.get("term", "")
+
+                if text_contains_term(text, term):
+                    return True
+
+        return False
+
+    def should_use_mobile_brand_response(self, text):
+        has_brand_or_model = self.contains_mobile_brand_or_model(text)
+        has_problem_info = self.has_useful_problem_info(text)
+
+        if has_brand_or_model is True and has_problem_info is False:
+            return True
+        else:
+            return False
+
     def run(self):
         print(self.get_welcome_message())
         active = True
@@ -427,6 +539,9 @@ class Chatbot:
             else:
                 response = self.process_input(user_text)
                 print("CyberBot:", response)
+
+
+
 import tkinter as tk
 from tkinter import messagebox
 

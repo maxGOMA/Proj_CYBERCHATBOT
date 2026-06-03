@@ -43,7 +43,7 @@
       "title": "Malware",
       "summary": "Software malicioso diseñado para dañar, espiar o robar información del sistema.",
       "detail": "El malware es un término genérico que engloba cualquier software diseñado para causar daño: virus (se replican adjuntándose a archivos), troyanos (se disfrazan de software legítimo), spyware (espían al usuario), adware (muestran publicidad), keyloggers (registran pulsaciones del teclado) y rootkits (se ocultan en el sistema). Se distribuye mediante descargas infectadas, adjuntos de correo, páginas web maliciosas o dispositivos USB comprometidos.",
-      "keywords": ["malware", "virus", "troyano", "spyware", "keylogger", "rootkit", "adware"]
+      "keywords": ["malware", "virus", "troyano", "spyware", "keylogger", "rootkit", "adware","malware","adware","popups","ventanas emergentes","anuncios","publicidad","pantalla azul","pantallazo azul","pantalla negra","pantallazo negro"]
     },
     "man_in_the_middle": {
       "title": "Ataque Man-in-the-Middle",

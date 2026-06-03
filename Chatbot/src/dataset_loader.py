@@ -19,6 +19,7 @@ INTENT_FILES = {
     "solicitar_diagnostico": "solicitar_diagnostico.json",
     "explicar_caso_largo": "explicar_caso_largo.json",
     "buenas_practicas": "buenas_practicas.json"
+
 }
 
 
@@ -48,6 +49,17 @@ def load_all():
 
     return all_data
 
+def load_mobile_models():
+    path = os.path.join(DATA_DIR, "modelos_moviles.json")
+
+    if os.path.exists(path) is False:
+        return {}
+
+    file = open(path, "r", encoding="utf-8")
+    data = json.load(file)
+    file.close()
+
+    return data
 
 def get_examples(intent_name):
     data = load(intent_name)
